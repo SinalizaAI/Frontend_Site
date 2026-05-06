@@ -67,7 +67,7 @@ function PlanosCompletos() {
           </div>
 
           <div className={styles.btn_cont}>
-            <Link to={"/Cadastro"} className={styles.btn}>
+            <Link to={"/pages/Cadastro"} className={styles.btn}>
               Assinar plano
             </Link>
           </div>
@@ -156,7 +156,7 @@ function PlanosCompletos() {
           </div>
 
           <div className={styles.btn_cont}>
-            <Link to={"/Cadastro"} className={styles.btn}>
+            <Link to={"/pages/Cadastro"} className={styles.btn}>
               Assinar plano
             </Link>
           </div>
@@ -263,7 +263,7 @@ function PlanosCompletos() {
           </div>
 
           <div className={styles.btn_cont}>
-            <Link to={"/Cadastro"} className={styles.btn}>
+            <Link to={"/pages/Cadastro"} className={styles.btn}>
               Assinar plano
             </Link>
           </div>

@@ -23,6 +23,7 @@ function Cadastro() {
   return (
     <main className={styles.main}>
       <h1> Olá, só mais uma Etapa </h1>
+      <p className={styles.p1}> Cadastre-se gratuitamente, contrate nossos planos e tenha acesso aos nossos produtos de forma rápida e eficiente. </p>
       <section className={styles.section}>
         <div className={styles.bem_vindo}>
           <h2> Bem-vindo de volta! Faça seu Login </h2>
