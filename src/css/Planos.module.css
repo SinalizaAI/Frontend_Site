@@ -3,7 +3,7 @@
 .planos_sec {
   position: relative;
   width: 100%;
-  height: 900px;
+  height: 1200px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,37 +13,49 @@
 
 .container {
   width: 90%;
-  height: 700px;
+  height: 850px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
 
 .container h1 {
-  color: var(--azul-claro);
+  color: var(--azul_claro);
   text-align: center;
-  font-family: var(--fonte_Prosto);
-  font-size: 45px;
+  font-family: var(--fonte_lexend);
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin: 10px;
+}
+
+.container h2 {
+  color: var(--azul_oc);
+  text-align: center;
+  font-family: var(--fonte_inter);
+  font-size: 20px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  margin: 10px;
 }
 
 /* Planos */
 
 .container_planos {
   width: 100%;
-  height: 600px;
+  height: 800px;
   display: flex;
   justify-content: space-around;
   align-items: flex-end;
 }
 
-/*  */
+/* Card plano */
 
 .plano {
   width: 30%;
-  height: 500px;
+  height: 600px;
   background-color: #000;
   border-radius: 47px;
   display: flex;
@@ -65,21 +77,17 @@
   color: var(--branco_puro);
   -webkit-text-stroke-width: 0.5px;
   -webkit-text-stroke-color: #2b373f;
-  font-family: Nunito;
+  font-family: var(--fonte_inter);
   font-size: 42px;
-  font-style: normal;
   font-weight: 700;
-  line-height: normal;
   text-align: center;
 }
 
 .nome_p h3 {
   color: var(--amarelo);
-  font-family: var(--fonte_Jakarta);
+  font-family: var(--fonte_inter);
   font-size: 40px;
-  font-style: normal;
   font-weight: 600;
-  line-height: normal;
 }
 
 /* Vantagens */
@@ -93,13 +101,13 @@
   align-items: center;
 }
 
-/* Button */
+/* Botão */
 
 .btn {
   width: 90%;
   height: 100px;
-  align-items: center;
   display: flex;
+  align-items: center;
   justify-content: center;
   text-decoration: none;
 }
@@ -111,11 +119,9 @@
   background-color: var(--amarelo);
   border: 1px solid var(--azul_escuro);
   color: var(--azul_escuro);
-  font-family: var(--fonte_Jakarta);
+  font-family: var(--fonte_inter);
   font-size: 20px;
-  font-style: normal;
   font-weight: 600;
-  line-height: normal;
 }
 
 .btn button:hover {
@@ -134,47 +140,56 @@
   gap: 15px;
 }
 
-.item_vant h4 {
-  color: var(--branco_puro);
-  font-family: var(--fonte_Nunito);
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
+/* Textos */
+
+.texts_n {
+  width: 80%;
 }
 
-/*  */
+.texts_n h4 {
+  color: var(--branco_puro);
+  font-family: var(--fonte_inter);
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.item_vant h4 {
+  color: var(--branco_puro);
+  font-family: var(--fonte_inter);
+  font-size: 20px;
+  font-weight: 400;
+}
+
+/* Variações */
 
 .plano_1 {
   background-color: var(--cinza);
 }
 
 .plano_2 {
-  height: 550px;
+  height: 650px;
   justify-content: space-around;
-
   background-color: var(--azul_claro);
 }
 
 .plano_3 {
   justify-content: space-between;
-  height: 600px;
+  height: 700px;
   background-color: var(--azul_escuro);
 }
 
-/* Plano 3 */
+/* Plano recomendado */
 
 .recomendado {
   width: 100%;
   height: 80px;
   background-color: var(--amarelo);
-  border-radius: 47px 47px 0px 0px;
+  border-radius: 47px 47px 0 0;
   color: var(--azul_escuro);
-  font-family: var(--fonte_Jakarta);
+  font-family: var(--fonte_inter);
   font-size: 20px;
   font-style: italic;
   font-weight: 700;
-  line-height: normal;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -209,6 +224,8 @@
     font-size: 16px;
   }
 }
+
+/* Tablet */
 
 @media (min-width: 601px) and (max-width: 900px) {
   .planos_sec {

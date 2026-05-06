@@ -7,6 +7,10 @@ function Planos() {
     <section className={styles.planos_sec}>
       <div className={styles.container}>
         <h1>Conheça nossos planos</h1>
+        <h2>
+          Aqui você poderá consultar os planos disponíveis para contratar
+          segundo sua necessidade
+        </h2>
 
         <div className={styles.container_planos}>
           <div className={`${styles.plano} ${styles.plano_1}`}>
@@ -53,9 +57,15 @@ function Planos() {
                 <h4>1° mês gratuito</h4>
               </div>
             </div>
+            <div className={styles.texts_n}>
+              <h4>
+                Software com o primeiro mês grátis para testes, apenas um avatar
+                e banco de sinais limitado.
+              </h4>
+            </div>
 
-            <Link to={"/PlanosCompletos"} className={styles.btn}>
-              <button>Saiba mais</button>
+            <Link to={"/pages/Cadastro"} className={styles.btn}>
+              <button>Assine agora</button>
             </Link>
           </div>
           <div className={`${styles.plano} ${styles.plano_2}`}>
@@ -121,8 +131,14 @@ function Planos() {
               </div>
             </div>
 
-            <Link to={"/PlanosCompletoS"} className={styles.btn}>
-              <button>Saiba mais</button>
+            <div className={styles.texts_n}>
+              <h4>
+                Software com mais opções de avatares e Totem de atendimento.
+              </h4>
+            </div>
+
+            <Link to={"/pages/Cadastro"} className={styles.btn}>
+              <button>Assine agora</button>
             </Link>
           </div>
           <div className={`${styles.plano} ${styles.plano_3}`}>
@@ -209,8 +225,17 @@ function Planos() {
               </div>
             </div>
 
-            <Link to={"/PlanosCompletos"} className={styles.btn}>
-              <button>Saiba mais</button>
+            <div className={styles.texts_n}>
+              <h4>
+                Software com Avatar personalizável, múltiplos totens para
+                diferentes ambientes, permitindo que os funcionários conversem
+                entre si, sinais personalizados de acordo com as palavras
+                exclusivas da empresa.{" "}
+              </h4>
+            </div>
+
+            <Link to={"/pages/Cadastro"} className={styles.btn}>
+              <button>Assine agora</button>
             </Link>
           </div>
         </div>

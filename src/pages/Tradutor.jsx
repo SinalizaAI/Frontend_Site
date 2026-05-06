@@ -10,6 +10,7 @@ function Tradutor() {
   return (
     <section className={styles.sec}>
       <h1>Seja bem vindo!</h1>
+      <h2>Aqui você poderá realizar um teste gratuito da nossa ferramenta</h2>
       <div className={styles.container}>
         {/* ✅ Botão superior muda de texto conforme o modo */}
         <button onClick={() => setModoCamera(!modoCamera)}>

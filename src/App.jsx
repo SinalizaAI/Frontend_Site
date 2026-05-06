@@ -11,8 +11,8 @@ import Footer from "./components/Footer";
 import Tradutor from "./pages/Tradutor";
 import Cadastro from "./pages/Cadastro";
 import Login from "./pages/Login";
-import PlanosCompletos from "./pages/PlanosCompletos";
 import Sobre_Equipe from "./pages/Sobre_Equipe";
+import Planos from "./components/Planos";
 
 function Layout() {
   const { pathname } = useLocation();
@@ -26,7 +26,7 @@ function Layout() {
         <Route path="/Tradutor" element={<Tradutor />} />
         <Route path="pages/Cadastro" element={<Cadastro />} />
         <Route path="/Login" element={<Login />} />
-        <Route path="/PlanosCompletos" element={<PlanosCompletos />} />
+        <Route path="/PlanosCompletos" element={<Planos />} />
         <Route path="/pages/Sobre_Equipe" element={<Sobre_Equipe />} />
       </Routes>
       <Footer semRadius={isEquipe} />

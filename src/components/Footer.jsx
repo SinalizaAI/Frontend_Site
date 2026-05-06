@@ -32,7 +32,10 @@ function Footer({ semRadius }) {
               </h1>
               <h3>Comunicação é direito, não escolha</h3>
               <div className={styles.cont_i}>
-                <a href="#">
+                <a
+                  href="https://www.instagram.com/sinalizaai.brasil/"
+                  target="__blank"
+                >
                   <img src={Insta} alt="" />
                 </a>
                 <a href="#">

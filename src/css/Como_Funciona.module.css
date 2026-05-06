@@ -62,7 +62,8 @@
 }
 
 .container .btn:hover {
-  background-color: var(--branco);
+  background-color: var(--azul_claro);
+  color: var(--branco_puro);
   transition: 0.1s;
   cursor: pointer;
 }
