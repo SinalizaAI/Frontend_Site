@@ -1,13 +1,13 @@
 @import url(../css/Global.css);
 
 .hero_sec {
-  position: relative; /* ← necessário para o absolute do bg_image funcionar */
+  position: relative;
   width: 100%;
   height: 100vh;
   display: flex;
   justify-content: left;
   align-items: center;
-  overflow: hidden; /* ← impede a imagem de vazar */
+  overflow: hidden;
 }
 
 /* Imagem de fundo */
@@ -18,13 +18,13 @@
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 0; /* ← fica atrás de tudo */
+  z-index: 0;
 }
 
 .bg_image img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* ← se comporta como background-size: cover */
+  object-fit: cover;
   object-position: center;
 }
 
@@ -32,7 +32,7 @@
 
 .text {
   position: relative;
-  z-index: 1; /* ← fica na frente da imagem */
+  z-index: 1;
   width: 40%;
   height: 300px;
   display: flex;
@@ -45,7 +45,7 @@
 .text h1 {
   color: var(--azul_escuro);
   text-align: center;
-  font-family: var(--fonte_Prosto);
+  font-family: var(--fonte_lexend);
   font-size: 40px;
   font-style: normal;
   font-weight: 400;
@@ -70,7 +70,7 @@
   height: 50px;
   border-radius: 47px;
   color: var(--azul_escuro);
-  font-family: var(--fonte_Jakarta);
+  font-family: var(--fonte_inter);
   font-size: 18px;
   font-style: normal;
   font-weight: 700;
@@ -84,7 +84,7 @@
   height: 50px;
   border-radius: 47px;
   color: var(--azul_escuro);
-  font-family: var(--fonte_Jakarta);
+  font-family: var(--fonte_inter);
   font-size: 18px;
   font-style: normal;
   font-weight: 700;
@@ -118,13 +118,13 @@
 
 @media (max-width: 600px) {
   .hero_sec {
-    height: 70svh; /* ← usa svh no mobile para evitar barra de endereço */
+    height: 70svh;
     justify-content: center;
     align-items: center;
   }
 
   .bg_image img {
-    object-position: 80% center; /* ← ajusta o foco da imagem no mobile */
+    object-position: 80% center;
   }
 
   .text {
@@ -156,13 +156,13 @@
 
 @media (min-width: 601px) and (max-width: 1000px) {
   .hero_sec {
-    height: 70svh; /* ← usa svh no mobile para evitar barra de endereço */
+    height: 70svh;
     justify-content: left;
     align-items: center;
   }
 
   .bg_image img {
-    object-position: 70% center; /* ← ajusta o foco da imagem no mobile */
+    object-position: 70% center;
   }
 
   .text {

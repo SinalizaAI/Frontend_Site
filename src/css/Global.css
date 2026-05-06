@@ -8,13 +8,13 @@
 }
 
 :root {
-  --azul_escuro: #010b40;
+  --azul_escuro: rgba(1, 11, 64, 1);
+  --azul_n: rgba(2, 55, 89, 0.8);
   --azul_claro: #023759;
   --amarelo: #f5b942;
   --cinza: #2b373f;
   --branco_puro: #ffff;
   --branco: #e8f4ff;
-  --fonte_Prosto: "Prosto One";
-  --fonte_Jakarta: "Plus Jakarta Sans";
-  --Fonte_Nunito: "Nunito";
+  --fonte_lexend: "Lexend";
+  --fonte_inter: "Inter";
 }

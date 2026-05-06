@@ -5,8 +5,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  background-color: var(--azul_escuro);
-  border-radius: 60px 60px 0 0;
+  background-color: var(--azul_n); /* ← era --azul_escuro */
 }
 
 /* Wrapper principal */
@@ -50,7 +49,7 @@
 
 .cont_t h2 {
   color: var(--amarelo);
-  font-family: var(--fonte_Jakarta);
+  font-family: var(--fonte_inter);
   font-size: 25px;
   font-style: normal;
   font-weight: 600;
@@ -78,7 +77,7 @@
 .cont_a a,
 .cont_p p {
   color: var(--branco);
-  font-family: var(--fonte_Jakarta);
+  font-family: var(--fonte_inter);
   font-size: 22px;
   font-style: normal;
   font-weight: 300;
@@ -133,7 +132,7 @@
 
 .textos h1 {
   color: var(--branco_puro);
-  font-family: var(--fonte_Jakarta);
+  font-family: var(--fonte_inter);
   font-size: 64px;
   font-style: normal;
   font-weight: 600;
@@ -142,7 +141,7 @@
 
 .textos h3 {
   color: var(--branco_puro);
-  font-family: var(--fonte_Prosto);
+  font-family: var(--fonte_lexend);
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -161,7 +160,7 @@
 
 .copyright p {
   color: var(--branco_puro);
-  font-family: var(--fonte_Jakarta);
+  font-family: var(--fonte_inter); /* ← era --fonte_Jakarta */
   font-size: 16px;
   font-weight: 300;
   text-align: center;
@@ -186,8 +185,6 @@
     justify-content: center;
     gap: 12px;
   }
-
-  /* Logo */
 
   .logo_cont {
     width: 40%;
@@ -230,8 +227,6 @@
     width: 90%;
   }
 
-  /* Texts */
-
   .texts_cont {
     width: 60%;
     height: auto;
@@ -264,8 +259,6 @@
   .cont_p p {
     font-size: 0.75rem;
   }
-
-  /* Copyright */
 
   .copyright p {
     font-size: 12px;
@@ -335,8 +328,6 @@
   .cont_p p {
     font-size: 0.78rem;
   }
-
-  /* Copyright */
 
   .copyright p {
     font-size: 11px;

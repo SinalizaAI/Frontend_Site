@@ -1,6 +1,6 @@
 import styles from "../css/Hero.module.css";
 import { Link } from "react-router-dom";
-import HeroImage from "../assets/Hero/image.png";
+import HeroImage from "../assets/Hero/hero_image.png";
 
 function Hero() {
   const scrollToSection = (id) => {
@@ -12,7 +12,6 @@ function Hero() {
 
   return (
     <section className={styles.hero_sec} id="inicio">
-
       {/* Imagem separada em div própria */}
       <div className={styles.bg_image}>
         <img src={HeroImage} alt="" aria-hidden="true" />
@@ -34,7 +33,6 @@ function Hero() {
           </button>
         </div>
       </div>
-
     </section>
   );
 }

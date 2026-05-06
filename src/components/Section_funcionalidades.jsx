@@ -1,11 +1,13 @@
 import styles from "../css/Section_funcionalidades.module.css";
 import Funcionalidade_1 from "../assets/Funcionalidades/Speaker.svg";
-import Funcionalidade_2 from "../assets/Funcionalidades/Speaker2.png";
+import Funcionalidade_2 from "../assets/Funcionalidades/audio.png";
 import Funcionalidade_3 from "../assets/Funcionalidades/Hand.svg";
+import Imagem from "../assets/Funcionalidades/fundo.png";
 
 function Section_funcionalidades() {
   return (
     <section className={styles.sec_funcionalidades}>
+     <img src={Imagem} className={styles.imagem} alt="" />
       <div className={styles.funcionalidades}>
         <div className={styles.container_itens}>
           <h1>Funcionalidades do sistema</h1>

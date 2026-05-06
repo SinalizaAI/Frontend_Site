@@ -37,11 +37,12 @@ function Footer({ semRadius }) {
             <h2>Navegação</h2>
             <div className={styles.cont_a}>
               <Link to={"/"} onClick={() => scrollToSection("inicio")}>
-                Início
+                Home
               </Link>
               <Link to={"/"} onClick={() => scrollToSection("funciona")}>
                 Como funciona
               </Link>
+              <Link to={"/PlanosCompletos"}>Planos</Link>
               <Link to={"/pages/Sobre_Equipe"}>Sobre nós</Link>
               <Link to={"/Tradutor"}>Testar agora</Link>
             </div>

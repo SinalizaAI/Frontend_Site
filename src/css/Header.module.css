@@ -12,7 +12,7 @@
   position: fixed;
   width: 100%;
   height: 80px;
-  background-color: var(--azul_escuro);
+  background-color: var(--azul_n); /* ← era --azul_escuro */
   justify-content: center;
   align-items: center;
   display: flex;
@@ -24,7 +24,6 @@
 .container_nav {
   width: 90%;
   height: 80px;
-  /* border: 1px solid red; */
   margin: 0 auto;
   display: flex;
   flex-direction: row;
@@ -52,7 +51,7 @@
 
 .logo_container h1 {
   color: var(--branco);
-  font-family: var(--fonte_Jakarta);
+  font-family: var(--fonte_inter);
   font-size: 50px;
   font-style: normal;
   font-weight: 600;
@@ -73,7 +72,6 @@
 .links_nav {
   width: 60%;
   height: 80px;
-  /* border: 1px solid green; */
 }
 
 /* Nav links */
@@ -81,7 +79,6 @@
 .links_nav nav {
   width: 100%;
   height: 80px;
-  /* border: 1px solid red; */
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -91,7 +88,7 @@
 .links_nav nav a {
   text-decoration: none;
   color: var(--branco_puro);
-  font-family: var(--fonte_Jakarta);
+  font-family: var(--fonte_inter);
   font-size: 22px;
   font-style: normal;
   font-weight: 400;
@@ -106,7 +103,7 @@
   border-radius: 47px;
   background-color: var(--amarelo);
   color: var(--azul_escuro);
-  font-family: var(--fonte_Jakarta);
+  font-family: var(--fonte_inter);
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
@@ -124,11 +121,9 @@
   color: var(--azul_escuro);
 }
 
-/*  Mobile */
-
 /* ===== HAMBÚRGUER ===== */
 .hamburger {
-  display: none; /* Escondido no desktop */
+  display: none;
   flex-direction: column;
   justify-content: center;
   gap: 6px;
@@ -136,7 +131,7 @@
   border: none;
   cursor: pointer;
   padding: 8px;
-  z-index: 101; /* Fica acima do drawer */
+  z-index: 101;
 }
 
 .hamburger span {
@@ -164,7 +159,7 @@
 /* ===== OVERLAY ===== */
 .overlay {
   position: fixed;
-  inset: 0; /* top/right/bottom/left: 0 */
+  inset: 0;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 98;
 }
@@ -178,14 +173,13 @@
   max-width: 320px;
   height: 100vh;
   border-radius: 47px 0px 0px 47px;
-  background-color: var(--azul_escuro);
+  background-color: var(--azul_n); /* ← era --azul_escuro */
   z-index: 99;
-  padding-top: 100px; /* Espaço abaixo do header */
-  transform: translateX(100%); /* Começa escondido para a direita */
+  padding-top: 100px;
+  transform: translateX(100%);
   transition: transform 0.35s ease;
 }
 
-/* Quando aberto, desliza para dentro */
 .drawer_aberto {
   transform: translateX(0);
 }
@@ -201,7 +195,7 @@
 .drawer_nav a {
   text-decoration: none;
   color: var(--branco_puro);
-  font-family: var(--fonte_Jakarta);
+  font-family: var(--fonte_inter); /* ← era --fonte_Jakarta */
   font-size: 22px;
   font-weight: 400;
 }
@@ -216,8 +210,8 @@
   height: 44px;
   border-radius: 47px;
   background-color: var(--amarelo);
-  color: var(--azul_escuro);
-  font-family: var(--fonte_Jakarta);
+  color: var(--azul_n); /* ← era --azul_escuro */
+  font-family: var(--fonte_inter); /* ← era --fonte_Jakarta */
   font-size: 18px;
   font-weight: 500;
   display: flex;
@@ -227,19 +221,17 @@
 
 .drawer_nav .button:hover {
   background-color: var(--branco_puro);
-  color: var(--azul_escuro);
+  color: var(--azul_n); /* ← era --azul_escuro */
   transition: 0.1s;
   cursor: pointer;
 }
 
 /* ===== MEDIA QUERY ===== */
 @media (max-width: 1070px) {
-  /* Esconde os links originais do header */
   .links_nav {
     display: none;
   }
 
-  /* Mostra o hambúrguer */
   .hamburger {
     display: flex;
   }

@@ -17,20 +17,33 @@ function Header() {
   return (
     <header className={styles.header_principal} id="header">
       <nav className={styles.container_nav}>
-        <Link to={"/"} className={styles.logo_container} onClick={() => scrollToSection("inicio")}>
+        <Link
+          to={"/"}
+          className={styles.logo_container}
+          onClick={() => scrollToSection("inicio")}
+        >
           <div className={styles.logo}>
             <img src={Logo} alt="logo" />
           </div>
-          <h1>Sinaliza<span>AI</span></h1>
+          <h1>
+            Sinaliza<span>AI</span>
+          </h1>
         </Link>
 
         {/* ✅ Links do DESKTOP — ficam aqui, visíveis normalmente */}
         <div className={styles.links_nav}>
           <nav>
-            <Link to="/" onClick={() => scrollToSection("inicio")}>Home</Link>
-            <Link to="/" onClick={() => scrollToSection("funciona")}>Como funciona</Link>
+            <Link to="/" onClick={() => scrollToSection("inicio")}>
+              Home
+            </Link>
+            <Link to="/" onClick={() => scrollToSection("funciona")}>
+              Como funciona
+            </Link>
+            <Link to={"/PlanosCompletos"}>Planos</Link>
             <Link to={"/pages/Sobre_Equipe"}>Sobre nós</Link>
-            <Link to={"/pages/Cadastro"} className={styles.button}>Cadastre-se</Link>
+            <Link to={"/pages/Cadastro"} className={styles.button}>
+              Obter agora
+            </Link>
           </nav>
         </div>
 
@@ -52,12 +65,24 @@ function Header() {
       )}
 
       {/* ✅ Links do MOBILE — dentro do drawer */}
-      <div className={`${styles.drawer} ${menuAberto ? styles.drawer_aberto : ""}`}>
+      <div
+        className={`${styles.drawer} ${menuAberto ? styles.drawer_aberto : ""}`}
+      >
         <nav className={styles.drawer_nav}>
-          <Link to="/" onClick={() => scrollToSection("inicio")}>Home</Link>
-          <Link to="/" onClick={() => scrollToSection("funciona")}>Como funciona</Link>
-          <Link to={"/pages/Sobre_Equipe"} onClick={() => setMenuAberto(false)}>Sobre nós</Link>
-          <Link to={"/pages/Cadastro"} className={styles.button} onClick={() => setMenuAberto(false)}>
+          <Link to="/" onClick={() => scrollToSection("inicio")}>
+            Home
+          </Link>
+          <Link to="/" onClick={() => scrollToSection("funciona")}>
+            Como funciona
+          </Link>
+          <Link to={"/pages/Sobre_Equipe"} onClick={() => setMenuAberto(false)}>
+            Sobre nós
+          </Link>
+          <Link
+            to={"/pages/Cadastro"}
+            className={styles.button}
+            onClick={() => setMenuAberto(false)}
+          >
             Cadastre-se
           </Link>
         </nav>
