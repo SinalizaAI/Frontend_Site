@@ -1,6 +1,6 @@
 import styles from "../css/Footer.module.css";
 import Logo from "../assets/header/logo_n.svg";
-import Insta from "../assets/Footer/instagram.png";
+import Insta from "../assets/Footer/Instagram.png";
 import Git from "../assets/Footer/GitHub.png";
 import { Link } from "react-router-dom";
 
