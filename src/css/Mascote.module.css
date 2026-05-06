@@ -2,8 +2,13 @@
 
 .sec_mascote {
   width: 100%;
-  height: 600px;
+  height: 800px;
   display: flex;
+  background-image: url(../assets//Mascote/fundo.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  align-items: center;
+  justify-content: center;
 }
 
 .div1,
@@ -28,7 +33,7 @@
 }
 
 .text1 h1 {
-  color: var(--preto);
+  color: var(--branco_puro);
   font-family: var(--fonte_lexend);
   font-size: 40px;
   font-style: normal;
@@ -37,13 +42,13 @@
 }
 
 .text1 span {
-  color: var(--azul_oc);
+  color: var(--amarelo);
 }
 
 /*  */
 
 .text2 p {
-  color: var(--preto);
+  color: var(--branco_puro);
   font-family: var(--fonte_lexend);
   font-size: 22px;
   font-style: normal;
@@ -56,7 +61,7 @@
 .text3 button {
   width: 50%;
   height: 50px;
-  background-color: var(--azul_oc);
+  background-color: var(--azul_escuro);
   border-radius: 47px;
   color: var(--branco_puro);
   font-family: var(--fonte_inter);
