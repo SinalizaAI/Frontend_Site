@@ -8,7 +8,7 @@ function Mascote() {
         <div className={styles.container_1}>
           <div className={styles.text1}>
             <h1>
-              Esse é o <span>OCTRON</span>, seu companheiro de navegação
+              Esse é o <span>OTTO</span>, seu companheiro de navegação
             </h1>
           </div>
           <div className={styles.text2}>
@@ -20,7 +20,7 @@ function Mascote() {
             </p>
           </div>
           <div className={styles.text3}>
-            <button>Conversar com o OCTRON</button>
+            <button>Conversar com o OTTO</button>
           </div>
         </div>
       </div>
