@@ -11,7 +11,7 @@ import Footer from "./components/Footer";
 import Tradutor from "./pages/Tradutor";
 import Cadastro from "./pages/Cadastro";
 import Login from "./pages/Login";
-import Sobre_Equipe from "./pages/Sobre_Equipe";
+import { HoverSliderDemo } from "./pages/Sobre_Equipe";
 import Planos from "./components/Planos";
 
 function Layout() {
@@ -24,10 +24,10 @@ function Layout() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Tradutor" element={<Tradutor />} />
-        <Route path="pages/Cadastro" element={<Cadastro />} />
+        <Route path="/pages/Cadastro" element={<Cadastro />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/PlanosCompletos" element={<Planos />} />
-        <Route path="/pages/Sobre_Equipe" element={<Sobre_Equipe />} />
+        <Route path="/pages/Sobre_Equipe" element={<HoverSliderDemo />} />
       </Routes>
       <Footer semRadius={isEquipe} />
     </main>
