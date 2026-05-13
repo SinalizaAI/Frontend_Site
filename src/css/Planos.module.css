@@ -64,6 +64,11 @@
   align-items: center;
 }
 
+.plano:hover {
+  transform: scale(1.01);
+  background-color: var(--azul_oc);
+}
+
 .nome_p {
   width: 90%;
   height: 150px;
@@ -197,7 +202,7 @@
 
 @media (max-width: 600px) {
   .planos_sec {
-    height: 2000px;
+    height: 2600px;
   }
 
   .container {
@@ -211,7 +216,7 @@
   .container_planos {
     align-items: center;
     flex-direction: column;
-    height: 1950px;
+    height: 2200px;
   }
 
   .plano {
@@ -227,7 +232,7 @@
 
 @media (min-width: 601px) and (max-width: 900px) {
   .planos_sec {
-    height: 2200px;
+    height: 2600px;
   }
 
   .container {
@@ -241,7 +246,7 @@
   .container_planos {
     align-items: center;
     flex-direction: column;
-    height: 1950px;
+    height: 2200px;
   }
 
   .plano {
@@ -251,7 +256,7 @@
 
 @media (min-width: 901px) and (max-width: 1100px) {
   .planos_sec {
-    height: 2200px;
+    height: 2600px;
   }
 
   .container {
@@ -265,7 +270,7 @@
   .container_planos {
     align-items: center;
     flex-direction: column;
-    height: 1950px;
+    height: 2200px;
   }
 
   .plano {
