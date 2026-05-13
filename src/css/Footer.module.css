@@ -24,9 +24,11 @@
   width: 50%;
   height: 400px;
   display: flex;
-  padding-top: 5%;
+  flex-direction: column; /* ← empilha Link + cont_i */
+  padding: 5% 5%;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: flex-start;
+  gap: 16px;
 }
 
 .texts_cont {
@@ -129,9 +131,13 @@
 /* Cont */
 
 .cont_i {
-  width: 50%;
-  height: 60px;
-  padding: 5px;
+  display: flex;
+  flex-direction: row; /* ← ícones lado a lado */
+  align-items: center;
+  gap: 5px;
+  padding: 0 5%;
+  width: auto;
+  height: auto;
 }
 
 .textos span {

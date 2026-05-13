@@ -4,7 +4,7 @@ import Insta from "../assets/Footer/Instagram.png";
 import Git from "../assets/Footer/GitHub.png";
 import { Link } from "react-router-dom";
 
-function Footer({ semRadius }) {
+function Footer() {
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
@@ -13,11 +13,10 @@ function Footer({ semRadius }) {
   };
 
   return (
-    <footer
-      className={`${styles.footer_sec} ${semRadius ? styles.sem_radius : ""}`}
-    >
+    <footer className={`${styles.footer_sec}`}>
       <div className={styles.footer_main}>
         <div className={styles.logo_cont}>
+          {/* Logo + slogan */}
           <Link
             to={"/"}
             className={styles.logo_container}
@@ -31,19 +30,22 @@ function Footer({ semRadius }) {
                 Sinaliza<span>AI</span>
               </h1>
               <h3>Comunicação é direito, não escolha</h3>
-              <div className={styles.cont_i}>
-                <a
-                  href="https://www.instagram.com/sinalizaai.brasil/"
-                  target="__blank"
-                >
-                  <img src={Insta} alt="" />
-                </a>
-                <a href="#">
-                  <img src={Git} alt="" />
-                </a>
-              </div>
             </div>
           </Link>
+
+          {/* ✅ Fora do Link, abaixo do slogan */}
+          <div className={styles.cont_i}>
+            <a
+              href="https://www.instagram.com/sinalizaai.brasil/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img src={Insta} alt="Instagram" />
+            </a>
+            <a href="#" rel="noreferrer">
+              <img src={Git} alt="GitHub" />
+            </a>
+          </div>
         </div>
         <div className={styles.texts_cont}>
           <div className={styles.cont_t}>

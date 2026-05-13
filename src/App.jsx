@@ -1,9 +1,4 @@
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  useLocation,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header";
 import Home from "./pages/Home";
@@ -15,9 +10,6 @@ import { HoverSliderDemo } from "./pages/Sobre_Equipe";
 import Planos from "./components/Planos";
 
 function Layout() {
-  const { pathname } = useLocation();
-  const isEquipe = pathname === "/pages/Sobre_Equipe";
-
   return (
     <main>
       <Header />
@@ -29,7 +21,7 @@ function Layout() {
         <Route path="/PlanosCompletos" element={<Planos />} />
         <Route path="/pages/Sobre_Equipe" element={<HoverSliderDemo />} />
       </Routes>
-      <Footer semRadius={isEquipe} />
+      <Footer />
     </main>
   );
 }
