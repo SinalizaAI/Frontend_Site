@@ -1,5 +1,5 @@
 import styles from "../css/Header.module.css";
-import Logo1 from "../assets/Header/logo_oficial.png";
+import Logo from "../assets/header/logo_oficial.png";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
@@ -23,7 +23,7 @@ function Header() {
           onClick={() => scrollToSection("inicio")}
         >
           <div className={styles.logo}>
-            <img src={Logo1} alt="Logo do SinalizaAI" />
+            <img src={Logo} alt="Logo do SinalizaAI" />
           </div>
           <h1>
             Sinaliza<span>AI</span>
