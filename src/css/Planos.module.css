@@ -3,7 +3,7 @@
 .planos_sec {
   position: relative;
   width: 100%;
-  height: 1200px;
+  padding-top: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,10 +13,10 @@
 
 .container {
   width: 90%;
-  height: 850px;
+  height: 700px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  gap: 30px;
 }
 
 .container h1 {
@@ -27,7 +27,6 @@
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  margin: 10px;
 }
 
 .container h2 {
@@ -38,24 +37,22 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  margin: 10px;
 }
 
 /* Planos */
 
 .container_planos {
   width: 100%;
-  height: 800px;
   display: flex;
-  justify-content: space-around;
-  align-items: flex-end;
+  justify-content: center;
+  gap: 50px;
 }
 
 /* Card plano */
 
 .plano {
   width: 30%;
-  height: 600px;
+  height: 500px;
   background-color: #000;
   border-radius: 47px;
   display: flex;
@@ -139,22 +136,10 @@
   flex-direction: row;
   align-items: center;
   justify-content: left;
-  gap: 15px;
+ 
 }
 
 /* Textos */
-
-.texts_n {
-  width: 80%;
-}
-
-.texts_n h4 {
-  color: var(--branco_puro);
-  font-family: var(--fonte_inter);
-  font-size: 18px;
-  font-weight: 300;
-
-}
 
 .item_vant h4 {
   color: var(--branco_puro);
@@ -166,47 +151,16 @@
 /* Variações */
 
 .plano_1 {
-  background-color: var(--cinza);
-}
-
-.plano_2 {
-  height: 650px;
-  justify-content: space-around;
   background-color: var(--azul_claro);
 }
 
-.plano_3 {
-  justify-content: space-between;
-  height: 700px;
+.plano_2 {
   background-color: var(--azul_escuro);
 }
 
-/* Plano recomendado */
-
-.recomendado {
-  width: 100%;
-  height: 80px;
-  background-color: var(--amarelo);
-  border-radius: 47px 47px 0 0;
-  color: var(--azul_escuro);
-  font-family: var(--fonte_inter);
-  font-size: 20px;
-  font-style: italic;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Mobile */
-
 @media (max-width: 600px) {
-  .planos_sec {
-    height: 2600px;
-  }
-
   .container {
-    height: auto;
+    height: 1300px;
   }
 
   .container h1 {
@@ -216,7 +170,6 @@
   .container_planos {
     align-items: center;
     flex-direction: column;
-    height: 2200px;
   }
 
   .plano {
@@ -231,10 +184,6 @@
 /* Tablet */
 
 @media (min-width: 601px) and (max-width: 900px) {
-  .planos_sec {
-    height: 2600px;
-  }
-
   .container {
     height: auto;
   }
@@ -245,8 +194,8 @@
 
   .container_planos {
     align-items: center;
-    flex-direction: column;
-    height: 2200px;
+    flex-direction: row;
+    height: 550px;
   }
 
   .plano {
@@ -255,10 +204,6 @@
 }
 
 @media (min-width: 901px) and (max-width: 1100px) {
-  .planos_sec {
-    height: 2600px;
-  }
-
   .container {
     height: auto;
   }
@@ -269,8 +214,8 @@
 
   .container_planos {
     align-items: center;
-    flex-direction: column;
-    height: 2200px;
+    flex-direction: row;
+    height: 550px;
   }
 
   .plano {

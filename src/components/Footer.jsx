@@ -76,6 +76,8 @@ function Footer() {
               <Link to={"/pages/Planos"}>Planos</Link>
               <Link to={"/pages/Sobre_Equipe"}>Equipe</Link>
               <Link to={"/Tradutor"}>Testar agora</Link>
+              <Link to={"/pages/Sobre_Projeto"}>Sobre Projeto</Link>
+              <Link to={"/pages/Usuario"}>Usuário</Link>
             </div>
           </div>
           <div className={styles.cont_t}>
