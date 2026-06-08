@@ -24,7 +24,7 @@ function Tradutor() {
           <img src={modoCamera ? Imagem2 : Imagem1} alt="Modo do tradutor" />
         </div>
 
-        <Link to={"/PlanosCompletos"} className={styles.btn}>
+        <Link to={"/pages/Planos"} className={styles.btn}>
           Conheça nossos planos
         </Link>
       </div>
