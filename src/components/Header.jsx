@@ -84,9 +84,9 @@ function Header() {
           <Link to={"/pages/Sobre_Equipe"} onClick={() => setMenuAberto(false)}>
             Equipe
           </Link>
-          <Link to={"/pages/Usuario"} onClick={() => setMenuAberto(false)}>
+          {/* <Link to={"/pages/Usuario"} onClick={() => setMenuAberto(false)}>
             Usuário
-          </Link>
+          </Link> */}
           <Link to={"/pages/Sobre_Projeto"} onClick={() => setMenuAberto(false)}>
             Sobre Projeto
           </Link>

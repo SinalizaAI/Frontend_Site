@@ -76,7 +76,7 @@ function Footer() {
               <Link to={"/Tradutor"}>Testar agora</Link>
               <Link to={"/pages/Planos"}>Produtos</Link>
               <Link to={"/pages/Sobre_Equipe"}>Equipe</Link>
-              <Link to={"/pages/Usuario"}>Usuário</Link>
+              {/* <Link to={"/pages/Usuario"}>Usuário</Link> */}
               <Link to={"/pages/Sobre_Projeto"}>Sobre Projeto</Link>
             </div>
           </div>

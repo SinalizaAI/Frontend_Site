@@ -122,7 +122,8 @@ const SLIDES = [
     techs: ["JavaScript", "React", "Java", "HTML"],
     redes: {
       github: "https://github.com/ismaiaradasilvavieira04-droid",
-      linkedin: "https://www.linkedin.com/in/ismaiara-da-silva-vieira-a92713348/",
+      linkedin:
+        "https://www.linkedin.com/in/ismaiara-da-silva-vieira-a92713348/",
     },
     imageUrl: Isis,
   },
@@ -167,14 +168,15 @@ const SLIDES = [
 // ─── Painel "Sobre Nós" ───────────────────────────────────────────────────────
 function SobreNosPanel({ onClose }) {
   return (
-    // Ajustamos o padding para pt-12 (menos espaço no topo) e adicionamos min-h-[60vh] para ajudar no alinhamento
     <div className="w-full flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 pt-12 pb-16 px-4 sm:px-8 md:px-12">
-      
-      {/* Botão Voltar (Lado Esquerdo) - Agora centralizado verticalmente no desktop */}
-      <div className="flex-shrink-0 flex items-center justify-center w-full md:w-24 order-first md:sticky md:top-[50vh] md:-translate-y-1/2">
+      {/* Botão Voltar */}
+      <div
+        style={{ marginTop: "20px" }}
+        className="flex-shrink-0 flex items-center justify-center md:justify-start w-full md:w-24 order-first md:sticky md:top-[50vh] md:-translate-y-1/2"
+      >
         <button
           onClick={onClose}
-          className="flex flex-col items-center gap-2 bg-[#02375908] hover:bg-[#02375912] p-3 rounded-full md:rounded-xl transition-colors"
+          className="flex flex-col items-center gap-2 md:bg-transparent md:hover:bg-transparent p-3 rounded-full md:rounded-xl transition-colors"
           aria-label="Voltar"
         >
           <motion.span
@@ -186,11 +188,11 @@ function SobreNosPanel({ onClose }) {
           >
             <FaChevronLeft size={26} />
             <span
-              className="uppercase tracking-widest hidden md:block font-semibold"
-              style={{ 
-                fontSize: "11px", 
-                color: "#023759aa", 
-                fontFamily: "var(--fonte_inter), sans-serif" 
+              className="uppercase tracking-widest block font-semibold"
+              style={{
+                fontSize: "11px",
+                color: "#023759aa",
+                fontFamily: "var(--fonte_inter), sans-serif",
               }}
             >
               Voltar
@@ -199,14 +201,9 @@ function SobreNosPanel({ onClose }) {
         </button>
       </div>
 
-      {/* Bloco Central (Permanece no mesmo lugar devido à simetria dos blocos laterais) */}
+      {/* Bloco Central */}
       <div className="flex flex-col items-center w-full max-w-[90vw] sm:max-w-md md:max-w-xl mx-auto md:mx-0">
-        
-        {/* Título "Sobre Nós" com mais espaço para respirar */}
-        <div className="flex flex-col items-center text-center mb-8"
-        style={{
-          paddingTop: "55px",
-        }}>
+        <div style={{marginTop: "10%"}} className="flex flex-col items-center text-center mb-8 pt-2 md:pt-[55px]">
           <h2
             className="text-2xl sm:text-3xl md:text-5xl font-bold uppercase tracking-tighter"
             style={{
@@ -218,10 +215,7 @@ function SobreNosPanel({ onClose }) {
           </h2>
         </div>
 
-        {/* Container do Conteúdo com espaçamento interno (gap-8) */}
         <div className="flex flex-col items-center gap-8 w-full">
-          
-          {/* Foto da Equipe */}
           <div
             className="w-full overflow-hidden"
             style={{
@@ -239,7 +233,6 @@ function SobreNosPanel({ onClose }) {
             />
           </div>
 
-          {/* Texto de Descrição */}
           <div className="flex flex-col gap-4 text-center w-full pb-4">
             <p
               className="leading-relaxed"
@@ -249,9 +242,9 @@ function SobreNosPanel({ onClose }) {
                 fontFamily: "var(--fonte_inter), sans-serif",
               }}
             >
-              Somos proanos apaixonados por tecnologia, movidos pelo entusiasmo e
-              propósito de tornar a comunicação mais acessível. Cada integrante
-              contribui com conhecimentos e habilidades únicas no
+              Somos proanos apaixonados por tecnologia, movidos pelo entusiasmo
+              e propósito de tornar a comunicação mais acessível. Cada
+              integrante contribui com conhecimentos e habilidades únicas no
               desenvolvimento do nosso software, unindo conhecimento técnico,
               criatividade, trabalho em equipe e empatia.
             </p>
@@ -259,7 +252,6 @@ function SobreNosPanel({ onClose }) {
         </div>
       </div>
 
-      {/* Placeholder invisível com a mesma largura (w-24) para manter o centro perfeito no desktop */}
       <div className="w-24 hidden md:block" aria-hidden="true"></div>
     </div>
   );
@@ -472,7 +464,6 @@ export function HoverSliderDemo() {
 
   return (
     <HoverSlider className="relative min-h-svh pt-24 pb-8 px-4 sm:px-8 md:px-12 bg-[rgba(233,239,242,1)] text-[#3d3929] overflow-x-hidden flex items-center justify-center">
-      
       {/* O mode="wait" impede a sobreposição de elementos no fluxo do topo */}
       <AnimatePresence mode="wait">
         {!showSobre ? (
