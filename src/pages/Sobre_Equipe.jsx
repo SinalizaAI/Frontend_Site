@@ -97,7 +97,7 @@ const SLIDES = [
     id: "slide-1",
     title: "Amanda Soares",
     color: "#44008c",
-    cargo: "PO e Full Stack",
+    cargo: "PO e Front-End",
     techs: ["JavaScript", "Java", "React", "HTML"],
     redes: {
       github: "https://github.com/Alexyycb",
@@ -109,7 +109,7 @@ const SLIDES = [
     id: "slide-2",
     title: "Gustavo Bozzo",
     color: "#000080",
-    cargo: "Scrum e Full Stack",
+    cargo: "Scrum e Back-End",
     techs: ["Java", "Python", "React", "MySQL"],
     redes: {
       github: "https://github.com/Gusbzz",
@@ -121,7 +121,7 @@ const SLIDES = [
     id: "slide-3",
     title: "Ismaiara Vieira",
     color: "#f86b00",
-    cargo: "Back End e Marketing",
+    cargo: "Marketing e Front-End",
     techs: ["JavaScript", "React", "Java", "HTML"],
     redes: {
       github: "https://github.com/ismaiaradasilvavieira04-droid",
@@ -134,7 +134,7 @@ const SLIDES = [
     id: "slide-4",
     title: "Kauê Siqueira",
     color: "#0000d5",
-    cargo: "Full Stack e UI/UX",
+    cargo: "UI/UX e Full-Stack",
     techs: ["Python", "Java", "JavaScript", "React"],
     redes: {
       github: "https://github.com/KaueSiqueira54",
@@ -146,10 +146,10 @@ const SLIDES = [
     id: "slide-5",
     title: "Ryan Almeida",
     color: "#6A4C93",
-    cargo: "Full Stack e Financeiro",
-    techs: ["HTML", "CSS", "JavaScript", "Java"],
+    cargo: "Financeiro e Back-End",
+    techs: ["React", "MySQL", "JavaScript", "Java"],
     redes: {
-      github: "https://github.com/pedrolima",
+      github: "https://github.com/ryann-08",
       linkedin: "https://www.linkedin.com/in/ryan-almeida-dev/",
     },
     imageUrl: Ryan,
@@ -158,10 +158,10 @@ const SLIDES = [
     id: "slide-6",
     title: "Thayna Mateus",
     color: "#082256",
-    cargo: "Full Stack e Pesquisadora",
+    cargo: "Marketing e Front-End",
     techs: ["Java", "React", "MySQL"],
     redes: {
-      github: "https://github.com/Thayn4-mateus",
+      github: "https://github.com/thaynamateus",
       linkedin: "https://www.linkedin.com/in/thaynamateus/",
     },
     imageUrl: Thay,
