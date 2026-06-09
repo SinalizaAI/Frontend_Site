@@ -11,6 +11,13 @@ import Planos from "./pages/Planos";
 import Sobre_Projeto from "./pages/Sobre_Projeto";
 
 function Layout() {
+  useEffect(() => {
+    RybenaApi.getInstance().handleLoaded(() => {
+      console.log("Rybená carregou!");
+      RybenaApi.getInstance().openPlayer();
+      RybenaApi.getInstance().translate("Bem-vindo ao SinalizaAI!");
+    });
+  }, []);
   return (
     <main>
       <Header />
