@@ -10,6 +10,7 @@ import { HoverSliderDemo } from "./pages/Sobre_Equipe";
 import Planos from "./pages/Planos";
 import Sobre_Projeto from "./pages/Sobre_Projeto";
 import Usuario from "./pages/Usuario";
+import { useEffect } from "react";
 
 function Layout() {
   useEffect(() => {
