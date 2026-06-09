@@ -9,33 +9,39 @@ import senhaIcon from "../assets/Cadastro/lock.png";
 function Cadastro() {
   const [aceitou, setAceitou] = useState(false);
   const navigate = useNavigate();
+
   const handleCadastro = (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  if (!aceitou) {
-    alert("Você não aceitou os termos de uso.");
-    return;
-  }
+    if (!aceitou) {
+      alert("Você não aceitou os termos de uso.");
+      return;
+    }
 
-  navigate("/Login");
-};
+    navigate("/Login");
+  };
 
   return (
     <main className={styles.main}>
       <h1> Olá, só mais uma Etapa </h1>
-      <p className={styles.p1}> Cadastre-se gratuitamente, contrate nossos planos e tenha acesso aos nossos produtos de forma rápida e eficiente. </p>
+      <p className={styles.p1}> 
+        Cadastre-se gratuitamente, contrate nossos planos e tenha acesso aos nossos produtos de forma rápida e eficiente. 
+      </p>
+      
       <section className={styles.section}>
+        {/* Lado Esquerdo (Desktop) */}
         <div className={styles.bem_vindo}>
           <h2> Bem-vindo de volta! Faça seu Login </h2>
           <p> Acesse sua conta agora mesmo </p>
           <Link to={"/Login"} className={styles.btn}> Login </Link>
         </div>
+
+        {/* Lado Direito (Formulário) */}
         <div className={styles.crie_conta}>
           <h2> Crie sua conta gratuitamente </h2>
           <p className={styles.cadastre}> Cadastre seus dados </p>
 
           <form onSubmit={handleCadastro}>
-
             <div className={styles.escrever}>
               <img src={nomeIcon} alt="Ícone Nome" />
               <input type="text" placeholder="Nome" required />
@@ -69,11 +75,15 @@ function Cadastro() {
               Cadastrar
             </button>
 
+            {/* Novo Link de Login visível apenas no Mobile/Tablet */}
+            <Link to={"/Login"} className={`${styles.btn} ${styles.btn_mobile}`}>
+              Login
+            </Link>
           </form>
         </div>
       </section>
     </main>
-  )
+  );
 }
 
 export default Cadastro;

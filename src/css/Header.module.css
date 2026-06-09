@@ -13,6 +13,7 @@
   width: 100%;
   height: 80px;
   background-color: var(--azul_n);
+  backdrop-filter: blur(10px);
   justify-content: center;
   align-items: center;
   display: flex;
@@ -33,20 +34,22 @@
 /* Container logo */
 
 .logo_container {
-  width: 30%;
+  width: auto; /* Ajustado para não espremer o conteúdo */
   height: 80px;
   display: flex;
   align-items: center;
   cursor: pointer;
-  justify-content: center;
   text-decoration: none;
 }
 
-/* Logo */
+/* Logo (Container da imagem) */
 
 .logo {
-  width: 20%;
-  height: 80px;
+  width: 100px;  /* Tamanho fixo da largura da imagem */
+  height: 80px; /* Tamanho fixo da altura da imagem */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .logo_container h1 {
@@ -62,9 +65,12 @@
   color: var(--amarelo);
 }
 
+/* Imagem da logo */
+
 .logo img {
   width: 100%;
-  height: 80px;
+  height: 100%;
+  object-fit: contain; /* Garante que a imagem não mude de proporção ou distorça */
 }
 
 /* Links nav */
@@ -94,7 +100,7 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  width: fit-content; /* ← Garante que no desktop a linha fique do tamanho exato do texto */
+  width: fit-content; 
 }
 
 /* Aplica a linha apenas nos links do desktop que NÃO possuem a classe .button */
@@ -218,7 +224,7 @@
   font-family: var(--fonte_inter);
   font-size: 22px;
   font-weight: 400;
-  width: fit-content; /* ← Evita que a linha estique 100% da largura da coluna do menu mobile */
+  width: fit-content; 
   padding-bottom: 4px;
 }
 
@@ -277,8 +283,8 @@
   }
 
   .logo_container {
-    width: 80%;
-    justify-content: left;
+    width: auto; /* Mantém o container fluído no mobile */
+    justify-content: flex-start;
   }
 }
 

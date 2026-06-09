@@ -35,9 +35,9 @@
 
 /* Video */
 
-.container video {
+.video {
   width: 90%;
-  height: auto;
+  height: 60%;
   border-radius: 10px;
 }
 

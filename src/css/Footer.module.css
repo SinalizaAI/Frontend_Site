@@ -17,7 +17,7 @@
   flex: 1;
 }
 
-/* Logo */
+/* Logo container principal da esquerda */
 
 .logo_cont {
   position: relative;
@@ -89,7 +89,7 @@
 
 .cont_a a {
   position: relative;
-  width: fit-content; /* ← Faz o link ocupar exatamente o tamanho da palavra */
+  width: fit-content; 
   padding-bottom: 4px;
 }
 
@@ -117,58 +117,71 @@
   cursor: pointer;
 }
 
-/* Logo container */
+/* Logo container link */
 
 .logo_container {
-  width: 70%;
-  height: 150px;
+  width: auto; /* Deixa fluído para respeitar o tamanho do texto interno */
+  height: auto;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   cursor: pointer;
   text-decoration: none;
 }
 
+/* Container da Imagem da Logo */
+
 .logo {
-  width: 40%;
-  height: 200px;
+  width: 100px;  /* Tamanho fixo perfeito para a logo no footer */
+  height: 100px; /* Altura combinando para manter proporções quadradas/proporcionais */
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-shrink: 0; /* Impede que o flexbox tente amassar a imagem */
 }
 
 .logo img {
   width: 100%;
+  height: 100%;
+  object-fit: contain; /* Evita qualquer tipo de distorção no arquivo original */
 }
 
-/* Textos */
+/* Textos da Logo */
 
 .textos {
-  width: 100%;
-  height: 150px;
+  width: auto;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: left;
+  align-items: flex-start;
 }
 
-/* Cont */
+/* Redes Sociais Cont */
 
 .cont_i {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 5px;
+  gap: 12px; /* Aumentei um pouco o espaçamento entre os ícones */
   padding: 0 5%;
   width: auto;
   height: auto;
 }
 
-/* ✅ Estilização do link dos ícones ajustada para manter o tamanho original */
 .cont_i a {
   display: flex;
   align-items: center;
   cursor: pointer;
+  flex-shrink: 0; /* Impede que o link seja esmagado pelo flexbox */
+}
+
+/* NOVO: Força as imagens a manterem o tamanho fixo desejado */
+.cont_i a img {
+  width: 50px;      /* Defina aqui o tamanho horizontal fixo dos ícones */
+  height: 50px;     /* Defina aqui o tamanho vertical fixo dos ícones */
+  object-fit: contain;
+  flex-shrink: 0;   /* Garante que o navegador não diminua o tamanho da imagem */
 }
 
 .textos span {
@@ -197,7 +210,7 @@
 
 .copyright {
   width: 100%;
-  padding: 14px 0;
+  padding: 30px 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -241,20 +254,15 @@
   }
 
   .logo_container {
-    width: 100%;
+    width: auto;
     height: auto;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
   }
 
   .logo {
-    width: 55%;
-    height: auto;
-  }
-
-  .logo img {
-    width: 100%;
+    width: 100px;  /* Mantém fixo também em tablets */
+    height: 100px;
   }
 
   .textos {
@@ -327,19 +335,19 @@
   .logo_cont {
     width: 100%;
     justify-content: center;
-    flex-direction: row;
+    align-items: center;
+    flex-direction: column; /* Mudado de row para column para empilhar a logo e os ícones */
+    gap: 16px;
   }
 
   .logo_container {
     flex-direction: row;
     width: auto;
-    gap: 12px;
   }
 
   .logo {
-    width: 60px;
-    height: auto;
-    flex-shrink: 0;
+    width: 100px;  /* Tamanho ligeiramente menor, porém fixo, para telas muito pequenas */
+    height: 100px;
   }
 
   .textos {

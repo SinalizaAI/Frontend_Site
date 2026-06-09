@@ -1,144 +1,144 @@
 @import url(../css/Global.css);
 
 .main {
-    position: relative;
-    width: 100%;
-    margin: auto;
+  position: relative;
+  width: 100%;
+  margin: auto;
 
-    padding: 176px;
-    padding-top: 120px;
+  padding: 176px;
+  padding-top: 120px;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-    gap: 50px;
+  gap: 50px;
 }
 
 .main h1 {
-    font-family: var(--fonte_lexend);
-    font-weight: normal;
-    color: var(--azul_claro);
-    font-size: 40px;
-    text-align: center;
+  font-family: var(--fonte_lexend);
+  font-weight: normal;
+  color: var(--azul_claro);
+  font-size: 40px;
+  text-align: center;
 }
 
 .main h2 {
-    font-family: var(--fonte_lexend);
-    font-weight: normal;
-    color: var(--azul_claro);
-    font-size: 25px;
+  font-family: var(--fonte_lexend);
+  font-weight: normal;
+  color: var(--azul_claro);
+  font-size: 25px;
 }
 
 .main p {
-    font-family: var(--fonte_inter);
-    color: var(--azul_escuro);
-    font-size: 20px;
+  font-family: var(--fonte_inter);
+  color: var(--azul_escuro);
+  font-size: 20px;
 }
 
 .main p strong {
-    color: var(--amarelo);
-    font-weight: 600; /* Garante que ela continue em negrito além de mudar de cor */
+  color: var(--amarelo);
+  font-weight: 600; /* Garante que ela continue em negrito além de mudar de cor */
 }
 
 .origem {
-    width: 100%;
+  width: 100%;
 }
 
 .origem div {
-    margin-top: 50px;
-    margin-bottom: 50px;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .cultura {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-    align-items: stretch;
-    justify-items: center;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  align-items: stretch;
+  justify-items: center;
 }
 
 .divisoes_cultura,
 .image_cultura {
-    width: 100%;
-    max-width: 609px;
-    height: 202px;
-    padding: 5px;
-    padding-left: 10px;
-    border-radius: 10px;
-    border: 1px solid black;
+  width: 100%;
+  max-width: 609px;
+  height: 202px;
+  padding: 5px;
+  padding-left: 10px;
+  border-radius: 10px;
+  border: 1px solid black;
 }
 
 .image_cultura {
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
 }
 
 .image_cultura img {
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
 }
 
 .valores {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
 .valores_icones {
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
 }
 
 .icon_valores {
-    width: 80px;
-    height: auto;
+  width: 80px;
+  height: auto;
 }
 
 .valor_item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
 
 .valor_item span {
-    font-family: var(--fonte_inter);
-    font-size: 20px;
-    color: var(--azul_escuro);
+  font-family: var(--fonte_inter);
+  font-size: 20px;
+  color: var(--azul_escuro);
 }
 
-.por_que_existe{
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
+.por_que_existe {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
 }
 
 .texto_por_que {
-    width: 708px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  width: 708px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .diferencial {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 }
 
 .equipe {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
 }
 
 .btn {
@@ -151,7 +151,6 @@
   font-size: 20px;
   font-style: normal;
   font-weight: 500;
-  border: 1px solid var(--azul_escuro);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -169,13 +168,13 @@
 .para_onde,
 .diferencial,
 .equipe {
-    width: 100%;
+  width: 100%;
 }
 
 .por_que_existe img,
 .diferencial img,
 .origem img {
-    max-width: 100%;
+  max-width: 100%;
 }
 
 /* ==========================================================================
@@ -183,28 +182,28 @@
    ========================================================================== */
 
 .totem_wrapper_bloqueio {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    clear: both;
-    margin: 20px 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  clear: both;
+  margin: 20px 0;
 }
 
 .totem_3d_container {
-    width: 600px;
-    height: 450px;
-    /* AJUSTE: Um fundo cinza sutil ou gradiente faz o modelo 3D saltar aos olhos */
-    background: radial-gradient(circle, #f9fafb 0%, #e5e7eb 100%); 
-    border-radius: 12px;
-    border: 1px solid #cbd5e1;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    overflow: hidden;
-    cursor: grab;
+  width: 600px;
+  height: 450px;
+  /* AJUSTE: Um fundo cinza sutil ou gradiente faz o modelo 3D saltar aos olhos */
+  background: radial-gradient(circle, #f9fafb 0%, #e5e7eb 100%);
+  border-radius: 12px;
+  border: 1px solid #cbd5e1;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  cursor: grab;
 }
 
 .totem_3d_container:active {
-    cursor: grabbing;
+  cursor: grabbing;
 }
 
 /* ==========================================================================
@@ -212,146 +211,146 @@
    ========================================================================== */
 
 .queremos_ir {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 40px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
 }
 
 .timeline_container {
-    position: relative;
-    width: 100%;
-    max-width: 1200px; 
-    margin: 40px auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 40px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* Linha Base Cinza - Vai do topo até o final antes da mão */
 .timeline_line_bg {
-    position: absolute;
-    top: 88px; 
-    bottom: 30px; 
-    width: 4px;
-    background-color: #e5e7eb;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1;
+  position: absolute;
+  top: 88px;
+  bottom: 30px;
+  width: 4px;
+  background-color: #e5e7eb;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
 }
 
 /* Linha Dinâmica Azul - PRESERVA SEU DESIGN ORIGINAL MAS NÃO PASSA DO PONTO */
 .timeline_line_active {
-    position: absolute;
-    top: 88px;
-    width: 4px;
-    background-color: var(--azul_claro);
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 2;
-    transition: height 0.6s ease-in-out;
-    
-    /* Evita que distorções flexbox causem o vazamento visual */
-    max-height: calc(100% - 176px - 30px); 
-    box-sizing: border-box;
+  position: absolute;
+  top: 88px;
+  width: 4px;
+  background-color: var(--azul_claro);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  transition: height 0.6s ease-in-out;
+
+  /* Evita que distorções flexbox causem o vazamento visual */
+  max-height: calc(100% - 176px - 30px);
+  box-sizing: border-box;
 }
 
 /* Itens da Linha */
 .timeline_item {
-    position: relative;
-    display: flex;
-    width: 100%;
-    align-items: center;
-    margin: 0;
-    min-height: 176px; 
-    z-index: 3;
+  position: relative;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  margin: 0;
+  min-height: 176px;
+  z-index: 3;
 }
 
-.timeline_left, 
+.timeline_left,
 .timeline_right {
-    width: 50%;
-    display: flex;
-    box-sizing: border-box;
+  width: 50%;
+  display: flex;
+  box-sizing: border-box;
 }
 
 /* Padding garante que a borda interna da imagem fique a exatamente 30px do texto */
 .timeline_left {
-    justify-content: flex-end;
-    padding-right: 180px; 
+  justify-content: flex-end;
+  padding-right: 180px;
 }
 
 .timeline_right {
-    justify-content: flex-start;
-    padding-left: 180px;
+  justify-content: flex-start;
+  padding-left: 180px;
 }
 
 /* Wrapper das Imagens - Tamanho fixado e padronizado */
 .timeline_image_wrapper {
-    width: 430px;
-    height: 174px;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  width: 430px;
+  height: 174px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .timeline_image_wrapper img {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: cover; 
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
 }
 
 /* Elemento Central - Mantido original */
 .timeline_center {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .timeline_node {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
 .timeline_dot {
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background-color: #ffffff;
-    border: 3px solid #d1d5db;
-    transition: all 0.4s ease;
-    z-index: 5;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: 3px solid #d1d5db;
+  transition: all 0.4s ease;
+  z-index: 5;
 }
 
 .timeline_node:hover .timeline_dot {
-    z-index: 6;
+  z-index: 6;
 }
 
 .timeline_title {
-    position: absolute;
-    white-space: nowrap;
-    font-family: var(--fonte_lexend);
-    font-size: 16px;
-    font-weight: 500;
-    transition: all 0.4s ease;
-    z-index: 4;
+  position: absolute;
+  white-space: nowrap;
+  font-family: var(--fonte_lexend);
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.4s ease;
+  z-index: 4;
 }
 
 /* Definição de espaço exato de 30px a partir da palavra até o nó */
 .title_left {
-    right: 30px;
+  right: 30px;
 }
 
 .title_right {
-    left: 30px;
+  left: 30px;
 }
 
 /* ==========================================================================
@@ -359,29 +358,37 @@
    ========================================================================== */
 
 @keyframes pulseActive {
-    0% {
-        transform: scale(1.3);
-        box-shadow: 0 0 0 0 rgba(0, 191, 255, 0.6), 0 0 0 2px rgba(0, 191, 255, 0.4);
-    }
-    70% {
-        transform: scale(1.3);
-        box-shadow: 0 0 0 22px rgba(0, 191, 255, 0), 0 0 0 24px rgba(0, 191, 255, 0);
-    }
-    100% {
-        transform: scale(1.3);
-        box-shadow: 0 0 0 0 rgba(0, 191, 255, 0), 0 0 0 0 rgba(0, 191, 255, 0);
-    }
+  0% {
+    transform: scale(1.3);
+    box-shadow:
+      0 0 0 0 rgba(0, 191, 255, 0.6),
+      0 0 0 2px rgba(0, 191, 255, 0.4);
+  }
+  70% {
+    transform: scale(1.3);
+    box-shadow:
+      0 0 0 22px rgba(0, 191, 255, 0),
+      0 0 0 24px rgba(0, 191, 255, 0);
+  }
+  100% {
+    transform: scale(1.3);
+    box-shadow:
+      0 0 0 0 rgba(0, 191, 255, 0),
+      0 0 0 0 rgba(0, 191, 255, 0);
+  }
 }
 
 @keyframes glowHand {
-    0%, 100% {
-        transform: scale(1);
-        filter: drop-shadow(0 0 4px rgba(0, 191, 255, 0.3));
-    }
-    50% {
-        transform: scale(1.12); 
-        filter: drop-shadow(0 0 24px rgba(0, 191, 255, 0.95)) drop-shadow(0 0 8px rgba(0, 191, 255, 0.4)); 
-    }
+  0%,
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 4px rgba(0, 191, 255, 0.3));
+  }
+  50% {
+    transform: scale(1.12);
+    filter: drop-shadow(0 0 24px rgba(0, 191, 255, 0.95))
+      drop-shadow(0 0 8px rgba(0, 191, 255, 0.4));
+  }
 }
 
 /* ==========================================================================
@@ -390,91 +397,91 @@
 
 /* 1. ESTADO: PRESENTE (Ativo Pulsando Forte + Imagem Acesa) */
 .step_current .timeline_dot {
-    background-color: var(--azul_claro);
-    border-color: var(--azul_claro);
-    animation: pulseActive 2.2s infinite ease-in-out;
+  background-color: var(--azul_claro);
+  border-color: var(--azul_claro);
+  animation: pulseActive 2.2s infinite ease-in-out;
 }
 
 .step_current .timeline_title {
-    color: var(--azul_claro);
-    font-weight: 700;
+  color: var(--azul_claro);
+  font-weight: 700;
 }
 
 .step_current .timeline_image_wrapper {
-    opacity: 1;
-    filter: grayscale(0%);
+  opacity: 1;
+  filter: grayscale(0%);
 }
 
 /* 2. ESTADO: PASSADO (Apagado por padrão - Acende no hover do nó central) */
 .step_passed .timeline_dot {
-    background-color: var(--azul_claro);
-    border-color: var(--azul_claro);
+  background-color: var(--azul_claro);
+  border-color: var(--azul_claro);
 }
 
 .step_passed .timeline_title {
-    color: var(--azul_claro);
-    opacity: 0.4; 
+  color: var(--azul_claro);
+  opacity: 0.4;
 }
 
 .step_passed .timeline_image_wrapper {
-    opacity: 0.35; 
-    filter: grayscale(80%);
+  opacity: 0.35;
+  filter: grayscale(80%);
 }
 
 /* Interação Hover no Nó Passado */
 .step_passed .timeline_node:hover .timeline_title {
-    opacity: 1;
-    font-weight: 600;
+  opacity: 1;
+  font-weight: 600;
 }
 
 .step_passed .timeline_node:hover .timeline_dot {
-    transform: scale(1.3);
+  transform: scale(1.3);
 }
 
 .step_passed:has(.timeline_node:hover) .timeline_image_wrapper {
-    opacity: 1;
-    filter: grayscale(0%);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+  opacity: 1;
+  filter: grayscale(0%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
 }
 
 /* 3. ESTADO: FUTURO (Totalmente Bloqueado) */
 .step_future .timeline_dot {
-    background-color: #ffffff;
-    border-color: #cbd5e1;
+  background-color: #ffffff;
+  border-color: #cbd5e1;
 }
 
 .step_future .timeline_title {
-    color: #94a3b8;
-    opacity: 0.5;
+  color: #94a3b8;
+  opacity: 0.5;
 }
 
 .step_future .timeline_image_wrapper {
-    opacity: 0.05;
-    filter: grayscale(100%);
-    pointer-events: none;
+  opacity: 0.05;
+  filter: grayscale(100%);
+  pointer-events: none;
 }
 
 /* Mãozinha Final Sinalizadora com Imagem */
 .timeline_hand_icon {
-    margin-top: 30px;
-    z-index: 3;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    animation: glowHand 2.2s infinite ease-in-out; 
-    transition: all 0.4s ease;
+  margin-top: 30px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: glowHand 2.2s infinite ease-in-out;
+  transition: all 0.4s ease;
 }
 
 .timeline_hand_icon img {
-    width: 50px;
-    height: auto;
-    display: block;
+  width: 50px;
+  height: auto;
+  display: block;
 }
 
 .hand_active {
-    animation: none; 
-    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.15));
+  animation: none;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.15));
 }
 
 /* ==========================================================================
@@ -482,76 +489,194 @@
    ========================================================================== */
 
 @media (max-width: 950px) {
-    .timeline_line_bg, .timeline_line_active {
-        left: 20px;
-        transform: none;
-        top: 20px;
-    }
-    .timeline_line_bg { bottom: 20px; }
-    .timeline_item {
-        flex-direction: column;
-        align-items: flex-start;
-        padding-left: 45px;
-        min-height: auto;
-        gap: 15px;
-        margin-bottom: 35px;
-    }
-    .timeline_left, .timeline_right {
-        width: 100%;
-        justify-content: flex-start;
-        padding: 0 !important;
-    }
-    .timeline_image_wrapper {
-        width: 100%;
-        max-width: 430px;
-        height: 174px;
-    }
-    .timeline_center {
-        left: 20px;
-        transform: translateX(-50%);
-    }
-    .timeline_title {
-        left: 30px !important;
-        right: auto !important;
-    }
-    .timeline_hand_icon {
-        align-self: flex-start;
-        margin-left: 4px;
-    }
+  .timeline_line_bg,
+  .timeline_line_active {
+    left: 20px;
+    transform: none;
+    top: 20px;
+  }
+  .timeline_line_bg {
+    bottom: 20px;
+  }
+  .timeline_item {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 45px;
+    min-height: auto;
+    gap: 15px;
+    margin-bottom: 35px;
+  }
+  .timeline_left,
+  .timeline_right {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 0 !important;
+  }
+  .timeline_image_wrapper {
+    width: 100%;
+    max-width: 430px;
+    height: 174px;
+  }
+  .timeline_center {
+    left: 20px;
+    transform: translateX(-50%);
+  }
+  .timeline_title {
+    left: 30px !important;
+    right: auto !important;
+  }
+  .timeline_hand_icon {
+    align-self: flex-start;
+    margin-left: -2px;
+  }
 }
 
 @media (max-width: 900px) {
-    .main {
-        padding: 40px 20px;
-        padding-top: 120px;
-    }
+  .main {
+    padding: 40px 20px;
+    padding-top: 120px;
+  }
 
-    .cultura {
-        grid-template-columns: 1fr;
-    }
+  .cultura {
+    grid-template-columns: 1fr;
+  }
 
-    .divisoes_cultura,
-    .image_cultura {
-        height: auto;
-        min-height: 350px;
-    }
+  .divisoes_cultura,
+  .image_cultura {
+    height: auto;
+    min-height: 350px;
+  }
 
-    .main h1 {
-        font-size: 32px;
-    }
+  .main h1 {
+    font-size: 32px;
+  }
 
-    .main h2 {
-        font-size: 22px;
-    }
+  .main h2 {
+    font-size: 22px;
+  }
 
-    .main p {
-        font-size: 18px;
-    }
+  .main p {
+    font-size: 18px;
+  }
 
-    /* Ajuste responsivo para as dimensões do visualizador 3D */
-    .totem_3d_container {
-        width: 100%;
-        max-width: 450px;
-        height: 350px;
-    }
+  /* Ajuste responsivo para as dimensões do visualizador 3D */
+  .totem_3d_container {
+    width: 100%;
+    max-width: 450px;
+    height: 350px;
+  }
+}
+@media (max-width: 600px) {
+  .main {
+    padding: 20px 16px;
+    padding-top: 100px;
+    gap: 30px;
+  }
+
+  .main h1 {
+    font-size: 26px;
+  }
+
+  .main h2 {
+    font-size: 20px;
+  }
+
+  .main p {
+    font-size: 16px;
+  }
+
+  .divisoes_cultura {
+    border: none;
+    height: auto;
+    min-height: unset;
+    padding: 0;
+  }
+
+  .image_cultura {
+    display: none;
+  }
+
+  .cultura {
+    grid-template-columns: 1fr;
+  }
+
+  .icon_valores {
+    width: 48px;
+  }
+
+  .valor_item span {
+    font-size: 14px;
+  }
+
+  .valores_icones {
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .por_que_existe {
+    flex-direction: column;
+  }
+
+  .texto_por_que {
+    width: 100%;
+  }
+
+  .totem_3d_container {
+    width: 100%;
+    height: 280px;
+  }
+
+  .btn {
+    width: 80%;
+    font-size: 17px;
+  }
+
+  /* Timeline mobile — reestrutura o item inteiro */
+  .timeline_item {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 45px;
+    min-height: unset;
+    gap: 0;
+    margin-bottom: 50px;
+  }
+
+  /* Tira o position absolute do centro no mobile */
+  .timeline_center {
+    position: relative;
+    left: unset;
+    transform: none;
+    margin-left: -29px; /* recua até a linha */
+    margin-bottom: 16px;
+    order: -1; /* garante que vem primeiro */
+  }
+
+  /* Título vira estático ao lado do ponto */
+  .timeline_title {
+    position: static;
+    white-space: normal;
+    margin-left: 12px;
+  }
+
+  /* Ponto + título lado a lado */
+  .timeline_node {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .timeline_left,
+  .timeline_right {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 0;
+    order: 1;
+  }
+
+  .timeline_image_wrapper {
+    height: 150px;
+    width: 100%;
+    max-width: 100%;
+  }
 }

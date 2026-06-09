@@ -3,7 +3,7 @@
 .main {
     position: relative;
     width: 100%;
-    padding: 176px;
+    padding: 100px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -34,9 +34,7 @@
 
 .section {
     width: 976.7px;
-    ;
     height: 538.14px;
-    background-color: aquamarine;
     margin-top: 40px;
     border: 1px black solid;
     border-radius: 20px;
@@ -89,7 +87,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    
 }
 
 .btn:hover {
@@ -210,4 +207,85 @@
     color: var(--azul_escuro);
     cursor: pointer;
     transition: 0.1s;
+}
+
+/* Esconde o botão mobile por padrão na versão Desktop */
+.btn_mobile {
+    display: none;
+    margin-top: 15px;
+}
+
+/* ======================================================== */
+/* REGRAS PARA TABLET E SMARTPHONE              */
+/* ======================================================== */
+@media (max-width: 992px) {
+    .main {
+        padding: 100px 20px; /* Evita espaçamento exagerado nas laterais */
+    }
+
+    .main h1 {
+        font-size: 32px;
+    }
+
+    .p1 {
+        font-size: 16px;
+    }
+
+    .section {
+        width: 100%;
+        max-width: 520px; /* Tamanho controlado do card central */
+        height: 650px;     /* Garante tamanho fluído para abraçar os botões */
+        flex-direction: column;
+    }
+
+    /* Oculta o lado esquerdo (Cinza) */
+    .bem_vindo {
+        display: none;
+        
+    }
+
+    /* Expande o lado direito para preencher todo o container */
+    .crie_conta {
+        width: 100%;
+        border-radius: 20px; /* Arredonda todos os cantos do card */
+        padding: 40px 20px 0px 20px;
+    }
+
+    /* Deixa os inputs adaptáveis para telas menores que 450px */
+    .escrever {
+        width: 100%;
+        max-width: 451px;
+    }
+
+    .termos_de_uso {
+        width: 100%;
+        max-width: 370px;
+    }
+
+    /* Ativa o botão de login mobile abaixo do botão cadastrar */
+    .btn_mobile {
+        display: flex;
+        background-color: var(--branco);
+        color: black;
+    }
+
+    .btn_mobile:hover {
+        background-color: var(--amarelo);
+        color: black;
+    }
+}
+
+@media (max-width: 480px) {
+    .main h1 {
+        font-size: 26px;
+    }
+    .crie_conta h2 {
+        font-size: 22px;
+    }
+    .confirmo {
+        padding-top: 22px;
+    }
+    .btn2 {
+        margin-top: 0;
+    }
 }

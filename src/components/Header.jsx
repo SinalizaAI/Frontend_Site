@@ -39,7 +39,7 @@ function Header() {
             <Link to="/" onClick={() => scrollToSection("funciona")}>
               Como funciona
             </Link>
-            <Link to={"/pages/Planos"}>Planos</Link>
+            <Link to={"/pages/Planos"}>Produtos</Link>
             <Link to={"/pages/Sobre_Equipe"}>Equipe</Link>
             <Link to={"/pages/Cadastro"} className={styles.button}>
               Obter agora
@@ -75,11 +75,20 @@ function Header() {
           <Link to="/" onClick={() => scrollToSection("funciona")}>
             Como funciona
           </Link>
+          <Link to={"/Tradutor"} onClick={() => setMenuAberto(false)}>
+            Testar agora
+          </Link>
           <Link to={"/pages/Planos"} onClick={() => setMenuAberto(false)}>
-            Planos
+            Produtos
           </Link>
           <Link to={"/pages/Sobre_Equipe"} onClick={() => setMenuAberto(false)}>
             Equipe
+          </Link>
+          {/* <Link to={"/pages/Usuario"} onClick={() => setMenuAberto(false)}>
+            Usuário
+          </Link> */}
+          <Link to={"/pages/Sobre_Projeto"} onClick={() => setMenuAberto(false)}>
+            Sobre Projeto
           </Link>
           <Link
             to={"/pages/Cadastro"}

@@ -73,9 +73,11 @@ function Footer() {
               <Link to={"/"} onClick={() => scrollToSection("funciona")}>
                 Como funciona
               </Link>
-              <Link to={"/pages/Planos"}>Planos</Link>
-              <Link to={"/pages/Sobre_Equipe"}>Equipe</Link>
               <Link to={"/Tradutor"}>Testar agora</Link>
+              <Link to={"/pages/Planos"}>Produtos</Link>
+              <Link to={"/pages/Sobre_Equipe"}>Equipe</Link>
+              {/* <Link to={"/pages/Usuario"}>Usuário</Link> */}
+              <Link to={"/pages/Sobre_Projeto"}>Sobre Projeto</Link>
             </div>
           </div>
           <div className={styles.cont_t}>

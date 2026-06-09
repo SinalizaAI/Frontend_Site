@@ -1,4 +1,4 @@
-// src/components/HoverSliderDemo.jsx
+// src/pages/Sobre_Equipe.jsx
 import {
   HoverSlider,
   HoverSliderImage,
@@ -54,7 +54,6 @@ import {
 } from "react-icons/fa";
 
 // ─── Mapa de tecnologias ─────────────────────────────────────────────────────
-
 const techIconMap = {
   React: { icon: SiReact, color: "#61DAFB" },
   TypeScript: { icon: SiTypescript, color: "#3178C6" },
@@ -83,7 +82,6 @@ const techIconMap = {
 };
 
 // ─── Ícones de redes sociais ──────────────────────────────────────────────────
-
 const redesIcones = {
   github: { icon: FaGithub, label: "GitHub", hoverColor: "#181717" },
   linkedin: { icon: FaLinkedin, label: "LinkedIn", hoverColor: "#0A66C2" },
@@ -91,7 +89,6 @@ const redesIcones = {
 };
 
 // ─── SLIDES ──────────────────────────────────────────────────────────────────
-
 const SLIDES = [
   {
     id: "slide-1",
@@ -169,38 +166,34 @@ const SLIDES = [
 ];
 
 // ─── Painel "Sobre Nós" ───────────────────────────────────────────────────────
-
 function SobreNosPanel({ onClose }) {
   return (
-    <motion.div
-      key="sobre-nos"
-      initial={{ x: "100%" }}
-      animate={{ x: 0 }}
-      exit={{ x: "100%" }}
-      transition={{ duration: 0.55, ease: [0.25, 0.46, 0.45, 0.94] }}
-      className="absolute left-0 right-0 top-0 bottom-0 flex flex-col overflow-y-auto"
-      style={{ background: "rgba(233,239,242,1)", zIndex: 4 }}
-    >
+    <div className="w-full flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 pt-12 pb-16 px-4 sm:px-8 md:px-12">
       {/* Botão Voltar */}
       <div
-        className="flex items-start justify-center px-4 sm:px-8 md:px-12 flex-shrink-0"
-        style={{ paddingTop: "96px", paddingBottom: "24px" }} // ← era "32px", agora "96px"
+        style={{ marginTop: "20px" }}
+        className="flex-shrink-0 flex items-center justify-center md:justify-start w-full md:w-24 order-first md:sticky md:top-[50vh] md:-translate-y-1/2"
       >
         <button
           onClick={onClose}
-          className="flex items-center gap-2"
+          className="flex flex-col items-center gap-2 md:bg-transparent md:hover:bg-transparent p-3 rounded-full md:rounded-xl transition-colors"
           aria-label="Voltar"
         >
           <motion.span
-            whileHover={{ x: -4 }}
+            whileHover={{ x: -4, scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            className="flex items-center gap-2"
+            className="flex flex-col items-center gap-1"
             style={{ color: "#023759" }}
           >
-            <FaChevronLeft size={20} />
+            <FaChevronLeft size={26} />
             <span
-              className="uppercase tracking-widest text-sm font-semibold"
-              style={{ fontFamily: "var(--fonte_inter), sans-serif" }}
+              className="uppercase tracking-widest block font-semibold"
+              style={{
+                fontSize: "11px",
+                color: "#023759aa",
+                fontFamily: "var(--fonte_inter), sans-serif",
+              }}
             >
               Voltar
             </span>
@@ -208,22 +201,25 @@ function SobreNosPanel({ onClose }) {
         </button>
       </div>
 
-      {/* Wrapper centralizado */}
-      <div className="flex-1 flex items-center justify-center px-6 sm:px-8 py-8">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            delay: 0.25,
-            duration: 0.5,
-            ease: [0.25, 0.46, 0.45, 0.94],
-          }}
-          className="flex flex-col items-center gap-8 w-full max-w-2xl"
-        >
-          {/* Foto da equipe */}
+      {/* Bloco Central */}
+      <div className="flex flex-col items-center w-full max-w-[90vw] sm:max-w-md md:max-w-xl mx-auto md:mx-0">
+        <div style={{marginTop: "10%"}} className="flex flex-col items-center text-center mb-8 pt-2 md:pt-[55px]">
+          <h2
+            className="text-2xl sm:text-3xl md:text-5xl font-bold uppercase tracking-tighter"
+            style={{
+              color: "#023759",
+              fontFamily: "var(--fonte_lexend), sans-serif",
+            }}
+          >
+            Sobre Nós
+          </h2>
+        </div>
+
+        <div className="flex flex-col items-center gap-8 w-full">
           <div
             className="w-full overflow-hidden"
             style={{
+              marginTop: "15px",
               borderRadius: "12px",
               border: "2px solid #02375920",
               boxShadow: "0 8px 32px #02375918",
@@ -232,67 +228,36 @@ function SobreNosPanel({ onClose }) {
             <img
               src={FotoEquipe}
               alt="Foto da equipe"
-              className="w-full object-cover"
-              style={{ maxHeight: "380px" }}
+              className="w-full h-auto object-cover object-top"
+              style={{ maxHeight: "420px" }}
             />
           </div>
 
-          {/* Título + divisor */}
-          <div className="flex flex-col items-center gap-3 text-center">
-            <h2
-              className="text-2xl sm:text-3xl md:text-5xl font-bold uppercase tracking-tighter"
-              style={{
-                color: "#023759",
-                fontFamily: "var(--fonte_lexend), sans-serif",
-              }}
-            >
-              Sobre Nós
-            </h2>
-            <div
-              className="w-12 h-1 rounded-full"
-              style={{ background: "#023759" }}
-            />
-          </div>
-
-          {/* Textos */}
-          <div
-            className="flex flex-col gap-4 text-center max-w-xl"
-            style={{ marginBottom: "50px" }}
-          >
+          <div className="flex flex-col gap-4 text-center w-full pb-4">
             <p
               className="leading-relaxed"
               style={{
-                fontSize: "clamp(14px, 4vw, 20px)",
+                fontSize: "clamp(14px, 4vw, 18px)",
                 color: "#02375599",
                 fontFamily: "var(--fonte_inter), sans-serif",
               }}
             >
-              Somos proanos apaixonados por tecnologia, movidos pelo entusiamo e
-              propósito de tornar a comunicação mais acessível. Cada integrante
-              contribui com conhecimentos e habilidades únicas no
+              Somos proanos apaixonados por tecnologia, movidos pelo entusiasmo
+              e propósito de tornar a comunicação mais acessível. Cada
+              integrante contribui com conhecimentos e habilidades únicas no
               desenvolvimento do nosso software, unindo conhecimento técnico,
               criatividade, trabalho em equipe e empatia.
             </p>
-            {/* <p
-              className="leading-relaxed"
-              style={{
-                fontSize: "clamp(13px, 1.6vw, 15px)",
-                color: "#02375566",
-                fontFamily: "var(--fonte_inter), sans-serif",
-              }}
-            >
-              Unidos pela curiosidade e pelo desejo de evoluir constantemente,
-              trabalhamos de forma colaborativa, ágil e com muito propósito.
-            </p> */}
           </div>
-        </motion.div>
+        </div>
       </div>
-    </motion.div>
+
+      <div className="w-24 hidden md:block" aria-hidden="true"></div>
+    </div>
   );
 }
 
 // ─── SlideList ────────────────────────────────────────────────────────────────
-
 function SlideList() {
   const { activeSlide } = useHoverSliderContext();
 
@@ -372,7 +337,6 @@ function SlideList() {
 }
 
 // ─── TechPanel ────────────────────────────────────────────────────────────────
-
 function TechPanel() {
   const { activeSlide } = useHoverSliderContext();
   const slide = SLIDES[activeSlide];
@@ -421,7 +385,6 @@ function TechPanel() {
 }
 
 // ─── HoverSliderInner ─────────────────────────────────────────────────────────
-
 function HoverSliderInner({ onOpenSobre }) {
   const { activeSlide } = useHoverSliderContext();
   const activeColor = SLIDES[activeSlide].color;
@@ -496,29 +459,36 @@ function HoverSliderInner({ onOpenSobre }) {
 }
 
 // ─── HoverSliderDemo ──────────────────────────────────────────────────────────
-
 export function HoverSliderDemo() {
   const [showSobre, setShowSobre] = useState(false);
 
-  // ✅ sem useEffect, sem Portal, sem body overflow
   return (
-    <HoverSlider className="relative min-h-svh place-content-center pt-24 pb-8 px-4 sm:px-8 md:px-12 bg-[rgba(233,239,242,1)] text-[#3d3929] overflow-hidden">
-      <AnimatePresence>
-        {!showSobre && (
+    <HoverSlider className="relative min-h-svh pt-24 pb-8 px-4 sm:px-8 md:px-12 bg-[rgba(233,239,242,1)] text-[#3d3929] overflow-x-hidden flex items-center justify-center">
+      {/* O mode="wait" impede a sobreposição de elementos no fluxo do topo */}
+      <AnimatePresence mode="wait">
+        {!showSobre ? (
           <motion.div
             key="main"
-            initial={{ x: 0 }}
-            exit={{ x: "-100%" }}
-            transition={{ duration: 0.55, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="w-full"
+            initial={{ opacity: 0, x: 0 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: "-50%" }}
+            transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="w-full flex justify-center"
           >
             <HoverSliderInner onOpenSobre={() => setShowSobre(true)} />
           </motion.div>
+        ) : (
+          <motion.div
+            key="sobre-nos"
+            initial={{ opacity: 0, x: "50%" }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: "50%" }}
+            transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="w-full"
+          >
+            <SobreNosPanel onClose={() => setShowSobre(false)} />
+          </motion.div>
         )}
-      </AnimatePresence>
-
-      <AnimatePresence>
-        {showSobre && <SobreNosPanel onClose={() => setShowSobre(false)} />}
       </AnimatePresence>
     </HoverSlider>
   );

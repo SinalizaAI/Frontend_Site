@@ -9,6 +9,7 @@ import Login from "./pages/Login";
 import { HoverSliderDemo } from "./pages/Sobre_Equipe";
 import Planos from "./pages/Planos";
 import Sobre_Projeto from "./pages/Sobre_Projeto";
+import Usuario from "./pages/Usuario";
 
 function Layout() {
   useEffect(() => {
@@ -28,6 +29,7 @@ function Layout() {
         <Route path="/pages/Cadastro" element={<Cadastro />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/pages/Planos" element={<Planos />} />
+        <Route path="/pages/Usuario" element={<Usuario />} />
         <Route path="/pages/Sobre_Equipe" element={<HoverSliderDemo />} />
       </Routes>
       <Footer />
