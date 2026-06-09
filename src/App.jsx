@@ -14,16 +14,19 @@ import { useEffect } from "react";
 
 function Layout() {
   useEffect(() => {
-  if (typeof RybenaApi === "undefined") {
-    console.warn("Rybená não carregou.");
-    return;
-  }
+  const init = () => {
+    if (typeof RybenaApi === "undefined") {
+      console.warn("Rybená não carregou.");
+      return;
+    }
+    RybenaApi.getInstance().handleLoaded(() => {
+      console.log("Rybená carregou!");
+    });
+  };
 
-  RybenaApi.getInstance().handleLoaded(() => {
-    console.log("Rybená carregou!");
-    RybenaApi.getInstance().openPlayer();
-    RybenaApi.getInstance().translate("Bem-vindo ao SinalizaAI!");
-  });
+  // Aguarda o script terminar de inicializar
+  window.addEventListener("load", init);
+  return () => window.removeEventListener("load", init);
 }, []);
   return (
     <main>
