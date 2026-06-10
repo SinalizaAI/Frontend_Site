@@ -12,49 +12,23 @@ import Sobre_Projeto from "./pages/Sobre_Projeto";
 import Usuario from "./pages/Usuario";
 import { useEffect, useRef } from "react";
 
-function Layout() {
-  const rybenaInitialized = useRef(false);
-
-  useEffect(() => {
-    if (rybenaInitialized.current) return; // evita rodar duas vezes no StrictMode
-    rybenaInitialized.current = true;
-
-    const interval = setInterval(() => {
-      console.log("Checando RybenaDOM:", window.RybenaDOM);
-
-      if (window.RybenaDOM) {
-        clearInterval(interval);
-        window.RybenaDOM.getInstance().getRybenaScripts("hidden");
-        window.RybenaApi.getInstance().handleLoaded(() => {
-          console.log("Rybená pronta!");
-        });
-      }
-    }, 100);
-
-    return () => clearInterval(interval);
-  }, []);
-  return (
-    <main>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/Tradutor" element={<Tradutor />} />
-        <Route path="/pages/Sobre_Projeto" element={<Sobre_Projeto />} />
-        <Route path="/pages/Cadastro" element={<Cadastro />} />
-        <Route path="/Login" element={<Login />} />
-        <Route path="/pages/Planos" element={<Planos />} />
-        <Route path="/pages/Usuario" element={<Usuario />} />
-        <Route path="/pages/Sobre_Equipe" element={<HoverSliderDemo />} />
-      </Routes>
-      <Footer />
-    </main>
-  );
-}
-
 function App() {
   return (
     <Router>
-      <Layout />
+      <main>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/Tradutor" element={<Tradutor />} />
+          <Route path="/pages/Sobre_Projeto" element={<Sobre_Projeto />} />
+          <Route path="/pages/Cadastro" element={<Cadastro />} />
+          <Route path="/Login" element={<Login />} />
+          <Route path="/pages/Planos" element={<Planos />} />
+          <Route path="/pages/Usuario" element={<Usuario />} />
+          <Route path="/pages/Sobre_Equipe" element={<HoverSliderDemo />} />
+        </Routes>
+        <Footer />
+      </main>
     </Router>
   );
 }
