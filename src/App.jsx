@@ -10,24 +10,29 @@ import { HoverSliderDemo } from "./pages/Sobre_Equipe";
 import Planos from "./pages/Planos";
 import Sobre_Projeto from "./pages/Sobre_Projeto";
 import Usuario from "./pages/Usuario";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 function Layout() {
-  useEffect(() => {
-  const interval = setInterval(() => {
-    console.log("Checando RybenaDOM:", window.RybenaDOM);
-    
-    if (window.RybenaDOM) {
-      clearInterval(interval);
-      window.RybenaDOM.getInstance().getRybenaScripts("hidden");
-      window.RybenaApi.getInstance().handleLoaded(() => {
-        console.log("Rybená pronta!");
-      });
-    }
-  }, 100);
+  const rybenaInitialized = useRef(false);
 
-  return () => clearInterval(interval);
-}, []);
+  useEffect(() => {
+    if (rybenaInitialized.current) return; // evita rodar duas vezes no StrictMode
+    rybenaInitialized.current = true;
+
+    const interval = setInterval(() => {
+      console.log("Checando RybenaDOM:", window.RybenaDOM);
+
+      if (window.RybenaDOM) {
+        clearInterval(interval);
+        window.RybenaDOM.getInstance().getRybenaScripts("hidden");
+        window.RybenaApi.getInstance().handleLoaded(() => {
+          console.log("Rybená pronta!");
+        });
+      }
+    }, 100);
+
+    return () => clearInterval(interval);
+  }, []);
   return (
     <main>
       <Header />
