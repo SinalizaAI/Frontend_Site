@@ -16,6 +16,27 @@ import OttoChatbot from "./components/OttoChatBot/OttoChatBot";
 import { OttoProvider } from "./context/OttoContext";
 
 function App() {
+  useEffect(() => {
+    const init = () => {
+      if (!window.RybenaApi) {
+        // ainda não carregou, tenta de novo em breve
+        setTimeout(init, 300)
+        return
+      }
+
+      try {
+        window.RybenaApi.getInstance().handleLoaded(() => {
+          console.log("Rybená API está pronta!")
+          window.RybenaApi.getInstance().openPlayer()
+          window.RybenaApi.getInstance().translate("Olá, bem-vindo à Rybená!")
+        })
+      } catch (e) {
+        console.error("Erro ao iniciar Rybená:", e)
+      }
+    }
+
+    init()
+  }, [])
 
 
   return (
