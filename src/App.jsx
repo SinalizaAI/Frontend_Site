@@ -11,31 +11,46 @@ import { HoverSliderDemo } from "./pages/Sobre_Equipe";
 import Planos from "./pages/Planos";
 import Sobre_Projeto from "./pages/Sobre_Projeto";
 import Usuario from "./pages/Usuario";
-
-function Layout() {
-  return (
-    <main>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/Tradutor" element={<Tradutor />} />
-        <Route path="/pages/Sobre_Projeto" element={<Sobre_Projeto />} />
-        <Route path="/pages/Cadastro" element={<Cadastro />} />
-        <Route path="/Cadastro_Etapa2" element={<Cadastro_Etapa2 />} />
-        <Route path="/Login" element={<Login />} />
-        <Route path="/pages/Planos" element={<Planos />} />
-        <Route path="/pages/Usuario" element={<Usuario />} />
-        <Route path="/pages/Sobre_Equipe" element={<HoverSliderDemo />} />
-      </Routes>
-      <Footer />
-    </main>
-  );
-}
+import { useEffect } from "react";
+import OttoChatbot from "./components/OttoChatBot/OttoChatBot";
+import { OttoProvider } from "./context/OttoContext";
 
 function App() {
+  useEffect(() => {
+    const init = () => {
+      if (typeof RybenaApi === "undefined") {
+        console.warn("Rybená não carregou.");
+        return;
+      }
+      RybenaApi.getInstance().handleLoaded(() => {
+        console.log("Rybená carregou!");
+      });
+    };
+    window.addEventListener("load", init);
+    return () => window.removeEventListener("load", init);
+  }, []);
+
   return (
     <Router>
-      <Layout />
+      <OttoProvider>
+        <main>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/Tradutor" element={<Tradutor />} />
+            <Route path="/pages/Sobre_Projeto" element={<Sobre_Projeto />} />
+            <Route path="/pages/Cadastro" element={<Cadastro />} />
+            {/* Sua rota incluída aqui: */}
+            <Route path="/Cadastro_Etapa2" element={<Cadastro_Etapa2 />} /> 
+            <Route path="/Login" element={<Login />} />
+            <Route path="/pages/Planos" element={<Planos />} />
+            <Route path="/pages/Usuario" element={<Usuario />} />
+            <Route path="/pages/Sobre_Equipe" element={<HoverSliderDemo />} />
+          </Routes>
+          <OttoChatbot />
+          <Footer />
+        </main>
+      </OttoProvider>
     </Router>
   );
 }

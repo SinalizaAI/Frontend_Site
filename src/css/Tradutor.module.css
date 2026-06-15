@@ -42,9 +42,9 @@
 }
 
 /* ─────────────────────────────────────────
-   BOTÕES
+   BOTÃO PRINCIPAL (alterna modos)
 ───────────────────────────────────────── */
-.container button,
+.container > button,
 .btn {
   width: 20%;
   height: 40px;
@@ -65,7 +65,7 @@
 }
 
 .btn:hover,
-.container button:hover {
+.container > button:hover {
   background-color: var(--azul_claro);
   color: var(--branco_puro);
   cursor: pointer;
@@ -73,24 +73,7 @@
 }
 
 /* ─────────────────────────────────────────
-   IMAGEM (modo original)
-───────────────────────────────────────── */
-.imagem_cont {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.imagem_cont img {
-  width: 70%;
-  height: 500px;
-  object-fit: contain;
-}
-
-/* ─────────────────────────────────────────
-   DEMO CONTAINER (modo câmera)
-   Câmera à esquerda, painel à direita
+   MODO CÂMERA
 ───────────────────────────────────────── */
 .demo_container {
   width: 100%;
@@ -101,9 +84,6 @@
   justify-content: center;
 }
 
-/* ─────────────────────────────────────────
-   CÂMERA
-───────────────────────────────────────── */
 .camera_wrapper {
   position: relative;
   width: 50%;
@@ -118,10 +98,9 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  transform: scaleX(-1); /* espelha — mais natural para o usuário */
+  transform: scaleX(-1);
 }
 
-/* Badge de status da conexão */
 .status_badge {
   position: absolute;
   top: 12px;
@@ -133,18 +112,15 @@
   font-size: 13px;
   font-weight: 500;
   background-color: rgba(0, 0, 0, 0.55);
-  color: #ff6b6b; /* desconectado */
+  color: #ff6b6b;
   backdrop-filter: blur(4px);
   transition: color 0.3s;
 }
 
 .status_badge[data-conectado="true"] {
-  color: #69f0ae; /* conectado */
+  color: #69f0ae;
 }
 
-/* ─────────────────────────────────────────
-   PAINEL DE RECONHECIMENTO
-───────────────────────────────────────── */
 .reconhecimento_wrapper {
   width: 44%;
   display: flex;
@@ -152,7 +128,6 @@
   gap: 20px;
 }
 
-/* Frase principal reconhecida */
 .frase_principal {
   width: 100%;
   min-height: 160px;
@@ -183,19 +158,10 @@
 }
 
 @keyframes aparecer {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ─────────────────────────────────────────
-   HISTÓRICO
-───────────────────────────────────────── */
 .historico {
   width: 100%;
   border-radius: 12px;
@@ -240,53 +206,200 @@
 }
 
 /* ─────────────────────────────────────────
+   MODO ÁUDIO/TEXTO
+───────────────────────────────────────── */
+.audio_container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* Painel de abas — largura total centralizada */
+.painel {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+/* ── Abas ── */
+.abas {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.aba {
+  flex: 1;
+  padding: 14px 0;
+  font-family: var(--fonte_inter);
+  font-size: 15px;
+  font-weight: 500;
+  border: none;
+  border-bottom: 2px solid transparent;
+  background-color: rgba(255, 255, 255, 0.03);
+  color: var(--azul_oc);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.aba:hover {
+  background-color: rgba(255, 255, 255, 0.07);
+}
+
+.aba_ativa {
+  border-bottom: 2px solid var(--azul_claro);
+  color: var(--azul_claro);
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+/* ── Conteúdo das abas ── */
+.aba_conteudo {
+  padding: 24px;
+  background-color: rgba(255, 255, 255, 0.02);
+  min-height: 200px;
+}
+
+/* Aba Digitar */
+.aba_digitar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--azul_oc);
+  font-family: var(--fonte_inter);
+  font-size: 15px;
+  resize: vertical;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.textarea:focus {
+  border-color: var(--azul_claro);
+}
+
+.textarea::placeholder {
+  opacity: 0.5;
+}
+
+.btn_traduzir {
+  align-self: flex-end;
+  padding: 10px 24px;
+  border-radius: 60px;
+  border: 1px solid var(--azul_escuro);
+  background-color: var(--amarelo);
+  color: var(--azul_escuro);
+  font-family: var(--fonte_inter);
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.btn_traduzir:hover {
+  background-color: var(--azul_claro);
+  color: var(--branco_puro);
+}
+
+/* Aba Falar */
+.aba_falar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding-top: 12px;
+}
+
+.btn_mic {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid var(--azul_claro);
+  background-color: transparent;
+  color: var(--azul_claro);
+  font-size: 28px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn_mic:hover {
+  background-color: var(--azul_claro);
+  color: var(--branco_puro);
+}
+
+.btn_mic_gravando {
+  background-color: #ff4444;
+  border-color: #ff4444;
+  color: white;
+  animation: pulsar 1s infinite;
+}
+
+@keyframes pulsar {
+  0%   { box-shadow: 0 0 0 0 rgba(255, 68, 68, 0.5); }
+  70%  { box-shadow: 0 0 0 12px rgba(255, 68, 68, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 68, 68, 0); }
+}
+
+.texto_falado {
+  font-family: var(--fonte_inter);
+  font-size: 15px;
+  color: var(--azul_oc);
+  text-align: center;
+}
+
+.texto_falado span {
+  color: var(--azul_claro);
+  font-weight: 600;
+  margin-right: 6px;
+}
+
+/* ─────────────────────────────────────────
    MOBILE
 ───────────────────────────────────────── */
 @media (max-width: 600px) {
   .sec {
-    min-height: 800px;
-  }
-
-  .sec h1 {
-    font-size: 22px;
-  }
-
-  .sec h2 {
-    font-size: 16px;
-  }
-
-  .container {
     min-height: auto;
+    padding-top: 80px;
+    gap: 24px;
   }
 
-  .container button,
+  .container > button,
   .btn {
     width: 60%;
-    height: 40px;
     font-size: 14px;
   }
 
-  /* Em mobile, câmera e painel empilham verticalmente */
-  .demo_container {
+  .demo_container,
+  .audio_container {
     flex-direction: column;
     align-items: center;
   }
 
-  .camera_wrapper {
-    width: 95%;
-  }
-
+  .camera_wrapper,
+  .imagem_cont,
+  .painel,
   .reconhecimento_wrapper {
     width: 95%;
   }
 
-  .frase_texto {
-    font-size: 20px;
+  .imagem_cont img {
+    height: 220px;
   }
 
-  .imagem_cont img {
-    width: 80%;
-    height: 250px;
+  .frase_texto {
+    font-size: 20px;
   }
 }
 
@@ -294,11 +407,7 @@
    TABLET
 ───────────────────────────────────────── */
 @media (min-width: 601px) and (max-width: 1000px) {
-  .sec {
-    min-height: 800px;
-  }
-
-  .container button,
+  .container > button,
   .btn {
     width: 40%;
     font-size: 15px;
@@ -312,12 +421,19 @@
     width: 40%;
   }
 
-  .frase_texto {
-    font-size: 22px;
+  .imagem_cont {
+    width: 48%;
+  }
+
+  .painel {
+    width: 48%;
   }
 
   .imagem_cont img {
-    width: 80%;
-    height: auto;
+    height: 320px;
+  }
+
+  .frase_texto {
+    font-size: 22px;
   }
 }

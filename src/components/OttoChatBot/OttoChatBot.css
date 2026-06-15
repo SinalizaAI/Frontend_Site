@@ -1,0 +1,340 @@
+.otto-wrapper {
+  position: fixed;
+  bottom: 10px;
+  margin: 5px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  font-family: "Inter", sans-serif;
+}
+
+/* ── Botão flutuante ── */
+.otto-botao {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid rgba(1, 11, 64, 1);
+  cursor: pointer;
+  box-shadow:
+    0 4px 20px rgba(247, 247, 247, 0.6),
+    0 0 16px rgba(245, 185, 66, 0.2);
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s,
+    border-color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0;
+}
+
+.otto-botao img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.otto-botao:hover {
+  transform: scale(1.1);
+  border-color: rgba(1, 11, 64, 1);
+  box-shadow:
+    0 6px 24px rgba(1, 11, 64, 0.8),
+    0 0 24px rgba(245, 185, 66, 0.4);
+}
+
+.otto-botao-ativo {
+  border-color: rgba(1, 11, 64, 1);
+}
+
+.otto-botao-fechar {
+  color: rgba(1, 11, 64, 1);
+  font-size: 22px;
+  font-weight: bold;
+}
+
+/* ── Janela do chat — altura quase total da tela ── */
+.otto-janela {
+  width: 570px;
+  height: calc(100vh - 100px); /* ← quase todo o height */
+  max-height: 780px;
+  background: rgba(1, 11, 64, 0.97);
+  border: 1px solid rgba(245, 185, 66, 0.25);
+  border-radius: 20px;
+  box-shadow:
+    0 16px 48px rgba(0, 0, 0, 0.5),
+    0 0 32px rgba(2, 55, 89, 0.4);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: otto-abrir 0.25s ease;
+  backdrop-filter: blur(12px);
+}
+
+@keyframes otto-abrir {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ── Header — imagem menor, texto visível ── */
+.otto-header {
+  background: linear-gradient(135deg, #023759, #010b40);
+  border-bottom: 1px solid rgba(245, 185, 66, 0.2);
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0; /* ← não encolhe */
+}
+
+.otto-header-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0; /* ← permite texto truncar se necessário */
+}
+
+.otto-avatar-img {
+  width: 44px; /* ← tamanho fixo pequeno */
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top; /* ← foca no rosto do Otto */
+  border: 2px solid #fff;
+  box-shadow: 0 0 12px rgba(245, 185, 66, 0.3);
+  flex-shrink: 0;
+}
+
+.otto-header-texto {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.otto-header-texto strong {
+  color: #f5b942;
+  font-size: 22px;
+  font-family: "Lexend", sans-serif;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.otto-header-texto span {
+  color: rgba(233, 239, 242, 0.6);
+  font-size: 20px;
+  white-space: nowrap;
+}
+
+.otto-fechar {
+  background: none;
+  border: none;
+  color: rgba(233, 239, 242, 0.5);
+  font-size: 18px;
+  cursor: pointer;
+  transition: color 0.2s;
+  padding: 4px 4px 4px 12px;
+  flex-shrink: 0;
+}
+
+.otto-fechar:hover {
+  color: #f5b942;
+}
+
+/* ── Mensagens ── */
+.otto-mensagens {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(245, 185, 66, 0.2) transparent;
+}
+
+.otto-mensagens::-webkit-scrollbar {
+  width: 4px;
+}
+
+.otto-mensagens::-webkit-scrollbar-thumb {
+  background: rgba(245, 185, 66, 0.2);
+  border-radius: 4px;
+}
+
+.otto-msg {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  max-width: 85%;
+}
+
+.otto-msg-bot {
+  align-self: flex-start;
+}
+
+.otto-msg-user {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+.otto-msg-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  border: 1px solid rgba(245, 185, 66, 0.4);
+  background: #fff;
+  flex-shrink: 0;
+}
+
+.otto-msg span {
+  padding: 10px 14px;
+  border-radius: 16px;
+  font-size: 18px;
+  line-height: 1.6;
+  word-break: break-word;
+}
+
+.otto-msg-bot span {
+  background: rgba(2, 55, 89, 0.6);
+  color: rgba(233, 239, 242, 0.95);
+  border: 1px solid rgba(52, 95, 122, 0.4);
+  border-bottom-left-radius: 4px;
+}
+
+.otto-msg-user span {
+  background: linear-gradient(135deg, #f5b942, #e0a030);
+  color: #010b40;
+  font-weight: 500;
+  border-bottom-right-radius: 4px;
+}
+
+/* ── Digitando ── */
+.otto-digitando {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  padding: 12px 16px;
+  background: rgba(2, 55, 89, 0.6);
+  border: 1px solid rgba(52, 95, 122, 0.4);
+  border-radius: 16px;
+  border-bottom-left-radius: 4px;
+}
+
+.otto-digitando span {
+  width: 7px;
+  height: 7px;
+  background: #f5b942;
+  border-radius: 50%;
+  animation: otto-bounce 1.2s infinite;
+  padding: 0;
+}
+
+.otto-digitando span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.otto-digitando span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes otto-bounce {
+  0%,
+  80%,
+  100% {
+    transform: scale(0.7);
+    opacity: 0.4;
+  }
+  40% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+/* ── Input ── */
+.otto-input-area {
+  padding: 12px;
+  border-top: 1px solid rgba(245, 185, 66, 0.15);
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+  background: rgba(1, 11, 64, 0.8);
+  flex-shrink: 0; /* ← não encolhe */
+}
+
+.otto-input-area textarea {
+  flex: 1;
+  background: rgba(2, 55, 89, 0.4);
+  border: 1px solid rgba(52, 95, 122, 0.5);
+  border-radius: 20px;
+  padding: 10px 14px;
+  font-size: 20px;
+  color: rgba(233, 239, 242, 0.95);
+  resize: none;
+  outline: none;
+  font-family: "Inter", sans-serif;
+  max-height: 100px;
+  overflow-y: auto;
+  transition: border-color 0.2s;
+}
+
+.otto-input-area textarea::placeholder {
+  color: rgba(233, 239, 242, 0.3);
+}
+
+.otto-input-area textarea:focus {
+  border-color: rgba(245, 185, 66, 0.5);
+}
+
+.otto-input-area button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f5b942, #e0a030);
+  color: #010b40;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    transform 0.2s,
+    opacity 0.2s;
+  flex-shrink: 0;
+}
+
+.otto-input-area button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.otto-input-area button:not(:disabled):hover {
+  transform: scale(1.1);
+}
+
+/* ── Mobile ── */
+@media (max-width: 620px) {
+  .otto-janela {
+    width: calc(100vw - 24px);
+    height: 80vh;
+    border-radius: 16px;
+    right: 12px;
+  }
+
+  .otto-wrapper {
+    margin: 5px;
+  }
+}

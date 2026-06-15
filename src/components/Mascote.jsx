@@ -1,7 +1,10 @@
 import styles from "../css/Mascote.module.css";
 import Polvo from "../assets/Mascote/octron.png";
+import { useOtto } from "../context/OttoContext";
 
 function Mascote() {
+  const { setAberto } = useOtto();
+
   return (
     <section className={styles.sec_mascote}>
       <div className={styles.div1}>
@@ -20,7 +23,9 @@ function Mascote() {
             </p>
           </div>
           <div className={styles.text3}>
-            <button>Conversar com o OTTO</button>
+            <button onClick={() => setAberto(true)}>
+              Conversar com o OTTO
+            </button>
           </div>
         </div>
       </div>

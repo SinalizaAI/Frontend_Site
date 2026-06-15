@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+otto-server/node_modules
+otto-server/.env
+.env.local
