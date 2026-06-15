@@ -16,28 +16,7 @@ import OttoChatbot from "./components/OttoChatBot/OttoChatBot";
 import { OttoProvider } from "./context/OttoContext";
 
 function App() {
-  RybenaApi.getInstance().handleLoaded(() => {
-  console.log("Rybená API está pronta!");
-  // Sua código aqui
-});
 
-RybenaApi.getInstance().handleLoaded(() => {
-  // Mostra o player
-  RybenaApi.getInstance().openPlayer();
-
-  // Traduz um texto
-  RybenaApi.getInstance().translate("Olá, bem-vindo à Rybená!");
-});
-
-RybenaApi.getInstance().handleLoaded(() => {
-  // Configura callback quando a tradução terminar
-  RybenaApi.getInstance().handleTranslate(() => {
-    console.log("Tradução concluída!");
-  });
-
-  // Traduz um texto
-  RybenaApi.getInstance().translate("Este texto será traduzido");
-});
 
   return (
     <Router>
