@@ -16,19 +16,10 @@ import OttoChatbot from "./components/OttoChatBot/OttoChatBot";
 import { OttoProvider } from "./context/OttoContext";
 
 function App() {
-  useEffect(() => {
-    const init = () => {
-      if (typeof RybenaApi === "undefined") {
-        console.warn("Rybená não carregou.");
-        return;
-      }
-      RybenaApi.getInstance().handleLoaded(() => {
-        console.log("Rybená carregou!");
-      });
-    };
-    window.addEventListener("load", init);
-    return () => window.removeEventListener("load", init);
-  }, []);
+  RybenaApi.getInstance().handleLoaded(() => {
+  console.log("Rybená API está pronta!");
+  // Sua código aqui
+});
 
   return (
     <Router>
