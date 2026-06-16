@@ -382,6 +382,10 @@
   }
 }
 
+/* ==========================================================================
+    ESTADOS DA TIMELINE - ANIMAÇÕES E INTERAÇÕES (TOUCH E HOVER)
+   ========================================================================== */
+
 .step_current .timeline_dot {
   background-color: var(--azul_claro);
   border-color: var(--azul_claro);
@@ -408,11 +412,14 @@
   opacity: 0.4;
 }
 
+/* Imagens antigas começam opacas e cinzas */
 .step_passed .timeline_image_wrapper {
   opacity: 0.35;
   filter: grayscale(80%);
+  transition: all 0.3s ease-in-out; 
 }
 
+/* INTERAÇÃO NO DESKTOP (Ao passar o mouse) */
 .step_passed .timeline_node:hover .timeline_title {
   opacity: 1;
   font-weight: 600;
@@ -422,11 +429,22 @@
   transform: scale(1.3);
 }
 
-.step_passed:has(.timeline_node:hover) .timeline_image_wrapper {
+.step_passed:has(.timeline_node:hover) .timeline_image_wrapper,
+.step_passed .timeline_image_wrapper:hover {
   opacity: 1;
   filter: grayscale(0%);
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* INTERAÇÃO EM DISPOSITIVOS TOUCH (Ao passar/pressionar o dedo) */
+@media (hover: none) and (pointer: coarse) {
+  .step_passed .timeline_image_wrapper:active {
+    opacity: 1 !important;
+    filter: grayscale(0%) !important;
+    transform: scale(1.03); 
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
+  }
 }
 
 .step_future .timeline_dot {
@@ -467,10 +485,9 @@
 }
 
 /* ==========================================================================
-   MEDIA QUERIES - RESPONSIVIDADE COMPLETA (MÍNIMO 320px)
+    MEDIA QUERIES - RESPONSIVIDADE COMPLETA
    ========================================================================== */
 
-/* TABLETS E TELAS INTERMEDIÁRIAS */
 @media (max-width: 1024px) {
   .main {
     padding: 100px 40px 80px 40px;
@@ -490,6 +507,7 @@
   }
 }
 
+/* RESPONSIVIDADE PARA TABLET (Bolinha travada na linha guia cinza) */
 @media (max-width: 950px) {
   .timeline_line_bg,
   .timeline_line_active {
@@ -501,32 +519,46 @@
     bottom: 20px;
   }
   .timeline_item {
+    display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding-left: 45px;
     min-height: auto;
-    gap: 15px;
-    margin-bottom: 35px;
+    padding-top: 10px;
+    gap: 25px;
+    margin-bottom: 40px;
   }
+  
   .timeline_left,
   .timeline_right {
     width: 100%;
     justify-content: flex-start;
     padding: 0 !important;
+    order: 2;
   }
+  
   .timeline_image_wrapper {
     width: 100%;
     max-width: 430px;
     height: 174px; 
   }
+  
+  /* Centraliza a bolinha fixamente no eixo esquerdo (20px) */
   .timeline_center {
+    position: absolute;
     left: 20px;
     transform: translateX(-50%);
+    order: 1;
   }
+  
+  /* Desloca o título de forma absoluta à direita da bolinha para não quebrar o layout */
   .timeline_title {
+    position: absolute;
+    white-space: nowrap; 
     left: 30px !important;
     right: auto !important;
   }
+  
   .timeline_hand_icon {
     align-self: flex-start;
     margin-left: -2px;
@@ -570,7 +602,7 @@
   }
 }
 
-/* SMARTPHONES (TELAS EM PÉ) */
+/* SMARTPHONES (Bolinha no eixo esquerdo e título fluído à direita) */
 @media (max-width: 600px) {
   .main {
     padding: 100px 16px 40px 16px;
@@ -624,29 +656,34 @@
     align-items: flex-start;
     padding-left: 45px;
     min-height: unset;
-    gap: 0;
+    gap: 20px;
     margin-bottom: 50px;
+    padding-top: 0;
   }
 
   .timeline_center {
-    position: relative;
-    left: unset;
-    transform: none;
-    margin-left: -29px;
-    margin-bottom: 16px;
-    order: -1;
-  }
-
-  .timeline_title {
-    position: static;
-    white-space: normal;
-    margin-left: 12px;
+    position: absolute;
+    left: 20px;
+    transform: translateX(-50%);
+    order: 1;
   }
 
   .timeline_node {
-    flex-direction: row;
+    display: flex;
+    flex-direction: row-reverse;
     align-items: center;
-    gap: 10px;
+    max-width: 100%;
+  }
+
+  /* O título se adapta fluidamente calculando o tamanho máximo da janela */
+  .timeline_title {
+    position: absolute;
+    white-space: normal; 
+    word-wrap: break-word;
+    left: 30px !important;
+    right: auto !important;
+    text-align: left;
+    width: calc(100vw - 110px); 
   }
 
   .timeline_left,
@@ -654,7 +691,8 @@
     width: 100%;
     justify-content: flex-start;
     padding: 0;
-    order: 1;
+    order: 2;
+    margin-top: 25px; 
   }
 
   .timeline_image_wrapper {
@@ -698,9 +736,13 @@
   .totem_3d_container {
     height: 260px;
   }
+  
+  .timeline_title {
+    font-size: 14px;
+  }
 }
 
-/* TELAS DEITADAS (LANDSCAPE MODE para celulares/tablets pequenos) */
+/* TELAS DEITADAS (LANDSCAPE MODE) */
 @media (max-height: 500px) and (orientation: landscape) {
   .main {
     padding-top: 100px;

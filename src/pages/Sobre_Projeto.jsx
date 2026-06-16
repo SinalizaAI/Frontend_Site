@@ -25,7 +25,7 @@ import Imagem_expansao from "../assets/Sobre_Projeto/Expansao.png";
 import Imagem_mao from "../assets/Sobre_Projeto/Mao.png";
 
 function Sobre_Projeto() {
-  const [currentStepIndex, setCurrentStepIndex] = useState(4); 
+  const [currentStepIndex, setCurrentStepIndex] = useState(6); 
 
   const timelineSteps = [
     { id: 1, title: 'Pesquisa', img: Imagem_pesquisa, side: 'right' },
@@ -68,8 +68,8 @@ function Sobre_Projeto() {
             <p>
               Ser a <strong>ponte</strong> entre a <strong>comunicação inclusiva e eficiente</strong> para pessoas
               que se comunicam através da <strong>linguagem de sinais</strong>, dando mais
-              <strong> autonomia</strong> para tarefas cotidianas, utilizando <strong>tecnologia inovadora</strong>
-              com IA integrada através de uma <strong>plataforma digital.</strong>
+              <strong> autonomia</strong> para tarefas cotidianas, utilizando <strong>tecnologia inovadora </strong>
+               com IA integrada através de uma <strong>plataforma digital.</strong>
             </p>
           </div>
 

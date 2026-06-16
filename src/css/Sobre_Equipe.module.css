@@ -8,7 +8,6 @@
   background-color: var(--azul_escuro);
 }
 
-/* Imagem equipe */
 .image_equipe {
   width: 100%;
   height: auto;
@@ -19,7 +18,6 @@
   height: auto;
 }
 
-/* Texto */
 .text {
   position: relative;
   width: 100%;
@@ -43,7 +41,6 @@
   line-height: normal;
 }
 
-/* Cards */
 .person_cont {
   width: 100%;
   height: 600px;
@@ -51,7 +48,6 @@
   display: flex;
 }
 
-/* Animações de entrada e saída */
 .entrando {
   animation: fadeIn 0.4s ease forwards;
 }
@@ -82,7 +78,6 @@
   }
 }
 
-/* Foto */
 .foto {
   width: 60%;
   height: 600px;
@@ -94,7 +89,6 @@
   object-fit: cover;
 }
 
-/* Info do membro */
 .name {
   width: 40%;
   height: 600px;
@@ -131,7 +125,6 @@
   text-align: center;
 }
 
-/* Habilidades */
 .hab {
   width: 100%;
   height: 80px;
@@ -146,7 +139,6 @@
   height: 60px;
 }
 
-/* Contato */
 .contact {
   width: 100%;
   height: 100px;
@@ -162,7 +154,6 @@
   align-items: center;
 }
 
-/* Bolinhas de navegação */
 .dots {
   display: flex;
   justify-content: center;

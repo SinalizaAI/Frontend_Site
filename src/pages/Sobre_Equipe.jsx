@@ -1,4 +1,3 @@
-// src/pages/Sobre_Equipe.jsx
 import {
   HoverSlider,
   HoverSliderImage,
@@ -7,6 +6,7 @@ import {
   useHoverSliderContext,
 } from "../components/Equipe";
 
+import electronLogo from "../assets/Sobre_Equipe/electronLogo.png";
 import Kaue from "../assets/Sobre_Equipe/kaue.jpg";
 import Soares from "../assets/Sobre_Equipe/soares.jpeg";
 import Gustavo from "../assets/Sobre_Equipe/gustavo.jpeg";
@@ -53,7 +53,6 @@ import {
   FaChevronLeft,
 } from "react-icons/fa";
 
-// ─── Mapa de tecnologias ─────────────────────────────────────────────────────
 const techIconMap = {
   React: { icon: SiReact, color: "#61DAFB" },
   TypeScript: { icon: SiTypescript, color: "#3178C6" },
@@ -81,14 +80,12 @@ const techIconMap = {
   MySQL: { icon: SiMysql, color: "#4479A1" },
 };
 
-// ─── Ícones de redes sociais ──────────────────────────────────────────────────
 const redesIcones = {
   github: { icon: FaGithub, label: "GitHub", hoverColor: "#181717" },
   linkedin: { icon: FaLinkedin, label: "LinkedIn", hoverColor: "#0A66C2" },
   behance: { icon: FaBehance, label: "Behance", hoverColor: "#1769FF" },
 };
 
-// ─── SLIDES ──────────────────────────────────────────────────────────────────
 const SLIDES = [
   {
     id: "slide-1",
@@ -122,8 +119,7 @@ const SLIDES = [
     techs: ["JavaScript", "React", "Java", "HTML"],
     redes: {
       github: "https://github.com/ismaiaradasilvavieira04-droid",
-      linkedin:
-        "https://www.linkedin.com/in/ismaiara-da-silva-vieira-a92713348/",
+      linkedin: "https://www.linkedin.com/in/ismaiara-da-silva-vieira-a92713348/",
     },
     imageUrl: Isis,
   },
@@ -156,7 +152,7 @@ const SLIDES = [
     title: "Thayna Mateus",
     color: "#082256",
     cargo: "Front-end e Gestora Financeira",
-    techs: ["Java", "React", "MySQL"],
+    techs: ["Java", "Electron", "React", "MySQL"],
     redes: {
       github: "https://github.com/thaynamateus",
       linkedin: "https://www.linkedin.com/in/thaynamateus/",
@@ -165,11 +161,9 @@ const SLIDES = [
   },
 ];
 
-// ─── Painel "Sobre Nós" ───────────────────────────────────────────────────────
 function SobreNosPanel({ onClose }) {
   return (
     <div className="w-full flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 pt-12 pb-16 px-4 sm:px-8 md:px-12">
-      {/* Botão Voltar */}
       <div
         style={{ marginTop: "20px" }}
         className="flex-shrink-0 flex items-center justify-center md:justify-start w-full md:w-24 order-first md:sticky md:top-[50vh] md:-translate-y-1/2"
@@ -201,9 +195,8 @@ function SobreNosPanel({ onClose }) {
         </button>
       </div>
 
-      {/* Bloco Central */}
       <div className="flex flex-col items-center w-full max-w-[90vw] sm:max-w-md md:max-w-xl mx-auto md:mx-0">
-        <div style={{marginTop: "10%"}} className="flex flex-col items-center text-center mb-8 pt-2 md:pt-[55px]">
+        <div style={{ marginTop: "10%" }} className="flex flex-col items-center text-center mb-8 pt-2 md:pt-[55px]">
           <h2
             className="text-2xl sm:text-3xl md:text-5xl font-bold uppercase tracking-tighter"
             style={{
@@ -257,7 +250,6 @@ function SobreNosPanel({ onClose }) {
   );
 }
 
-// ─── SlideList ────────────────────────────────────────────────────────────────
 function SlideList() {
   const { activeSlide } = useHoverSliderContext();
 
@@ -336,7 +328,6 @@ function SlideList() {
   );
 }
 
-// ─── TechPanel ────────────────────────────────────────────────────────────────
 function TechPanel() {
   const { activeSlide } = useHoverSliderContext();
   const slide = SLIDES[activeSlide];
@@ -354,6 +345,24 @@ function TechPanel() {
           style={{ marginTop: "20px", marginBottom: "20px" }}
         >
           {slide.techs.map((tech) => {
+            if (tech === "Electron") {
+              return (
+                <div key={tech} className="flex flex-col items-center gap-1">
+                  <img src={electronLogo} alt="Electron" className="w-8 h-8 sm:w-10 sm:h-10 object-contain" />
+                  <span
+                    className="uppercase tracking-wider"
+                    style={{
+                      fontSize: "10px",
+                      color: "#02375980",
+                      fontFamily: "var(--fonte_inter), sans-serif",
+                    }}
+                  >
+                    {tech}
+                  </span>
+                </div>
+              );
+            }
+
             const entry = techIconMap[tech];
             if (!entry) return null;
             const Icon = entry.icon;
@@ -384,7 +393,6 @@ function TechPanel() {
   );
 }
 
-// ─── HoverSliderInner ─────────────────────────────────────────────────────────
 function HoverSliderInner({ onOpenSobre }) {
   const { activeSlide } = useHoverSliderContext();
   const activeColor = SLIDES[activeSlide].color;
@@ -458,13 +466,11 @@ function HoverSliderInner({ onOpenSobre }) {
   );
 }
 
-// ─── HoverSliderDemo ──────────────────────────────────────────────────────────
 export function HoverSliderDemo() {
   const [showSobre, setShowSobre] = useState(false);
 
   return (
     <HoverSlider className="relative min-h-svh pt-24 pb-8 px-4 sm:px-8 md:px-12 bg-[rgba(233,239,242,1)] text-[#3d3929] overflow-x-hidden flex items-center justify-center">
-      {/* O mode="wait" impede a sobreposição de elementos no fluxo do topo */}
       <AnimatePresence mode="wait">
         {!showSobre ? (
           <motion.div

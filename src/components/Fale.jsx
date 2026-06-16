@@ -106,7 +106,7 @@ function Fale() {
                 id="telefone"
                 type="tel"
                 name="telefone"
-                placeholder="(11) 91234-5678"
+                placeholder="(11) 99999-9999"
                 required
                 value={formData.telefone}
                 onChange={handleChange}
