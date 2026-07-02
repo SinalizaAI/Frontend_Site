@@ -11,43 +11,11 @@ import { HoverSliderDemo } from "./pages/Sobre_Equipe";
 import Planos from "./pages/Planos";
 import Sobre_Projeto from "./pages/Sobre_Projeto";
 import Usuario from "./pages/Usuario";
-import { useEffect } from "react";
 import OttoChatbot from "./components/OttoChatBot/OttoChatBot";
 import { OttoProvider } from "./context/OttoContext";
+import RybenaWidget from "./components/RybenaWidget";
 
 function App() {
-  useEffect(() => {
-    let cancelled = false
-
-    const init = () => {
-      if (cancelled) return
-
-      if (!window.RybenaApi) {
-        setTimeout(init, 300) // tenta de novo até o script terminar de carregar
-        return
-      }
-
-      try {
-        window.RybenaApi.getInstance().handleLoaded(() => {
-          console.log("Rybená API está pronta!")
-          window.RybenaApi.getInstance().openPlayer()
-          window.RybenaApi.getInstance().translate("Olá, bem-vindo à Rybená!")
-
-          window.RybenaApi.getInstance().handleTranslate(() => {
-            console.log("Tradução concluída!")
-          })
-        })
-      } catch (e) {
-        console.error("Erro ao iniciar Rybená:", e)
-      }
-    }
-
-    init()
-
-    return () => { cancelled = true }
-  }, [])
-
-
   return (
     <Router>
       <OttoProvider>
@@ -59,13 +27,14 @@ function App() {
             <Route path="/pages/Sobre_Projeto" element={<Sobre_Projeto />} />
             <Route path="/pages/Cadastro" element={<Cadastro />} />
             {/* Sua rota incluída aqui: */}
-            <Route path="/Cadastro_Etapa2" element={<Cadastro_Etapa2 />} /> 
+            <Route path="/Cadastro_Etapa2" element={<Cadastro_Etapa2 />} />
             <Route path="/Login" element={<Login />} />
             <Route path="/pages/Planos" element={<Planos />} />
             <Route path="/pages/Usuario" element={<Usuario />} />
             <Route path="/pages/Sobre_Equipe" element={<HoverSliderDemo />} />
           </Routes>
           <OttoChatbot />
+          <RybenaWidget />
           <Footer />
         </main>
       </OttoProvider>
