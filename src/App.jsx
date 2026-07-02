@@ -14,61 +14,65 @@ import Usuario from "./pages/Usuario";
 import { useEffect } from "react";
 import OttoChatbot from "./components/OttoChatBot/OttoChatBot";
 import { OttoProvider } from "./context/OttoContext";
+import { RybenaProvider } from "./context/RybenaContext";
 
 function App() {
-  useEffect(() => {
-    let cancelled = false
+  // useEffect(() => {
+  //   let cancelled = false;
 
-    const init = () => {
-      if (cancelled) return
+  //   const init = () => {
+  //     if (cancelled) return;
 
-      if (!window.RybenaApi) {
-        setTimeout(init, 300) // tenta de novo até o script terminar de carregar
-        return
-      }
+  //     if (!window.RybenaApi) {
+  //       setTimeout(init, 300); // tenta de novo até o script terminar de carregar
+  //       return;
+  //     }
 
-      try {
-        window.RybenaApi.getInstance().handleLoaded(() => {
-          console.log("Rybená API está pronta!")
-          window.RybenaApi.getInstance().openPlayer()
-          window.RybenaApi.getInstance().translate("Olá, bem-vindo à Rybená!")
+  //     try {
+  //       window.RybenaApi.getInstance().handleLoaded(() => {
+  //         console.log("Rybená API está pronta!");
+  //         window.RybenaApi.getInstance().openPlayer();
+  //         window.RybenaApi.getInstance().translate("Olá, bem-vindo à Rybená!");
 
-          window.RybenaApi.getInstance().handleTranslate(() => {
-            console.log("Tradução concluída!")
-          })
-        })
-      } catch (e) {
-        console.error("Erro ao iniciar Rybená:", e)
-      }
-    }
+  //         window.RybenaApi.getInstance().handleTranslate(() => {
+  //           console.log("Tradução concluída!");
+  //         });
+  //       });
+  //     } catch (e) {
+  //       console.error("Erro ao iniciar Rybená:", e);
+  //     }
+  //   };
 
-    init()
+  //   init();
 
-    return () => { cancelled = true }
-  }, [])
-
+  //   return () => {
+  //     cancelled = true;
+  //   };
+  // }, []);
 
   return (
     <Router>
-      <OttoProvider>
-        <main>
-          <Header />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/Tradutor" element={<Tradutor />} />
-            <Route path="/pages/Sobre_Projeto" element={<Sobre_Projeto />} />
-            <Route path="/pages/Cadastro" element={<Cadastro />} />
-            {/* Sua rota incluída aqui: */}
-            <Route path="/Cadastro_Etapa2" element={<Cadastro_Etapa2 />} /> 
-            <Route path="/Login" element={<Login />} />
-            <Route path="/pages/Planos" element={<Planos />} />
-            <Route path="/pages/Usuario" element={<Usuario />} />
-            <Route path="/pages/Sobre_Equipe" element={<HoverSliderDemo />} />
-          </Routes>
-          <OttoChatbot />
-          <Footer />
-        </main>
-      </OttoProvider>
+      <RybenaProvider>
+        <OttoProvider>
+          <main>
+            <Header />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/Tradutor" element={<Tradutor />} />
+              <Route path="/pages/Sobre_Projeto" element={<Sobre_Projeto />} />
+              <Route path="/pages/Cadastro" element={<Cadastro />} />
+              {/* Sua rota incluída aqui: */}
+              <Route path="/Cadastro_Etapa2" element={<Cadastro_Etapa2 />} />
+              <Route path="/Login" element={<Login />} />
+              <Route path="/pages/Planos" element={<Planos />} />
+              <Route path="/pages/Usuario" element={<Usuario />} />
+              <Route path="/pages/Sobre_Equipe" element={<HoverSliderDemo />} />
+            </Routes>
+            <OttoChatbot />
+            <Footer />
+          </main>
+        </OttoProvider>
+      </RybenaProvider>
     </Router>
   );
 }
