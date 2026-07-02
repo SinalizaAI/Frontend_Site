@@ -52,7 +52,6 @@ function App() {
 
   return (
     <Router>
-      <RybenaProvider>
         <OttoProvider>
           <main>
             <Header />
@@ -72,7 +71,6 @@ function App() {
             <Footer />
           </main>
         </OttoProvider>
-      </RybenaProvider>
     </Router>
   );
 }
