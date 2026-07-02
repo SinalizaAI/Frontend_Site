@@ -74,15 +74,41 @@ async function traduzirComVLibras(texto) {
   await new Promise((r) => requestAnimationFrame(r));
 
   // 1) Hover — é o que faz o widget "realçar" o elemento como traduzível
-  el.dispatchEvent(new MouseEvent("mouseover", { bubbles: true, cancelable: true, view: window }));
-  el.dispatchEvent(new MouseEvent("mousemove", { bubbles: true, cancelable: true, view: window }));
+  el.dispatchEvent(
+    new MouseEvent("mouseover", {
+      bubbles: true,
+      cancelable: true,
+      view: window,
+    }),
+  );
+  el.dispatchEvent(
+    new MouseEvent("mousemove", {
+      bubbles: true,
+      cancelable: true,
+      view: window,
+    }),
+  );
 
   await new Promise((r) => setTimeout(r, 100));
 
   // 2) Clique — é o que efetivamente dispara a tradução
-  el.dispatchEvent(new MouseEvent("mousedown", { bubbles: true, cancelable: true, view: window }));
-  el.dispatchEvent(new MouseEvent("mouseup", { bubbles: true, cancelable: true, view: window }));
-  el.dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true, view: window }));
+  el.dispatchEvent(
+    new MouseEvent("mousedown", {
+      bubbles: true,
+      cancelable: true,
+      view: window,
+    }),
+  );
+  el.dispatchEvent(
+    new MouseEvent("mouseup", {
+      bubbles: true,
+      cancelable: true,
+      view: window,
+    }),
+  );
+  el.dispatchEvent(
+    new MouseEvent("click", { bubbles: true, cancelable: true, view: window }),
+  );
 
   return true;
 }
@@ -122,7 +148,6 @@ function normalizarLandmarks(landmarks) {
     flat[i * 3 + 2] = escala > 0 ? centrado[i][2] / escala : centrado[i][2];
   }
   return flat;
-  
 }
 // ─────────────────────────────────────────────────────────────────────────────
 // Extração de landmarks para duas mãos → vetor de 126 valores
@@ -723,13 +748,13 @@ function Tradutor() {
                       onChange={(e) => setTextoDigitado(e.target.value)}
                       rows={4}
                     />
-                    <button
+                    {/* <button
                       className={styles.btn_traduzir}
                       onClick={handleTraduzir}
                       disabled={traduzindo}
                     >
                       {traduzindo ? "Traduzindo..." : "Traduzir para Libras"}
-                    </button>
+                    </button> */}
                   </div>
                 )}
                 {abaAtiva === "falar" && (
@@ -747,6 +772,33 @@ function Tradutor() {
                     )}
                   </div>
                 )}
+                <h2>
+                  1° passo - Clique no no icone de acessibilidade à esquerda
+                  (libras)
+                </h2>
+                <br />
+                <h2>
+                  2° passo- Espere o avatar da Rybená iniciar e posicione-o
+                  livremente
+                </h2>
+                <br />
+
+                <h2>3° passo - Digite ou fale o texto a ser traduzido</h2>
+                <br />
+
+                <h2>
+                  4° passo - Clique no Cursor Acessível do avatar da Rybená
+                </h2>
+                <br />
+
+                <h2>5° passo - Clique acima do texto a ser traduzido</h2>
+                <br />
+
+                <b>
+                  <h2>
+                    <b>Tradução finalizada</b>
+                  </h2>
+                </b>
               </div>
             </div>
           </div>
