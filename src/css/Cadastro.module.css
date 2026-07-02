@@ -3,11 +3,12 @@
 .main {
     position: relative;
     width: 100%;
-    padding: 100px;
+    padding: 100px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    box-sizing: border-box;
 }
 
 .main h1 {
@@ -30,16 +31,19 @@
     font-weight: 400;
     line-height: normal;
     margin: 10px;
+    max-width: 800px;
 }
 
 .section {
-    width: 976.7px;
-    height: 538.14px;
+    width: 100%;
+    max-width: 976px;
+    min-height: 538px;
     margin-top: 40px;
     border: 1px black solid;
     border-radius: 20px;
     display: flex;
     flex-direction: row;
+    overflow: hidden;
 }
 
 .section h2 {
@@ -48,27 +52,28 @@
 
 .bem_vindo {
     width: 50%;
-    height: 100%;
     background-color: var(--branco);
     border-right: 1px black solid;
-    border-radius: 20px 0px 0px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     text-align: center;
-    padding-top: 137px;
+    padding: 40px 20px;
     gap: 24px;
 }
 
 .bem_vindo h2 {
-    width: 290px;
+    width: 100%;
+    max-width: 290px;
     color: var(--azul_claro);
     font-size: 25px;
     font-weight: 500;
 }
 
 .bem_vindo p {
-    width: 200px;
+    width: 100%;
+    max-width: 200px;
     color: var(--azul_escuro);
     font-size: 20px;
     font-family: var(--fonte_inter);
@@ -76,7 +81,8 @@
 }
 
 .btn {
-    width: 286px;
+    width: 100%;
+    max-width: 286px;
     height: 50px;
     background-color: var(--azul_escuro);
     font-size: 20px;
@@ -97,14 +103,12 @@
 
 .crie_conta {
     width: 50%;
-    height: 100%;
     background-color: var(--azul_claro);
-    border-radius: 0px 20px 20px 0px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding-top: 48px;
+    padding: 48px 20px;
 }
 
 .crie_conta form {
@@ -112,7 +116,7 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    gap: 10px;
+    gap: 1.25rem;
 }
 
 .crie_conta h2 {
@@ -126,54 +130,121 @@
     color: white;
     font-size: 20px;
     font-weight: 300;
+    margin-bottom: 10px;
 }
 
-.escrever {
-    width: 451px;
-    height: 54px;
-    border-radius: 10px;
-    margin-top: 25px;
-    padding-left: 15px;
-    background-color: var(--branco);
+.inputGroup {
     display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    width: 100%;
+    max-width: 451px;
 }
 
-.escrever img {
-    width: 40px;
-    height: 40px;
-    margin: 5px;
-}
-
-.escrever input {
-    width: 85%;
-    font-size: 20px;
+.label {
+    color: #ffffff;
+    font-size: 15px;
     font-family: var(--fonte_inter);
-    background-color: transparent;
+    text-align: left;
+}
+
+.required {
+    color: #f87171;
+}
+
+.inputWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.input {
+    width: 100%;
+    background-color: #f8fafc;
+    color: #0f172a;
+    padding: 0.85rem 3.5rem 0.85rem 4rem; 
+    border: 2px solid transparent;
+    border-radius: 0.75rem;
+    font-size: 1rem;
     outline: none;
-    padding-left: 15px;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+}
+
+.input:focus {
+    border-color: #ffb03a;
+    background-color: #ffffff;
+}
+
+.iconLeft {
+    position: absolute;
+    left: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #003e4c;
+    width: 40px; 
+    height: 40px;
+    pointer-events: none;
+}
+
+.iconImage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.iconRight {
+    position: absolute;
+    right: 1rem;
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #94a3b8;
+    cursor: pointer;
+    padding: 0;
+    width: 25px;
+    height: 25px;
+}
+
+.iconRight svg {
+    width: 100%;
+    height: 100%;
+}
+
+.iconRight:hover {
+    color: #64748b;
 }
 
 .termos_de_uso {
-    width: 370px;
+    width: 100%;
+    max-width: 370px;
     color: white;
-    margin-top: 10px;
+    margin-top: 15px;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: flex-start;
+    text-align: left;
 }
 
 .termos_de_uso label {
     display: flex;
+    align-items: flex-start;
     gap: 8px;
+    cursor: pointer;
 }
 
-.termos_de_uso input:hover {
-    cursor: pointer;
+.termos_de_uso input {
+    margin-top: 4px;
 }
 
 .confirmo {
     font-size: 15px;
     font-family: var(--fonte_inter);
+    line-height: 1.3;
 }
 
 .termos {
@@ -188,7 +259,8 @@
 }
 
 .btn2 {
-    width: 286px;
+    width: 100%;
+    max-width: 286px;
     height: 50px;
     background-color: var(--amarelo);
     font-size: 20px;
@@ -200,6 +272,7 @@
     justify-content: center;
     align-items: center;
     margin-top: 22px;
+    border: none;
 }
 
 .btn2:hover {
@@ -209,20 +282,22 @@
     transition: 0.1s;
 }
 
-/* Esconde o botão mobile por padrão na versão Desktop */
 .btn_mobile {
     display: none;
     margin-top: 15px;
 }
 
-/* ======================================================== */
-/* REGRAS PARA TABLET E SMARTPHONE              */
-/* ======================================================== */
-@media (max-width: 992px) {
+@media (max-width: 1024px) {
     .main {
-        padding: 100px 20px; /* Evita espaçamento exagerado nas laterais */
+        padding: 100px 20px;
     }
 
+    .section {
+        max-width: 768px;
+    }
+}
+
+@media (max-width: 768px) {
     .main h1 {
         font-size: 32px;
     }
@@ -232,37 +307,21 @@
     }
 
     .section {
-        width: 100%;
-        max-width: 520px; /* Tamanho controlado do card central */
-        height: 650px;     /* Garante tamanho fluído para abraçar os botões */
         flex-direction: column;
+        max-width: 500px;
+        min-height: auto;
     }
 
-    /* Oculta o lado esquerdo (Cinza) */
     .bem_vindo {
         display: none;
-        
     }
 
-    /* Expande o lado direito para preencher todo o container */
     .crie_conta {
         width: 100%;
-        border-radius: 20px; /* Arredonda todos os cantos do card */
-        padding: 40px 20px 0px 20px;
+        border-radius: 20px;
+        padding: 40px 20px;
     }
 
-    /* Deixa os inputs adaptáveis para telas menores que 450px */
-    .escrever {
-        width: 100%;
-        max-width: 451px;
-    }
-
-    .termos_de_uso {
-        width: 100%;
-        max-width: 370px;
-    }
-
-    /* Ativa o botão de login mobile abaixo do botão cadastrar */
     .btn_mobile {
         display: flex;
         background-color: var(--branco);
@@ -277,15 +336,69 @@
 
 @media (max-width: 480px) {
     .main h1 {
-        font-size: 26px;
+        font-size: 24px;
     }
+
+    .p1 {
+        font-size: 14px;
+    }
+
     .crie_conta h2 {
-        font-size: 22px;
+        font-size: 20px;
     }
-    .confirmo {
-        padding-top: 22px;
+
+    .cadastre {
+        font-size: 16px;
     }
-    .btn2 {
-        margin-top: 0;
+
+    .input {
+        font-size: 0.95rem;
+        padding: 0.85rem 2.5rem 0.85rem 3.2rem;
+    }
+
+    .iconLeft {
+        width: 30px;
+        height: 30px;
+        left: 0.6rem;
+    }
+
+    .confirmo, .termos {
+        font-size: 13px;
+    }
+
+    .btn, .btn2 {
+        font-size: 18px;
+        height: 45px;
+    }
+}
+
+@media (max-width: 320px) {
+    .main {
+        padding: 100px 10px;
+    }
+
+    .crie_conta {
+        padding: 30px 10px;
+    }
+
+    .iconLeft {
+        width: 25px;
+        height: 25px;
+        left: 0.5rem;
+    }
+
+    .input {
+        font-size: 0.9rem;
+        padding: 0.85rem 2rem 0.85rem 2.8rem;
+    }
+}
+
+@media (max-height: 600px) and (orientation: landscape) {
+    .main {
+        padding: 100px;
+    }
+
+    .section {
+        margin-top: 15px;
     }
 }

@@ -1,10 +1,23 @@
 import styles from "../css/Header.module.css";
 import Logo from "../assets/header/logo_oficial.png";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function Header() {
   const [menuAberto, setMenuAberto] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(orientation: landscape)");
+    
+    const fecharMenu = (e) => {
+      if (e.matches) {
+        setMenuAberto(false);
+      }
+    };
+
+    mediaQuery.addEventListener("change", fecharMenu);
+    return () => mediaQuery.removeEventListener("change", fecharMenu);
+  }, []);
 
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
@@ -30,7 +43,6 @@ function Header() {
           </h1>
         </Link>
 
-        {/* ✅ Links do DESKTOP — ficam aqui, visíveis normalmente */}
         <div className={styles.links_nav}>
           <nav>
             <Link to="/" onClick={() => scrollToSection("inicio")}>
@@ -47,7 +59,6 @@ function Header() {
           </nav>
         </div>
 
-        {/* Botão hambúrguer — só aparece no mobile via CSS */}
         <button
           className={styles.hamburger}
           onClick={() => setMenuAberto(!menuAberto)}
@@ -59,12 +70,10 @@ function Header() {
         </button>
       </nav>
 
-      {/* Overlay */}
       {menuAberto && (
         <div className={styles.overlay} onClick={() => setMenuAberto(false)} />
       )}
 
-      {/* ✅ Links do MOBILE — dentro do drawer */}
       <div
         className={`${styles.drawer} ${menuAberto ? styles.drawer_aberto : ""}`}
       >
@@ -84,9 +93,6 @@ function Header() {
           <Link to={"/pages/Sobre_Equipe"} onClick={() => setMenuAberto(false)}>
             Equipe
           </Link>
-          {/* <Link to={"/pages/Usuario"} onClick={() => setMenuAberto(false)}>
-            Usuário
-          </Link> */}
           <Link to={"/pages/Sobre_Projeto"} onClick={() => setMenuAberto(false)}>
             Sobre Projeto
           </Link>

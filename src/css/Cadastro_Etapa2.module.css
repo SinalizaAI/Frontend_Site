@@ -5,10 +5,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 100px;
+    padding: 100px 20px;
+    box-sizing: border-box;
 }
 
-/* Cabeçalho de Fora */
 .headerExternal {
     text-align: center;
     width: 100%;
@@ -36,7 +36,6 @@
     margin-top: 15px;
 }
 
-/* Container Principal do Formulário */
 .formBlock {
     background-color: var(--azul_claro);
     width: 100%;
@@ -48,7 +47,6 @@
     margin-top: 15px;
 }
 
-/* Alinhamento do cabeçalho interno à direita como na imagem */
 .headerInternal {
     text-align: right;
     margin-bottom: 2rem;
@@ -91,7 +89,6 @@
     color: #f87171;
 }
 
-/* Inputs estendidos de ponta a ponta */
 .inputWrapper {
     position: relative;
     display: flex;
@@ -103,11 +100,10 @@
     width: 100%;
     background-color: #f8fafc;
     color: #0f172a;
-    padding: 0.85rem 1rem 0.85rem 3rem;
+    padding: 0.85rem 3.5rem 0.85rem 4rem; 
     border: 2px solid transparent;
     border-radius: 0.75rem;
-    font-size: 20px;
-    font-family: var(--fonte_inter);
+    font-size: 1rem;
     outline: none;
     transition: all 0.2s ease;
     box-sizing: border-box;
@@ -118,7 +114,6 @@
     background-color: #ffffff;
 }
 
-/* Ícones internos à esquerda (Imagens/PNGs) */
 .iconLeft {
     position: absolute;
     left: 1rem;
@@ -126,20 +121,17 @@
     align-items: center;
     justify-content: center;
     color: #003e4c;
-    /* Mantido 40px como na Etapa 1 */
     width: 40px; 
     height: 40px;
     pointer-events: none;
 }
 
-/* Garante que as imagens PNG dentro do iconLeft ocupem o tamanho correto */
 .iconImage {
     width: 100%;
     height: 100%;
     object-fit: contain;
 }
 
-/* Ícone interno à direita (Botão do Olho/SVG) */
 .iconRight {
     position: absolute;
     right: 1rem;
@@ -151,12 +143,10 @@
     color: #94a3b8;
     cursor: pointer;
     padding: 0;
-    /* Retornado para o tamanho original de 1.25rem */
     width: 25px;
     height: 25px;
 }
 
-/* Garante que o SVG dentro do botão do olho herde o tamanho original */
 .iconRight svg {
     width: 100%;
     height: 100%;
@@ -166,22 +156,6 @@
     color: #64748b;
 }
 
-/* Ajuste no padding do input para o texto não ficar por cima do ícone maior */
-.input {
-    width: 100%;
-    background-color: #f8fafc;
-    color: #0f172a;
-    /* Mantém espaço seguro na esquerda (4rem) e na direita para o olho menor (3.5rem) */
-    padding: 0.85rem 3.5rem 0.85rem 4rem; 
-    border: 2px solid transparent;
-    border-radius: 0.75rem;
-    font-size: 1rem;
-    outline: none;
-    transition: all 0.2s ease;
-    box-sizing: border-box;
-}
-
-/* Ações Inferiores (Agora totalmente centralizadas) */
 .footerActions {
     display: flex;
     flex-direction: column;
@@ -220,7 +194,6 @@
     color: var(--branco);
 }
 
-/* Botão Estilizado (Centralizado e sem estrela) */
 .submitBtn {
     position: relative; 
     width: 286px;
@@ -258,12 +231,15 @@
     pointer-events: none;
 }
 
-/* ======================================================== */
-/* REGRAS PARA TABLET E SMARTPHONE                          */
-/* ======================================================== */
-@media (max-width: 992px) {
+@media (max-width: 1024px) {
     .pageContainer {
-        padding: 100px 20px; /* Evita espaçamento exagerado nas laterais igual à Etapa 1 */
+        padding: 100px 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .pageContainer {
+        padding: 100px 20px;
     }
 
     .titleExternal {
@@ -271,13 +247,12 @@
     }
 
     .subtitleExternal {
-        font-size: 16px;
+        font-size: 18px;
     }
 
     .formBlock {
-        width: 100%;
-        max-width: 520px; /* Alinha com a largura máxima adotada na Etapa 1 */
-        padding: 40px 20px; /* Reduz o padding interno para sobrar espaço para os inputs */
+        padding: 2rem;
+        max-width: 100%;
     }
 
     .titleInternal {
@@ -285,25 +260,95 @@
     }
 
     .subtitleInternal {
-        font-size: 18px;
+        font-size: 16px;
     }
 }
 
 @media (max-width: 480px) {
+    .pageContainer {
+        padding: 100px 15px;
+    }
+
+    .titleExternal {
+        font-size: 24px;
+    }
+
+    .subtitleExternal {
+        font-size: 15px;
+        margin-top: 10px;
+    }
+
+    .formBlock {
+        padding: 1.5rem 1rem;
+        border-radius: 0.75rem;
+    }
+
+    .titleInternal {
+        font-size: 18px;
+    }
+
+    .subtitleInternal {
+        font-size: 14px;
+    }
+
+    .input {
+        font-size: 0.95rem;
+        padding: 0.85rem 2.5rem 0.85rem 3.2rem;
+    }
+
+    .iconLeft {
+        width: 30px;
+        height: 30px;
+        left: 0.6rem;
+    }
+
+    .submitBtn {
+        width: 100%;
+        max-width: 286px;
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 320px) {
+    .titleExternal {
+        font-size: 20px;
+    }
+
+    .formBlock {
+        padding: 1rem 0.75rem;
+    }
+
+    .input {
+        font-size: 0.9rem;
+        padding: 0.85rem 2rem 0.85rem 2.8rem;
+    }
+
+    .iconLeft {
+        width: 25px;
+        height: 25px;
+        left: 0.5rem;
+    }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+    .pageContainer {
+        padding: 100px 20px;
+    }
+
+    .headerExternal {
+        margin-bottom: 1rem;
+    }
+
     .titleExternal {
         font-size: 26px;
     }
 
-    .titleInternal {
-        font-size: 20px;
+    .subtitleExternal {
+        font-size: 16px;
+        margin-top: 5px;
     }
 
-    .checkbox {
-        margin-top: -25px; /* Ajusta a altura da caixa com a primeira linha do texto */
-    }
-
-    .submitBtn {
-        width: 100%; /* O botão passa a ocupar toda a largura disponível no mobile */
-        max-width: 286px; /* Mantém um limite elegante para não esticar demais */
+    .formBlock {
+        padding: 2rem;
     }
 }

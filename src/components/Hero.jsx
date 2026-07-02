@@ -12,7 +12,6 @@ function Hero() {
 
   return (
     <section className={styles.hero_sec} id="inicio">
-      {/* Imagem separada em div própria */}
       <div className={styles.bg_image}>
         <img src={HeroImage} alt="" aria-hidden="true" />
       </div>

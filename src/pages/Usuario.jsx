@@ -1,270 +1,461 @@
-import React, { useState } from "react";
 import styles from "../css/Usuario.module.css";
+import perfilIcon from "../assets/Usuario/perfil.png";
+import cameraIcon from "../assets/Usuario/camera.png";
+import segurançaIcon from "../assets/Usuario/segurança.png";
+import senhaIcon from "../assets/Usuario/senha.png";
+import verificacaoIcon from "../assets/Usuario/verificacao.png";
+import librasIcon from "../assets/Usuario/libras.png";
+import { atualizarCliente } from "../lib/api";
+import { useEffect, useState } from "react";
+import { buscarCliente } from "../lib/api";
+import { getIdDoToken } from "../lib/auth";
+import { useNavigate } from "react-router-dom";
+import { desativarCliente } from "../lib/api";
+import { removerToken } from "../lib/auth";
 
-function Usuario() {
-  const [activeTab, setActiveTab] = useState("Perfil");
+export default function UserProfile() {
+  const [formData, setFormData] = useState({
+    nomeCompleto: "",
+    email: "",
+    razaoSocial: "",
+    cnpj: "",
+    cidade: "",
+    pais: "Brasil",
+    telefone: "",
+    dataNascimento: "",
+    criadoEm: "",
+  });
+
+  const navigate = useNavigate();
+
+  async function handleAlterarSenha() {
+    const novaSenha = window.prompt(
+      "Digite sua nova senha (mínimo 8 caracteres):",
+    );
+
+    if (!novaSenha) return;
+
+    if (novaSenha.length < 8) {
+      alert("A senha deve ter no mínimo 8 caracteres.");
+      return;
+    }
+
+    try {
+      const id = getIdDoToken();
+      await atualizarCliente(id, { senha: novaSenha });
+      alert("Senha alterada com sucesso!");
+    } catch (err) {
+      alert(err.message || "Erro ao alterar senha.");
+    }
+  }
+
+  async function handleExcluirConta() {
+    const confirmar = window.confirm(
+      "Tem certeza que deseja excluir sua conta? Esta ação não pode ser desfeita.",
+    );
+    if (!confirmar) return;
+
+    try {
+      const id = getIdDoToken();
+      await desativarCliente(id);
+      removerToken();
+      navigate("/Login");
+    } catch (err) {
+      alert(err.message || "Erro ao excluir conta.");
+    }
+  }
+
+  useEffect(() => {
+    async function carregarDados() {
+      const id = getIdDoToken();
+      if (!id) return;
+
+      try {
+        const data = await buscarCliente(id);
+        setFormData({
+          nomeCompleto: data.nomeResponsavel || "",
+          email: data.email || "",
+          razaoSocial: data.razaoSocial || "",
+          cnpj: data.cnpj || "",
+          cidade: data.cidade || "",
+          pais: data.pais || "Brasil",
+          telefone: data.telefone || "",
+          dataNascimento: data.dataNascimento || "",
+          criadoEm: data.criadoEm || "", // ← adicione
+        });
+      } catch (err) {
+        console.error("Erro ao carregar dados do usuário:", err);
+      }
+    }
+
+    carregarDados();
+  }, []);
+
+  const [librasPrefs, setLibrasPrefs] = useState({
+    maoDominante: "Direita",
+    velocidadeAvatar: 100,
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSave = async (e) => {
+    e.preventDefault();
+
+    try {
+      const id = getIdDoToken();
+
+      // Só envia os campos que o backend conhece
+      const payload = {
+        nomeResponsavel: formData.nomeCompleto,
+        razaoSocial: formData.razaoSocial,
+        email: formData.email,
+        telefone: formData.telefone,
+        cidade: formData.cidade, // novo
+        pais: formData.pais, // novo
+        dataNascimento: formData.dataNascimento || null, // novo
+      };
+
+      await atualizarCliente(id, payload);
+      alert("Alterações salvas com sucesso!");
+    } catch (err) {
+      alert(err.message || "Erro ao salvar alterações.");
+    }
+  };
 
   return (
-    <div className={styles.container}>
-
-      {/* 2. CONTEÚDO PRINCIPAL */}
-      <main className={styles.mainContent}>
-        
-        {/* Header da Página */}
-        <header className={styles.pageHeader}>
-          <div>
-            <h1 className={styles.pageTitle}>Meu Perfil</h1>
-            <p className={styles.pageSubtitle}>Gerencie suas informações pessoais e preferências.</p>
-          </div>
-          <div className={styles.headerActions}>
-            <button className={`${styles.iconButton} ${styles.relative}`}>
-              <svg className={styles.svgIcon} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
-              <span className={styles.notificationDot}></span>
+    <div className={styles["profile-container"]}>
+      {/* 1. TABELA COM AS INFORMAÇÕES PESSOAIS (Card Superior) */}
+      <header className={styles["profile-header"]}>
+        <div className={styles["header-left"]}>
+          <div className={styles["avatar-wrapper"]}>
+            <div className={styles["avatar-placeholder"]}>
+              <img
+                src={perfilIcon}
+                alt="Perfil"
+                className={styles["avatar-image-render"]}
+              />
+            </div>
+            <button className={styles["change-photo-btn"]} title="Alterar foto">
+              <img
+                src={cameraIcon}
+                alt="Alterar foto"
+                className={styles["inline-icon-img"]}
+              />
             </button>
-            <button className={styles.iconButton}>
-              <svg className={styles.svgIcon} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 7a5 5 0 100 10 5 5 0 000-10z"/></svg>
-            </button>
           </div>
-        </header>
+          <div className={styles["header-info"]}>
+            <h2>{formData.nomeCompleto || "Nome do Usuário"}</h2>
+            <p>
+              <strong>Email:</strong> {formData.email || "usuario@email.com"}
+            </p>
+            <p>
+              <strong>Telefone:</strong>{" "}
+              {formData.telefone || "(00) 00000-0000"}
+            </p>
+            <span className={styles["creation-date"]}>
+              Data de criação:{" "}
+              {formData.criadoEm
+                ? new Date(formData.criadoEm).toLocaleDateString("pt-BR")
+                : "—"}
+            </span>
+          </div>
+        </div>
+      </header>
 
-        {/* Card do Perfil */}
-        <section className={styles.profileCard}>
-          <div className={styles.profileInfoLeft}>
-            <div className={styles.avatarWrapper}>
-              <div className={styles.avatar3D}>👦🏾</div>
-              <button className={styles.cameraButton}>
-                <svg className={styles.smallSvgIcon} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+      {/* CONTEÚDO PRINCIPAL (GRID TOTALMENTE DESAGRUPADO) */}
+      <div className={styles["profile-content-grid"]}>
+        {/* 2. INFORMAÇÕES PESSOAIS E CORPORATIVAS */}
+        <section
+          className={`${styles["profile-section"]} ${styles["card"]} ${styles["section-corporative"]}`}
+        >
+          <h3>
+            <img
+              src={perfilIcon}
+              alt="Usuário"
+              className={styles["inline-icon-title"]}
+            />
+            Informações Pessoais e Corporativas
+          </h3>
+          <form onSubmit={handleSave} className={styles["form-grid"]}>
+            <div className={`${styles["form-group"]} ${styles["row-1"]}`}>
+              <label>Nome Completo</label>
+              <input
+                type="text"
+                name="nomeCompleto"
+                placeholder="Ex: João Silva"
+                value={formData.nomeCompleto}
+                onChange={handleInputChange}
+              />
+            </div>
+
+            <div className={`${styles["form-group"]} ${styles["row-1"]}`}>
+              <label>Email</label>
+              <input
+                type="email"
+                name="email"
+                placeholder="Ex: joaosilva@email.com"
+                value={formData.email}
+                onChange={handleInputChange}
+              />
+            </div>
+
+            <div className={`${styles["form-group"]} ${styles["row-2"]}`}>
+              <label>Razão Social</label>
+              <input
+                type="text"
+                name="razaoSocial"
+                placeholder="Razão Social"
+                value={formData.razaoSocial}
+                onChange={handleInputChange}
+              />
+            </div>
+
+            <div className={`${styles["form-group"]} ${styles["row-2"]}`}>
+              <label>CNPJ</label>
+              <input
+                type="text"
+                name="cnpj"
+                placeholder="00.000.000/0000-00"
+                value={formData.cnpj}
+                onChange={handleInputChange}
+              />
+            </div>
+
+            <div
+              className={`${styles["form-group"]} ${styles["row-3"]} ${styles["quarterly"]}`}
+            >
+              <label>Cidade</label>
+              <input
+                type="text"
+                name="cidade"
+                placeholder="Ex: São Paulo"
+                value={formData.cidade}
+                onChange={handleInputChange}
+              />
+            </div>
+
+            <div
+              className={`${styles["form-group"]} ${styles["row-3"]} ${styles["quarterly"]}`}
+            >
+              <label>País</label>
+              <select
+                name="pais"
+                value={formData.pais}
+                onChange={handleInputChange}
+              >
+                <option value="Brasil">Brasil</option>
+                <option value="Portugal">Portugal</option>
+                <option value="Outro">Outro</option>
+              </select>
+            </div>
+
+            <div
+              className={`${styles["form-group"]} ${styles["row-3"]} ${styles["quarterly"]}`}
+            >
+              <label>Telefone</label>
+              <input
+                type="text"
+                name="telefone"
+                placeholder="(DDD) Telefone"
+                value={formData.telefone}
+                onChange={handleInputChange}
+              />
+            </div>
+
+            <div
+              className={`${styles["form-group"]} ${styles["row-3"]} ${styles["quarterly"]}`}
+            >
+              <label>Data de Nascimento</label>
+              <input
+                type="date"
+                name="dataNascimento"
+                value={formData.dataNascimento}
+                onChange={handleInputChange}
+              />
+            </div>
+
+            <div className={styles["form-actions"]}>
+              <button type="submit" className={styles["save-btn"]}>
+                Salvar Alterações
               </button>
             </div>
+          </form>
+        </section>
 
-            <div className={styles.userMeta}>
-              <div className={styles.nameBadgeRow}>
-                <h2 className={styles.userName}>João Silva</h2>
-              </div>
-              <div className={styles.userDataList}>
-                <p>✉️ joaosilva@email.com</p>
-                <p>📞 (11) 99999-9999</p>
-                <p>📅 15/04/2002</p>
-                <p>📍 São Paulo, SP - Brasil</p>
+        {/* 3. PLANO ATUAL */}
+        <aside
+          className={`${styles["sidebar-column"]} ${styles["section-plan"]}`}
+        >
+          <section className={styles["plan-card"]}>
+            <div className={styles["plan-header"]}>
+              <h3>Plano Atual</h3>
+            </div>
+
+            <div className={styles["plan-details-box"]}>
+              <div className={styles["plan-price"]}>R$ 450,00</div>
+              <p className={styles["billing-info"]}>
+                Próxima cobrança
+                <br />
+                <strong>15 de julho de 2025</strong>
+              </p>
+
+              <ul className={styles["plan-features-list"]}>
+                <li>Software com sinais completos</li>
+                <li>Avatar personalizável</li>
+                <li>Sinais personalizados com termos da empresa</li>
+              </ul>
+            </div>
+
+            <button type="button" className={styles["manage-plan-btn"]}>
+              Gerenciar Plano
+            </button>
+            <button type="button" className={styles["view-details-link"]}>
+              Ver detalhes da assinatura
+            </button>
+          </section>
+        </aside>
+
+        {/* 4. PREFERÊNCIAS DE LIBRAS */}
+        <section
+          className={`${styles["profile-section"]} ${styles["card"]} ${styles["section-libras"]}`}
+        >
+          <h3>
+            <img
+              src={librasIcon}
+              alt="Libras"
+              className={styles["inline-icon-title"]}
+            />
+            Preferências de Libras
+          </h3>
+          <div className={styles["libras-controls"]}>
+            <div className={styles["control-group"]}>
+              <label>Mão dominante</label>
+              <div className={styles["toggle-container"]}>
+                <button
+                  type="button"
+                  className={`${styles["toggle-btn"]} ${librasPrefs.maoDominante === "Esquerda" ? styles["active"] : ""}`}
+                  onClick={() =>
+                    setLibrasPrefs((prev) => ({
+                      ...prev,
+                      maoDominante: "Esquerda",
+                    }))
+                  }
+                >
+                  Esquerda
+                </button>
+                <button
+                  type="button"
+                  className={`${styles["toggle-btn"]} ${librasPrefs.maoDominante === "Direita" ? styles["active"] : ""}`}
+                  onClick={() =>
+                    setLibrasPrefs((prev) => ({
+                      ...prev,
+                      maoDominante: "Direita",
+                    }))
+                  }
+                >
+                  Direita
+                </button>
               </div>
             </div>
-          </div>
 
-          <div className={styles.profileInfoRight}>
-            <button className={styles.editProfileBtn}>
-              <svg className={styles.smallSvgIcon} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg>
-              Editar Perfil
-            </button>
+            <div className={styles["control-group"]}>
+              <div className={styles["slider-header"]}>
+                <label>Velocidade do avatar</label>
+                <span className={styles["slider-value"]}>
+                  {librasPrefs.velocidadeAvatar === 100
+                    ? "Normal"
+                    : `${librasPrefs.velocidadeAvatar / 100}x`}
+                </span>
+              </div>
+              <div className={styles["slider-container"]}>
+                <input
+                  type="range"
+                  min="50"
+                  max="200"
+                  step="25"
+                  value={librasPrefs.velocidadeAvatar}
+                  onChange={(e) =>
+                    setLibrasPrefs((prev) => ({
+                      ...prev,
+                      velocidadeAvatar: Number(e.target.value),
+                    }))
+                  }
+                  className={styles["avatar-slider"]}
+                />
+                <div className={styles["slider-labels"]}>
+                  <span>0.5x</span>
+                  <span>0.75x</span>
+                  <span>1.0x</span>
+                  <span>1.25x</span>
+                  <span>1.5x</span>
+                  <span>2.0x</span>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
-        {/* Abas Internas */}
-        <nav className={styles.tabsNav}>
-          <TabItem active={activeTab === "Perfil"} label="Perfil" icon={<svg className={styles.smallSvgIcon} fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>} onClick={() => setActiveTab("Perfil")} />
-          <TabItem active={activeTab === "Segurança"} label="Segurança" icon={<svg className={styles.smallSvgIcon} fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>} onClick={() => setActiveTab("Segurança")} />
-          <TabItem active={activeTab === "Preferências"} label="Preferências" icon={<svg className={styles.smallSvgIcon} fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>} onClick={() => setActiveTab("Preferências")} />
-          <TabItem active={activeTab === "Assinatura"} label="Assinatura" icon={<svg className={styles.smallSvgIcon} fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>} onClick={() => setActiveTab("Assinatura")} />
-          <TabItem active={activeTab === "Dispositivos"} label="Dispositivos" icon={<svg className={styles.smallSvgIcon} fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>} onClick={() => setActiveTab("Dispositivos")} />
-        </nav>
+        {/* 5. SEGURANÇA E CONTA */}
+        <section
+          className={`${styles["profile-section"]} ${styles["card"]} ${styles["section-security"]}`}
+        >
+          <h3>
+            <img
+              src={segurançaIcon}
+              alt="Segurança"
+              className={styles["inline-icon-title"]}
+            />
+            Segurança e Conta
+          </h3>
+          <div className={styles["clickable-options-list"]}>
+            <button
+              type="button"
+              className={styles["clickable-option-row"]}
+              onClick={() => alert("Duas etapas")}
+            >
+              <span className={styles["option-label"]}>
+                <img
+                  src={verificacaoIcon}
+                  alt="Verificação"
+                  className={styles["inline-icon-row"]}
+                />{" "}
+                Verificação de duas etapas
+              </span>
+              <span className={styles["arrow"]}>›</span>
+            </button>
 
-        {/* Grade de Seções Inferiores */}
-        <div className={styles.sectionsGrid}>
-          
-          {/* Coluna da Esquerda (Formulário + Detalhes) */}
-          <div className={styles.leftColumn}>
-            
-            {/* Informações Pessoais */}
-            <section className={styles.contentCard}>
-              <div className={styles.cardHeaderTitle}>
-                <div className={styles.blueIcon}>
-                  <svg className={styles.svgIcon} fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
-                </div>
-                <h3 className={styles.cardTitle}>Informações Pessoais</h3>
-              </div>
+            <button
+              type="button"
+              className={styles["clickable-option-row"]}
+              onClick={handleAlterarSenha}
+            >
+              <span className={styles["option-label"]}>
+                <img
+                  src={senhaIcon}
+                  alt="Chave"
+                  className={styles["inline-icon-row"]}
+                />{" "}
+                Alterar senha
+              </span>
+              <span className={styles["arrow"]}>›</span>
+            </button>
 
-              <form className={styles.formGrid}>
-                <InputField label="Nome Completo" defaultValue="João Silva" />
-                <InputField label="Email" defaultValue="joaosilva@email.com" type="email" />
-                <InputField label="Telefone" defaultValue="(11) 99999-9999" />
-                <InputField label="Data de nascimento" defaultValue="2002-04-15" type="date" />
-                <InputField label="Cidade" defaultValue="São Paulo" />
-                
-                <div>
-                  <label className={styles.inputLabel}>País</label>
-                  <select className={styles.selectField}>
-                    <option>Brasil</option>
-                  </select>
-                </div>
-
-                <div className={styles.formActionRow}>
-                  <button type="button" className={styles.saveChangesBtn}>
-                    Salvar Alterações
-                  </button>
-                </div>
-              </form>
-            </section>
-
-            {/* Subcards: Segurança e Preferências */}
-            <div className={styles.subCardsGrid}>
-              
-              {/* Segurança da Conta */}
-              <section className={`${styles.contentCard} ${styles.flexColJustify}`}>
-                <div>
-                  <div className={styles.cardHeaderTitle}>
-                    <div className={styles.blueIcon}>
-                      <svg className={styles.svgIcon} fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                    </div>
-                    <h3 className={styles.cardTitle}>Segurança da Conta</h3>
-                  </div>
-
-                  <div className={styles.securityRowsContainer}>
-                    <SecurityRow 
-                      icon={<svg className={styles.midSvgIcon} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg>} 
-                      title="Alterar senha" 
-                      subtitle="Atualize sua senha de acesso" 
-                    />
-
-                    <SecurityRow 
-                      icon={<svg className={styles.midSvgIcon} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>} 
-                      title="Gerenciar sessões" 
-                      subtitle="Veja e gerencie seus dispositivos conectados" 
-                    />
-                  </div>
-                </div>
-              </section>
-
-              {/* Preferências de Libras */}
-              <section className={styles.contentCard}>
-                <div className={styles.cardHeaderTitle}>
-                  <div className={styles.blueIcon}>
-                    <svg className={styles.svgIcon} fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"/></svg>
-                  </div>
-                  <h3 className={styles.cardTitle}>Preferências de Libras</h3>
-                </div>
-
-                <div className={styles.prefContainer}>
-                  <div>
-                    <label className={styles.prefLabel}>Mão dominante</label>
-                    <div className={styles.toggleButtonGroup}>
-                      <button type="button" className={styles.toggleBtnInactive}>Esquerda</button>
-                      <button type="button" className={styles.toggleBtnActive}>Direita</button>
-                    </div>
-                  </div>
-
-                  <div>
-                    <div className={styles.sliderHeader}>
-                      <span>Velocidade do avatar</span>
-                      <span className={styles.sliderValue}>Normal</span>
-                    </div>
-                    <input type="range" min="1" max="3" defaultValue="2" className={styles.rangeSlider} />
-                  </div>
-                </div>
-              </section>
-
-            </div>
+            <button
+              type="button"
+              className={`${styles["clickable-option-row"]} ${styles["delete-account-row"]}`}
+              onClick={handleExcluirConta}
+            >
+              <span className={styles["option-label"]}>
+                Excluir minha conta
+              </span>
+              <span className={styles["arrow"]}>›</span>
+            </button>
           </div>
-
-          {/* Coluna da Direita (Plano Atual) */}
-          <div className={styles.rightColumn}>
-            <section className={`${styles.contentCard} ${styles.fullHeightFlex}`}>
-              <div>
-                <div className={styles.planHeaderContainer}>
-                  <span className={styles.crownEmoji}>👑</span>
-                  <h3 className={styles.cardTitle}>Plano Atual</h3>
-                </div>
-
-                <div className={styles.planBox}>
-                  <div className={styles.planTitleRow}>
-                    <h4 className={styles.planName}>Plano Completo</h4>
-                    <span className={styles.activeBadge}>Ativo</span>
-                  </div>
-
-                  <p className={styles.billingText}>
-                    Próxima cobrança<br />
-                    <span className={styles.billingDate}>15 de julho de 2025</span>
-                  </p>
-
-                  <ul className={styles.featuresList}>
-                    <PlanFeature label="Tradução ilimitada" />
-                    <PlanFeature label="Avatar 3D" />
-                    <PlanFeature label="Histórico ilimitado" />
-                    <PlanFeature label="Suporte prioritário" />
-                    <PlanFeature label="Recursos avançados" />
-                  </ul>
-                </div>
-              </div>
-
-              <div className={styles.planActions}>
-                <button className={styles.managePlanBtn}>
-                  Gerenciar Plano
-                </button>
-                <button className={styles.planDetailsLink}>
-                  Ver detalhes da assinatura
-                </button>
-              </div>
-            </section>
-          </div>
-
-        </div>
-      </main>
-    </div>
-  );
-}
-
-/* COMPONENTES AUXILIARES LOCAIS */
-function SidebarItem({ icon, label, active = false }) {
-  return (
-    <a href="#" className={`${styles.sidebarItem} ${active ? styles.sidebarItemActive : ""}`}>
-      {icon}
-      <span>{label}</span>
-    </a>
-  );
-}
-
-function TabItem({ icon, label, active = false, onClick }) {
-  return (
-    <button onClick={onClick} className={`${styles.tabItem} ${active ? styles.tabItemActive : ""}`}>
-      {icon}
-      {label}
-    </button>
-  );
-}
-
-function InputField({ label, defaultValue, type = "text" }) {
-  return (
-    <div>
-      <label className={styles.inputLabel}>{label}</label>
-      <input type={type} defaultValue={defaultValue} className={styles.inputField} />
-    </div>
-  );
-}
-
-function SecurityRow({ icon, title, subtitle }) {
-  return (
-    <div className={styles.securityRowClickable}>
-      <div className={styles.securityRowLeft}>
-        <div className={styles.grayIconRow}>{icon}</div>
-        <div>
-          <h4 className={styles.securityRowTitleClickable}>{title}</h4>
-          <p className={styles.securityRowSubtitle}>{subtitle}</p>
-        </div>
+        </section>
       </div>
-      <span className={styles.arrowIcon}>
-        <svg className={styles.smallSvgIcon} fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
-      </span>
     </div>
   );
 }
-
-function PlanFeature({ label }) {
-  return (
-    <li className={styles.featureItem}>
-      <div className={styles.checkCircle}>
-        <svg className={styles.checkSvg} fill="none" stroke="currentColor" strokeWidth="4" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
-      </div>
-      {label}
-    </li>
-  );
-}
-
-export default Usuario;

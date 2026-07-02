@@ -3,17 +3,16 @@
 .main {
   position: relative;
   width: 100%;
+  max-width: 100%;
   margin: auto;
-
-  padding: 176px;
-  padding-top: 120px;
-
+  padding: 120px 176px 176px 176px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   gap: 50px;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .main h1 {
@@ -22,6 +21,7 @@
   color: var(--azul_claro);
   font-size: 40px;
   text-align: center;
+  word-wrap: break-word;
 }
 
 .main h2 {
@@ -29,17 +29,19 @@
   font-weight: normal;
   color: var(--azul_claro);
   font-size: 25px;
+  word-wrap: break-word;
 }
 
 .main p {
   font-family: var(--fonte_inter);
   color: var(--azul_escuro);
   font-size: 20px;
+  line-height: 1.6;
 }
 
 .main p strong {
   color: var(--amarelo);
-  font-weight: 600; /* Garante que ela continue em negrito além de mudar de cor */
+  font-weight: 600;
 }
 
 .origem {
@@ -49,6 +51,13 @@
 .origem div {
   margin-top: 50px;
   margin-bottom: 50px;
+}
+
+.linha_decorativa {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 
 .cultura {
@@ -64,11 +73,12 @@
 .image_cultura {
   width: 100%;
   max-width: 609px;
-  height: 202px;
-  padding: 5px;
-  padding-left: 10px;
+  min-height: 202px;
+  height: auto;
+  padding: 15px;
   border-radius: 10px;
   border: 1px solid black;
+  box-sizing: border-box;
 }
 
 .image_cultura {
@@ -83,23 +93,26 @@
   width: 100%;
   height: 100%;
   border-radius: 10px;
+  object-fit: cover;
 }
 
 .valores {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 20px;
 }
 
 .valores_icones {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   gap: 20px;
 }
 
 .icon_valores {
   width: 80px;
   height: auto;
+  max-width: 100%;
 }
 
 .valor_item {
@@ -118,20 +131,35 @@
 .por_que_existe {
   display: flex;
   flex-direction: row;
-  gap: 20px;
+  gap: 40px;
+  width: 100%;
+  align-items: center;
 }
 
 .texto_por_que {
-  width: 708px;
+  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+.imagem_por_que {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.imagem_por_que img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
 }
 
 .diferencial {
   display: flex;
   flex-direction: column;
   gap: 40px;
+  width: 100%;
 }
 
 .equipe {
@@ -139,10 +167,12 @@
   flex-direction: column;
   align-items: center;
   gap: 40px;
+  width: 100%;
 }
 
 .btn {
-  width: 20%;
+  width: 280px;
+  max-width: 100%;
   height: 50px;
   border-radius: 47px;
   color: var(--azul_escuro);
@@ -156,6 +186,7 @@
   justify-content: center;
   text-decoration: none;
   transition: 0.2s;
+  text-align: center;
 }
 
 .btn:hover {
@@ -163,23 +194,6 @@
   color: var(--branco_puro);
   cursor: pointer;
 }
-
-.por_que_existe,
-.para_onde,
-.diferencial,
-.equipe {
-  width: 100%;
-}
-
-.por_que_existe img,
-.diferencial img,
-.origem img {
-  max-width: 100%;
-}
-
-/* ==========================================================================
-   ELEMENTOS DO VISUALIZADOR 3D (ISOLAMENTO DO CANVAS)
-   ========================================================================== */
 
 .totem_wrapper_bloqueio {
   width: 100%;
@@ -191,24 +205,21 @@
 }
 
 .totem_3d_container {
-  width: 600px;
+  width: 100%;
+  max-width: 600px;
   height: 450px;
-  /* AJUSTE: Um fundo cinza sutil ou gradiente faz o modelo 3D saltar aos olhos */
   background: radial-gradient(circle, #f9fafb 0%, #e5e7eb 100%);
   border-radius: 12px;
   border: 1px solid #cbd5e1;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   overflow: hidden;
   cursor: grab;
+  touch-action: none;
 }
 
 .totem_3d_container:active {
   cursor: grabbing;
 }
-
-/* ==========================================================================
-   Estilos da Linha do Tempo (Seção Queremos Ir)
-   ========================================================================== */
 
 .queremos_ir {
   width: 100%;
@@ -228,7 +239,6 @@
   align-items: center;
 }
 
-/* Linha Base Cinza - Vai do topo até o final antes da mão */
 .timeline_line_bg {
   position: absolute;
   top: 88px;
@@ -240,7 +250,6 @@
   z-index: 1;
 }
 
-/* Linha Dinâmica Azul - PRESERVA SEU DESIGN ORIGINAL MAS NÃO PASSA DO PONTO */
 .timeline_line_active {
   position: absolute;
   top: 88px;
@@ -250,13 +259,10 @@
   transform: translateX(-50%);
   z-index: 2;
   transition: height 0.6s ease-in-out;
-
-  /* Evita que distorções flexbox causem o vazamento visual */
   max-height: calc(100% - 176px - 30px);
   box-sizing: border-box;
 }
 
-/* Itens da Linha */
 .timeline_item {
   position: relative;
   display: flex;
@@ -274,7 +280,6 @@
   box-sizing: border-box;
 }
 
-/* Padding garante que a borda interna da imagem fique a exatamente 30px do texto */
 .timeline_left {
   justify-content: flex-end;
   padding-right: 180px;
@@ -285,9 +290,9 @@
   padding-left: 180px;
 }
 
-/* Wrapper das Imagens - Tamanho fixado e padronizado */
 .timeline_image_wrapper {
   width: 430px;
+  max-width: 100%;
   height: 174px;
   border-radius: 12px;
   overflow: hidden;
@@ -302,7 +307,6 @@
   object-fit: cover;
 }
 
-/* Elemento Central - Mantido original */
 .timeline_center {
   position: absolute;
   left: 50%;
@@ -344,7 +348,6 @@
   z-index: 4;
 }
 
-/* Definição de espaço exato de 30px a partir da palavra até o nó */
 .title_left {
   right: 30px;
 }
@@ -353,49 +356,36 @@
   left: 30px;
 }
 
-/* ==========================================================================
-   Animações de Feedback Visual (Pulsações Fortes)
-   ========================================================================== */
-
 @keyframes pulseActive {
   0% {
     transform: scale(1.3);
-    box-shadow:
-      0 0 0 0 rgba(0, 191, 255, 0.6),
-      0 0 0 2px rgba(0, 191, 255, 0.4);
+    box-shadow: 0 0 0 0 rgba(0, 191, 255, 0.6), 0 0 0 2px rgba(0, 191, 255, 0.4);
   }
   70% {
     transform: scale(1.3);
-    box-shadow:
-      0 0 0 22px rgba(0, 191, 255, 0),
-      0 0 0 24px rgba(0, 191, 255, 0);
+    box-shadow: 0 0 0 22px rgba(0, 191, 255, 0), 0 0 0 24px rgba(0, 191, 255, 0);
   }
   100% {
     transform: scale(1.3);
-    box-shadow:
-      0 0 0 0 rgba(0, 191, 255, 0),
-      0 0 0 0 rgba(0, 191, 255, 0);
+    box-shadow: 0 0 0 0 rgba(0, 191, 255, 0), 0 0 0 0 rgba(0, 191, 255, 0);
   }
 }
 
 @keyframes glowHand {
-  0%,
-  100% {
+  0%, 100% {
     transform: scale(1);
     filter: drop-shadow(0 0 4px rgba(0, 191, 255, 0.3));
   }
   50% {
     transform: scale(1.12);
-    filter: drop-shadow(0 0 24px rgba(0, 191, 255, 0.95))
-      drop-shadow(0 0 8px rgba(0, 191, 255, 0.4));
+    filter: drop-shadow(0 0 24px rgba(0, 191, 255, 0.95)) drop-shadow(0 0 8px rgba(0, 191, 255, 0.4));
   }
 }
 
 /* ==========================================================================
-   Estados Dinâmicos Aplicados
+    ESTADOS DA TIMELINE - ANIMAÇÕES E INTERAÇÕES (TOUCH E HOVER)
    ========================================================================== */
 
-/* 1. ESTADO: PRESENTE (Ativo Pulsando Forte + Imagem Acesa) */
 .step_current .timeline_dot {
   background-color: var(--azul_claro);
   border-color: var(--azul_claro);
@@ -412,7 +402,6 @@
   filter: grayscale(0%);
 }
 
-/* 2. ESTADO: PASSADO (Apagado por padrão - Acende no hover do nó central) */
 .step_passed .timeline_dot {
   background-color: var(--azul_claro);
   border-color: var(--azul_claro);
@@ -423,12 +412,14 @@
   opacity: 0.4;
 }
 
+/* Imagens antigas começam opacas e cinzas */
 .step_passed .timeline_image_wrapper {
   opacity: 0.35;
   filter: grayscale(80%);
+  transition: all 0.3s ease-in-out; 
 }
 
-/* Interação Hover no Nó Passado */
+/* INTERAÇÃO NO DESKTOP (Ao passar o mouse) */
 .step_passed .timeline_node:hover .timeline_title {
   opacity: 1;
   font-weight: 600;
@@ -438,14 +429,24 @@
   transform: scale(1.3);
 }
 
-.step_passed:has(.timeline_node:hover) .timeline_image_wrapper {
+.step_passed:has(.timeline_node:hover) .timeline_image_wrapper,
+.step_passed .timeline_image_wrapper:hover {
   opacity: 1;
   filter: grayscale(0%);
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
 }
 
-/* 3. ESTADO: FUTURO (Totalmente Bloqueado) */
+/* INTERAÇÃO EM DISPOSITIVOS TOUCH (Ao passar/pressionar o dedo) */
+@media (hover: none) and (pointer: coarse) {
+  .step_passed .timeline_image_wrapper:active {
+    opacity: 1 !important;
+    filter: grayscale(0%) !important;
+    transform: scale(1.03); 
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
+  }
+}
+
 .step_future .timeline_dot {
   background-color: #ffffff;
   border-color: #cbd5e1;
@@ -462,7 +463,6 @@
   pointer-events: none;
 }
 
-/* Mãozinha Final Sinalizadora com Imagem */
 .timeline_hand_icon {
   margin-top: 30px;
   z-index: 3;
@@ -485,9 +485,29 @@
 }
 
 /* ==========================================================================
-   Responsividade / Mídia Queries
+    MEDIA QUERIES - RESPONSIVIDADE COMPLETA
    ========================================================================== */
 
+@media (max-width: 1024px) {
+  .main {
+    padding: 100px 40px 80px 40px;
+  }
+
+  .timeline_left {
+    padding-right: 100px;
+  }
+
+  .timeline_right {
+    padding-left: 100px;
+  }
+
+  .timeline_image_wrapper {
+    width: 320px;
+    height: 150px;
+  }
+}
+
+/* RESPONSIVIDADE PARA TABLET (Bolinha travada na linha guia cinza) */
 @media (max-width: 950px) {
   .timeline_line_bg,
   .timeline_line_active {
@@ -499,32 +519,46 @@
     bottom: 20px;
   }
   .timeline_item {
+    display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding-left: 45px;
     min-height: auto;
-    gap: 15px;
-    margin-bottom: 35px;
+    padding-top: 10px;
+    gap: 25px;
+    margin-bottom: 40px;
   }
+  
   .timeline_left,
   .timeline_right {
     width: 100%;
     justify-content: flex-start;
     padding: 0 !important;
+    order: 2;
   }
+  
   .timeline_image_wrapper {
     width: 100%;
     max-width: 430px;
-    height: 174px;
+    height: 174px; 
   }
+  
+  /* Centraliza a bolinha fixamente no eixo esquerdo (20px) */
   .timeline_center {
+    position: absolute;
     left: 20px;
     transform: translateX(-50%);
+    order: 1;
   }
+  
+  /* Desloca o título de forma absoluta à direita da bolinha para não quebrar o layout */
   .timeline_title {
+    position: absolute;
+    white-space: nowrap; 
     left: 30px !important;
     right: auto !important;
   }
+  
   .timeline_hand_icon {
     align-self: flex-start;
     margin-left: -2px;
@@ -533,8 +567,7 @@
 
 @media (max-width: 900px) {
   .main {
-    padding: 40px 20px;
-    padding-top: 120px;
+    padding: 100px 30px 60px 30px;
   }
 
   .cultura {
@@ -543,8 +576,13 @@
 
   .divisoes_cultura,
   .image_cultura {
-    height: auto;
-    min-height: 350px;
+    max-width: 100%;
+    min-height: auto;
+  }
+
+  .por_que_existe {
+    flex-direction: column;
+    gap: 30px;
   }
 
   .main h1 {
@@ -552,33 +590,31 @@
   }
 
   .main h2 {
-    font-size: 22px;
+    font-size: 24px;
   }
 
   .main p {
     font-size: 18px;
   }
 
-  /* Ajuste responsivo para as dimensões do visualizador 3D */
   .totem_3d_container {
-    width: 100%;
-    max-width: 450px;
-    height: 350px;
+    height: 380px;
   }
 }
+
+/* SMARTPHONES (Bolinha no eixo esquerdo e título fluído à direita) */
 @media (max-width: 600px) {
   .main {
-    padding: 20px 16px;
-    padding-top: 100px;
-    gap: 30px;
+    padding: 100px 16px 40px 16px;
+    gap: 40px;
   }
 
   .main h1 {
-    font-size: 26px;
+    font-size: 28px;
   }
 
   .main h2 {
-    font-size: 20px;
+    font-size: 22px;
   }
 
   .main p {
@@ -586,18 +622,107 @@
   }
 
   .divisoes_cultura {
-    border: none;
-    height: auto;
-    min-height: unset;
-    padding: 0;
+    padding: 15px;
   }
 
   .image_cultura {
     display: none;
   }
 
-  .cultura {
-    grid-template-columns: 1fr;
+  .icon_valores {
+    width: 60px;
+  }
+
+  .valor_item span {
+    font-size: 16px;
+  }
+
+  .valores_icones {
+    gap: 15px;
+    justify-content: flex-start;
+  }
+
+  .totem_3d_container {
+    height: 320px;
+  }
+
+  .btn {
+    width: 100%;
+    font-size: 18px;
+  }
+
+  .timeline_item {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 45px;
+    min-height: unset;
+    gap: 20px;
+    margin-bottom: 50px;
+    padding-top: 0;
+  }
+
+  .timeline_center {
+    position: absolute;
+    left: 20px;
+    transform: translateX(-50%);
+    order: 1;
+  }
+
+  .timeline_node {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    max-width: 100%;
+  }
+
+  /* O título se adapta fluidamente calculando o tamanho máximo da janela */
+  .timeline_title {
+    position: absolute;
+    white-space: normal; 
+    word-wrap: break-word;
+    left: 30px !important;
+    right: auto !important;
+    text-align: left;
+    width: calc(100vw - 110px); 
+  }
+
+  .timeline_left,
+  .timeline_right {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 0;
+    order: 2;
+    margin-top: 25px; 
+  }
+
+  .timeline_image_wrapper {
+    height: 160px;
+    width: 100%;
+  }
+}
+
+/* TELAS EXTREMAMENTE PEQUENAS (MÍNIMO 320px) */
+@media (max-width: 350px) {
+  .main {
+    padding: 100px 12px 30px 12px;
+    gap: 30px;
+  }
+
+  .main h1 {
+    font-size: 24px;
+  }
+
+  .main h2 {
+    font-size: 20px;
+  }
+
+  .main p {
+    font-size: 15px;
+  }
+
+  .valores_icones {
+    gap: 10px;
+    justify-content: center;
   }
 
   .icon_valores {
@@ -608,75 +733,57 @@
     font-size: 14px;
   }
 
-  .valores_icones {
-    gap: 12px;
-    flex-wrap: wrap;
-    justify-content: center;
+  .totem_3d_container {
+    height: 260px;
+  }
+  
+  .timeline_title {
+    font-size: 14px;
+  }
+}
+
+/* TELAS DEITADAS (LANDSCAPE MODE) */
+@media (max-height: 500px) and (orientation: landscape) {
+  .main {
+    padding-top: 100px;
+  }
+
+  .cultura {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .image_cultura {
+    display: flex;
   }
 
   .por_que_existe {
-    flex-direction: column;
-  }
-
-  .texto_por_que {
-    width: 100%;
+    flex-direction: row;
   }
 
   .totem_3d_container {
-    width: 100%;
-    height: 280px;
+    height: 240px;
+    max-width: 400px;
   }
+}
 
-  .btn {
-    width: 80%;
-    font-size: 17px;
-  }
+.scroll_section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  will-change: transform, opacity;
+}
 
-  /* Timeline mobile — reestrutura o item inteiro */
-  .timeline_item {
-    flex-direction: column;
-    align-items: flex-start;
-    padding-left: 45px;
-    min-height: unset;
-    gap: 0;
-    margin-bottom: 50px;
-  }
+.is_hidden {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.5s ease-in, transform 0.5s ease-in;
+  pointer-events: none;
+}
 
-  /* Tira o position absolute do centro no mobile */
-  .timeline_center {
-    position: relative;
-    left: unset;
-    transform: none;
-    margin-left: -29px; /* recua até a linha */
-    margin-bottom: 16px;
-    order: -1; /* garante que vem primeiro */
-  }
-
-  /* Título vira estático ao lado do ponto */
-  .timeline_title {
-    position: static;
-    white-space: normal;
-    margin-left: 12px;
-  }
-
-  /* Ponto + título lado a lado */
-  .timeline_node {
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .timeline_left,
-  .timeline_right {
-    width: 100%;
-    justify-content: flex-start;
-    padding: 0;
-    order: 1;
-  }
-
-  .timeline_image_wrapper {
-    height: 150px;
-    width: 100%;
-    max-width: 100%;
-  }
+.is_visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.7s cubic-bezier(0.215, 0.61, 0.355, 1), transform 0.7s cubic-bezier(0.215, 0.61, 0.355, 1);
 }

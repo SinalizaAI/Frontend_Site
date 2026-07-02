@@ -11,8 +11,7 @@ const itens = [
   {
     imagem: Imagem_1,
     titulo: "Acessibilidade real",
-    descricao:
-      "Inclusão de pessoas surdas no atendimento sem depender exclusivamente de intérpretes humanos.",
+    descricao: "Inclusão de pessoas surdas no atendimento sem depender exclusivamente de intérpretes humanos.",
   },
   {
     imagem: Imagem_2,
@@ -46,15 +45,15 @@ function Vantagens() {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const verificar = () => setIsMobile(window.innerWidth <= 768);
-    verificar(); // roda na montagem
+    const verificar = () => setIsMobile(window.innerWidth <= 1024);
+    verificar();
     window.addEventListener("resize", verificar);
     return () => window.removeEventListener("resize", verificar);
   }, []);
 
   const handleClick = (i) => {
     if (!isMobile) return;
-    setAtivo((prev) => (prev === i ? null : i)); // toggle: clica de novo pra fechar
+    setAtivo((prev) => (prev === i ? null : i));
   };
 
   const handleMouseEnter = (i) => {

@@ -3,34 +3,30 @@
 .sec_funcionalidades {
   width: 100%;
   height: auto;
-  position: relative; /* ← âncora para o absolute da imagem */
+  position: relative;
   overflow: hidden;
   z-index: 2;
   margin-top: -5%;
 }
 
-/* Imagem de fundo */
 .imagem {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 0; /* ← atrás de tudo */
+  z-index: 0;
 }
 
-/* Conteúdo na frente */
 .funcionalidades {
   position: relative;
-  z-index: 1; /* ← na frente da imagem */
+  z-index: 1;
   width: 100%;
   height: 550px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
-/* Itens */
 
 .container_itens {
   width: 80%;
@@ -40,7 +36,7 @@
 .container_itens h1 {
   color: var(--amarelo);
   text-align: center;
-  font-family: var(--fonte_lexend); /* ← era --fonte_Jakarta */
+  font-family: var(--fonte_lexend);
   color: var(--azul_claro);
   text-align: center;
   font-size: 40px;
@@ -48,8 +44,6 @@
   font-weight: 300;
   line-height: normal;
 }
-
-/* Container func */
 
 .container_func {
   width: 90%;
@@ -75,15 +69,13 @@
 .func h3 {
   color: var(--azul_escuro);
   text-align: center;
-  font-family: var(--fonte_inter); /* ← era --fonte_Nunito */
+  font-family: var(--fonte_inter);
   text-align: center;
   font-size: 22px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
 }
-
-/* mobile */
 
 @media (max-width: 900px) {
   .funcionalidades {
@@ -110,6 +102,7 @@
   .func {
     height: 200px;
   }
+  
   .imagem_func {
     align-items: center;
     justify-content: center;

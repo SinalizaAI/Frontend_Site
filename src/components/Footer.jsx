@@ -83,7 +83,7 @@ function Footer() {
           <div className={styles.cont_t}>
             <h2>Contato</h2>
             <div className={styles.cont_p}>
-              <p>(11) 4002-8922</p>
+              <p>(11) 9578963541</p>
               <p>sinalizai.contatos@gmail.com</p>
               <p>Senac Lapa Tito, 54</p>
               <p>Vila Romana, São Paulo</p>

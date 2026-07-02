@@ -3,11 +3,13 @@
 .main {
     position: relative;
     width: 100%;
+    min-height: 100vh;
     padding: 100px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    box-sizing: border-box;
 }
 
 .main h1 {
@@ -30,6 +32,7 @@
     font-weight: 400;
     line-height: normal;
     margin: 10px;
+    max-width: 600px;
 }
 
 .section {
@@ -41,7 +44,8 @@
     border-radius: 20px;
     display: flex;
     flex-direction: row;
-    overflow: hidden; /* Garante que os fundos respeitem o border-radius */
+    overflow: hidden;
+    box-sizing: border-box;
 }
 
 .section h2 {
@@ -76,7 +80,6 @@
     font-weight: 300;
 }
 
-/* Botão de cadastro da versão Desktop */
 .btn_desktop {
     width: 286px;
     height: 50px;
@@ -97,7 +100,6 @@
     transition: 0.1s;
 }
 
-/* Botão de cadastro oculto por padrão (aparece só no mobile) */
 .btn_mobile {
     display: none;
     width: 286px;
@@ -122,6 +124,8 @@
     align-items: center;
     text-align: center;
     justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .entrar_conta form {
@@ -129,7 +133,8 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    gap: 10px;
+    gap: 1.25rem; /* Alinhado com o padrão de espaçamento do Cadastro */
+    margin-top: 20px;
 }
 
 .entrar_conta h2 {
@@ -146,66 +151,91 @@
     font-weight: 300;
 }
 
-.escrever {
-    width: 451px;
-    max-width: 90%;
-    height: 54px;
-    border-radius: 10px;
-    margin-top: 30px;
-    padding-left: 15px;
-    background-color: var(--branco_puro);
+/* --- NOVOS ESTILOS PADRONIZADOS DA ETAPA 2 PARA OS INPUTS --- */
+
+.inputGroup {
     display: flex;
-    border: 1px solid #ccc;
+    flex-direction: column;
+    gap: 0.4rem;
+    width: 100%;
+    max-width: 451px;
 }
 
-.escrever img {
-    width: 40px;
-    height: 40px;
-    margin: 5px;
-}
-
-.escrever input {
-    width: 85%;
-    font-size: 20px;
+.label {
+    color: var(--azul_escuro); /* Ajustado para azul escuro para contrastar com o fundo branco do Login */
+    font-size: 15px;
     font-family: var(--fonte_inter);
-    background-color: transparent;
+    text-align: left;
+}
+
+.inputWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.input {
+    width: 100%;
+    background-color: #f8fafc;
+    color: #0f172a;
+    padding: 0.85rem 3.5rem 0.85rem 4rem; 
+    border: 2px solid #ccc; /* Mantendo a borda sutil inicial do login */
+    border-radius: 0.75rem;
+    font-size: 1rem;
     outline: none;
-    padding-left: 15px;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+}
+
+.input:focus {
+    border-color: #ffb03a;
+    background-color: #ffffff;
+}
+
+.iconLeft {
+    position: absolute;
+    left: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #003e4c;
+    width: 40px; 
+    height: 40px;
+    pointer-events: none;
+}
+
+.iconImage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.iconRight {
+    position: absolute;
+    right: 1rem;
+    background: none;
     border: none;
-}
-
-.manter_conectado {
-    width: 370px;
-    max-width: 90%;
-    color: var(--azul_escuro);
-    margin-top: 10px;
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
-
-.manter_conectado label {
-    display: flex;
-    gap: 8px;
-}
-
-.manter_conectado input:hover {
+    align-items: center;
+    justify-content: center;
+    color: #94a3b8;
     cursor: pointer;
+    padding: 0;
+    width: 25px;
+    height: 25px;
 }
 
-.manter {
-    font-size: 15px;
-    font-family: var(--fonte_inter);
-    display: flex;
-    gap: 5px;
+.iconRight svg {
+    width: 100%;
+    height: 100%;
 }
 
-.conectado {
-    font-size: 15px;
-    font-family: var(--fonte_inter);
-    color: var(--azul_oc);
-    text-decoration: none;
+.iconRight:hover {
+    color: #64748b;
 }
+
+/* --- FIM DOS NOVOS ESTILOS --- */
 
 .btn2 {
     width: 286px;
@@ -219,7 +249,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 22px;
+    margin-top: 10px;
     border: none;
 }
 
@@ -230,22 +260,35 @@
     transition: 0.1s;
 }
 
+.btn2:disabled {
+    background-color: #cbd5e1;
+    color: #64748b;
+    cursor: not-allowed;
+}
+
 .esqueceu {
     font-family: var(--fonte_inter);
     font-size: 16px;
     font-weight: 500;
     color: rgba(1, 11, 64, 0.7);
-    margin-top: 35px;
+    margin-top: 25px;
+    text-decoration: none;
 }
 
 .esqueceu:hover {
     color: var(--azul_escuro);
     text-decoration: underline;
+    cursor: pointer;
 }
 
-/* ==========================================================================
-   REGRAS DE RESPONSIVIDADE (TABLET E CELULAR)
-   ========================================================================== */
+@media (max-width: 1024px) {
+    .section {
+        width: 90%;
+        height: auto;
+        min-height: 500px;
+    }
+}
+
 @media (max-width: 768px) {
     .main {
         padding: 100px 15px;
@@ -262,22 +305,18 @@
     .section {
         flex-direction: column;
         height: auto;
-        background-color: var(--branco);
-        padding: 40px 15px;
+        box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
     }
 
-    /* Oculta completamente o bloco azul no mobile */
     .bem_vindo {
         display: none;
     }
 
-    /* O formulário ocupa toda a largura disponível */
     .entrar_conta {
         width: 100%;
-        height: auto;
+        padding: 30px 10px;
     }
 
-    /* Mostra o botão de cadastro no mobile */
     .btn_mobile {
         display: flex;
     }
@@ -288,6 +327,84 @@
     }
 
     .esqueceu {
-        margin-top: 25px; /* Mantém o link com um bom espaçamento do botão amarelo */
+        margin-top: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main h1 {
+        font-size: 26px;
+    }
+
+    .p1 {
+        font-size: 14px;
+    }
+
+    .entrar_conta h2 {
+        font-size: 22px;
+    }
+
+    .entrar {
+        font-size: 16px;
+    }
+
+    .input {
+        font-size: 0.95rem;
+        padding: 0.85rem 2.5rem 0.85rem 3.2rem;
+    }
+
+    .iconLeft {
+        width: 30px;
+        height: 30px;
+        left: 0.6rem;
+    }
+
+    .btn2, .btn_mobile {
+        width: 100%;
+        max-width: 286px;
+        height: 46px;
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 320px) {
+    .main {
+        padding: 100px 10px;
+    }
+
+    .main h1 {
+        font-size: 22px;
+    }
+
+    .iconLeft {
+        width: 25px;
+        height: 25px;
+        left: 0.5rem;
+    }
+    
+    .input {
+        font-size: 0.9rem;
+        padding: 0.85rem 2rem 0.85rem 2.8rem;
+    }
+}
+
+@media (max-height: 600px) and (orientation: landscape) {
+    .main {
+        padding: 100px 10px;
+    }
+
+    .section {
+        flex-direction: column;
+        height: auto;
+        width: 100%;
+    }
+
+    .bem_vindo {
+        display: none;
+    }
+
+    .entrar_conta {
+        width: 100%;
+        padding: 20px 10px;
     }
 }

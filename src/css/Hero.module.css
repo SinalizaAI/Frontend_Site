@@ -10,8 +10,6 @@
   overflow: hidden;
 }
 
-/* Imagem de fundo */
-
 .bg_image {
   position: absolute;
   top: 0;
@@ -28,8 +26,6 @@
   object-position: center;
 }
 
-/* Textos */
-
 .text {
   position: relative;
   z-index: 1;
@@ -37,7 +33,7 @@
   height: 300px;
   display: flex;
   flex-direction: column;
-  left: 10%;
+  left: 5%;
   align-items: center;
   justify-content: center;
 }
@@ -52,8 +48,6 @@
   line-height: normal;
 }
 
-/* Buttons */
-
 .buttons {
   position: relative;
   width: 80%;
@@ -64,8 +58,6 @@
   justify-content: space-around;
   margin: 0 auto;
 }
-
-/* Estilo base dos botões */
 
 .btn1,
 .btn2 {
@@ -78,16 +70,12 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   text-decoration: none;
   transition: 0.2s;
 }
-
-/* Botão amarelo */
 
 .btn1 {
   background-color: var(--amarelo);
@@ -99,8 +87,6 @@
   cursor: pointer;
 }
 
-/* Botão branco */
-
 .btn2 {
   background-color: var(--branco_puro);
 }
@@ -110,8 +96,6 @@
   color: var(--branco_puro);
   cursor: pointer;
 }
-
-/* Responsividade - Mobile */
 
 @media (max-width: 600px) {
   .hero_sec {
@@ -152,8 +136,6 @@
   }
 }
 
-/* Responsividade - Tablet */
-
 @media (min-width: 601px) and (max-width: 1000px) {
   .hero_sec {
     height: 70svh;
@@ -192,8 +174,6 @@
     font-size: 13px;
   }
 }
-
-/* Responsividade - Notebook */
 
 @media (min-width: 1001px) and (max-width: 1270px) {
   .text {
