@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import styles from "../css/Tradutor.module.css";
-import { useRybena } from "../context/RybenaContext";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // URL da API Python no Railway — troque pela URL real após o deploy
@@ -21,33 +20,33 @@ const DEBOUNCE_MS = 1000; // 1 segundo entre sinais iguais
 // ─────────────────────────────────────────────────────────────────────────────
 // Garante que o widget VLibras está "aberto" (painel ativo) antes de traduzir
 // ─────────────────────────────────────────────────────────────────────────────
-// function abrirWidgetVLibras() {
-//   return new Promise((resolve) => {
-//     const wrapper = document.querySelector("[vw-plugin-wrapper]");
-//     const accessButton = document.querySelector("[vw-access-button]");
-//     if (!wrapper || !accessButton) {
-//       resolve(false);
-//       return;
-//     }
-//     if (wrapper.classList.contains("active")) {
-//       resolve(true);
-//       return;
-//     }
-//     const observer = new MutationObserver(() => {
-//       if (wrapper.classList.contains("active")) {
-//         observer.disconnect();
-//         resolve(true);
-//       }
-//     });
-//     observer.observe(wrapper, { attributes: true, attributeFilter: ["class"] });
-//     accessButton.click();
-//     // Timeout de segurança caso a classe nunca mude
-//     setTimeout(() => {
-//       observer.disconnect();
-//       resolve(wrapper.classList.contains("active"));
-//     }, 3000);
-//   });
-// }
+function abrirWidgetVLibras() {
+  return new Promise((resolve) => {
+    const wrapper = document.querySelector("[vw-plugin-wrapper]");
+    const accessButton = document.querySelector("[vw-access-button]");
+    if (!wrapper || !accessButton) {
+      resolve(false);
+      return;
+    }
+    if (wrapper.classList.contains("active")) {
+      resolve(true);
+      return;
+    }
+    const observer = new MutationObserver(() => {
+      if (wrapper.classList.contains("active")) {
+        observer.disconnect();
+        resolve(true);
+      }
+    });
+    observer.observe(wrapper, { attributes: true, attributeFilter: ["class"] });
+    accessButton.click();
+    // Timeout de segurança caso a classe nunca mude
+    setTimeout(() => {
+      observer.disconnect();
+      resolve(wrapper.classList.contains("active"));
+    }, 3000);
+  });
+}
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Fluxo completo, agora assíncrono e sequencial
@@ -56,37 +55,37 @@ const DEBOUNCE_MS = 1000; // 1 segundo entre sinais iguais
 // Fluxo completo: abre o widget, atualiza o texto e simula hover + clique
 // (é assim que o VLibras Widget realmente dispara a tradução — não por seleção)
 // ─────────────────────────────────────────────────────────────────────────────
-// async function traduzirComVLibras(texto) {
-//   const el = document.getElementById("vlibras-texto-oculto");
-//   if (!el) return false;
+async function traduzirComVLibras(texto) {
+  const el = document.getElementById("vlibras-texto-oculto");
+  if (!el) return false;
 
-//   const abriu = await abrirWidgetVLibras();
-//   if (!abriu) {
-//     console.warn("Widget do VLibras não abriu a tempo.");
-//   }
+  const abriu = await abrirWidgetVLibras();
+  if (!abriu) {
+    console.warn("Widget do VLibras não abriu a tempo.");
+  }
 
-//   // Pequeno delay para garantir que o painel do widget já processou a abertura
-//   await new Promise((r) => setTimeout(r, 150));
+  // Pequeno delay para garantir que o painel do widget já processou a abertura
+  await new Promise((r) => setTimeout(r, 150));
 
-//   el.textContent = texto;
+  el.textContent = texto;
 
-//   // Dá um frame para o widget "notar" a mudança de conteúdo, caso ele use
-//   // MutationObserver internamente
-//   await new Promise((r) => requestAnimationFrame(r));
+  // Dá um frame para o widget "notar" a mudança de conteúdo, caso ele use
+  // MutationObserver internamente
+  await new Promise((r) => requestAnimationFrame(r));
 
-//   // 1) Hover — é o que faz o widget "realçar" o elemento como traduzível
-//   el.dispatchEvent(new MouseEvent("mouseover", { bubbles: true, cancelable: true, view: window }));
-//   el.dispatchEvent(new MouseEvent("mousemove", { bubbles: true, cancelable: true, view: window }));
+  // 1) Hover — é o que faz o widget "realçar" o elemento como traduzível
+  el.dispatchEvent(new MouseEvent("mouseover", { bubbles: true, cancelable: true, view: window }));
+  el.dispatchEvent(new MouseEvent("mousemove", { bubbles: true, cancelable: true, view: window }));
 
-//   await new Promise((r) => setTimeout(r, 100));
+  await new Promise((r) => setTimeout(r, 100));
 
-//   // 2) Clique — é o que efetivamente dispara a tradução
-//   el.dispatchEvent(new MouseEvent("mousedown", { bubbles: true, cancelable: true, view: window }));
-//   el.dispatchEvent(new MouseEvent("mouseup", { bubbles: true, cancelable: true, view: window }));
-//   el.dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true, view: window }));
+  // 2) Clique — é o que efetivamente dispara a tradução
+  el.dispatchEvent(new MouseEvent("mousedown", { bubbles: true, cancelable: true, view: window }));
+  el.dispatchEvent(new MouseEvent("mouseup", { bubbles: true, cancelable: true, view: window }));
+  el.dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true, view: window }));
 
-//   return true;
-// }
+  return true;
+}
 // ─────────────────────────────────────────────────────────────────────────────
 // Síntese de Voz (TTS) no Navegador
 // ─────────────────────────────────────────────────────────────────────────────
@@ -123,6 +122,7 @@ function normalizarLandmarks(landmarks) {
     flat[i * 3 + 2] = escala > 0 ? centrado[i][2] / escala : centrado[i][2];
   }
   return flat;
+  
 }
 // ─────────────────────────────────────────────────────────────────────────────
 // Extração de landmarks para duas mãos → vetor de 126 valores
@@ -164,13 +164,12 @@ function calcularMovimento(atual, anterior) {
 // ─────────────────────────────────────────────────────────────────────────────
 function Tradutor() {
   // Modo de exibição
-  const { traduzir, traduzindo } = useRybena();
   const [modoCamera, setModoCamera] = useState(false);
   const [abaAtiva, setAbaAtiva] = useState("digitar");
   const [textoDigitado, setTextoDigitado] = useState("");
   const [gravando, setGravando] = useState(false);
   const [textoFalado, setTextoFalado] = useState("");
-  // const [traduzindo, setTraduzindo] = useState(false); // Estado do reconhecimento de Libras
+  const [traduzindo, setTraduzindo] = useState(false); // Estado do reconhecimento de Libras
   const [statusMediaPipe, setStatusMediaPipe] = useState("idle"); // idle | carregando | pronto | erro
   const [emMovimento, setEmMovimento] = useState(false);
   const [sinalAtual, setSinalAtual] = useState(null); // { sinal, confianca, texto }
@@ -493,19 +492,14 @@ function Tradutor() {
     if (window.speechSynthesis) window.speechSynthesis.cancel(); // Para o áudio imediatamente
   }
 
-  // async function handleTraduzir() {
-  //   if (!textoDigitado.trim()) return;
-  //   setTraduzindo(true);
-  //   const sucesso = await traduzirComVLibras(textoDigitado.trim());
-  //   setTraduzindo(false);
-  //   if (!sucesso) {
-  //     console.warn("Não foi possível confirmar a tradução automática.");
-  //   }
-  // }
-
-  function handleTraduzir() {
+  async function handleTraduzir() {
     if (!textoDigitado.trim()) return;
-    traduzir(textoDigitado.trim());
+    setTraduzindo(true);
+    const sucesso = await traduzirComVLibras(textoDigitado.trim());
+    setTraduzindo(false);
+    if (!sucesso) {
+      console.warn("Não foi possível confirmar a tradução automática.");
+    }
   }
 
   // ── Reconhecimento de voz (Web Speech API) ─────────────────────────────────
@@ -520,15 +514,10 @@ function Tradutor() {
     rec.lang = "pt-BR";
     rec.continuous = false;
     rec.interimResults = false;
-    // rec.onresult = (e) => {
-    //   const texto = e.results[0][0].transcript;
-    //   setTextoFalado(texto);
-    //   traduzirComVLibras(texto);
-    // };
     rec.onresult = (e) => {
       const texto = e.results[0][0].transcript;
       setTextoFalado(texto);
-      traduzir(texto); // era traduzirComVLibras(texto)
+      traduzirComVLibras(texto);
     };
     rec.onerror = (e) => console.error("Erro no reconhecimento:", e.error);
     rec.onend = () => setGravando(false);
@@ -546,7 +535,7 @@ function Tradutor() {
   return (
     <section className={styles.sec}>
       {/* Elemento oculto para o VLibras */}
-      {/* <span
+      <span
         id="vlibras-texto-oculto"
         style={{
           position: "absolute",
@@ -557,7 +546,7 @@ function Tradutor() {
           userSelect: "text",
           whiteSpace: "pre",
         }}
-      /> */}
+      />
       <h1>Seja bem vindo!</h1>
       <h2>Aqui você poderá realizar um teste gratuito da nossa ferramenta</h2>
       <div className={styles.container}>
